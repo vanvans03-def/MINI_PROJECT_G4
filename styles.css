@@ -1,0 +1,158 @@
+/*global*/
+*,
+*::before,
+*::after{
+    margin: 0 ;
+    padding: 0;
+}
+
+html{
+    font-size:10px;
+    font-family: "SF Pro Display", sans-serif;
+    src: url(Font/);
+}
+
+a{
+    display: block;
+    text-decoration: none;
+}
+
+.container{
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+}
+/*Header*/
+header{
+position: fixed;
+top: 0;
+z-index: 1400;
+width: 100%;
+height: 4.4rem;
+background-color: rgba(0,0,0,.8);
+backdrop-filter: blur(2rem);   
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 - 1rem;
+}
+
+.nav-list-mobile{
+    display: none;
+}
+.nav-link{
+    font-size: 1.4rem;
+    color: white;
+    padding: 0 1rem;
+    transition: opacity .5s;
+}
+
+.nav-link:hover{
+    opacity: .7;
+}
+.nav-link-apple{
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url("images/icons/apple.svg") center no-repeat;
+}
+
+.nav-link-search{
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url("images/icons/search.svg") center no-repeat;
+}
+
+.nav-link-bag{
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url("images/icons/bag.svg") center no-repeat;
+}
+
+.iphone-13-pro{
+    height: 69.2rem;
+    background: url("images/hero/iphone-11-pro/iphone_11_pro_large.jpg");
+    margin-top: 4.4rem;
+ 
+}
+
+/*Iphone 13 Pro section*/
+.title{
+    color:white;
+    text-align: center;
+    padding-top: 5.5rem;
+}
+.title-heading{
+    font-size: 5.6rem;
+    line-height: 1.07143;
+    letter-spacing: -.005rem;
+}
+
+.title-sub-heading{
+    font-size: 2.65rem;
+    margin-top: .6rem;
+    letter-spacing: .008rem;
+    font-weight: 400;
+}
+.title-price{
+    font-size: 1.7rem;
+    color: #888;
+    margin-top: .68rem;
+}
+
+.cta{
+    text-align: center;
+    margin-top: 1.8rem;
+}
+.cta-link{
+    color: #66bbff;
+    font-size: 2.1rem;
+    display: inline-block;
+}
+
+.cta-link:nth-child(2){
+    margin-left: 2.6rem;
+}
+.cta-link:hover{
+    border-bottom: 2px solid #66bbff;
+}
+
+/*iphoe 13 section*/
+.iphone-13{
+    background: url("images/hero/iphone-11/iphone_11_large.jpg");
+}
+
+.title-dark{
+    color: #000;
+}
+.cta-link-darker{
+    color: #0077C9;
+}
+.cta-link-darker:hover{
+    border-bottom-color: #0077C9;
+}
+.watch{
+    background: url("images/hero/watch/watch_large.jpg");
+}
+.title-heading-watch{
+    height: 7.8rem;
+    background: url("images/hero/watch/logo_watch_medium.png") center no-repeat;
+    background-size: auto 7.8rem;
+    margin-top: 1.6rem;
+}
+
+.hero{
+    height: 69.2rem;
+    background-size: auto 73.6rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: .6rem solid #fff;
+    border-bottom: .6rem solid #fff;
+}
+
+.iphone-13-pro{
+    border-top: none;
+}
