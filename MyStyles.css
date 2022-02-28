@@ -32,6 +32,10 @@ height: 4.4rem;
 background-color: rgba(0,0,0,.8);
 backdrop-filter: blur(2rem);   
 }
+.ribbon{
+    grid-row: 1; 
+    grid-column: 1/4; 
+}
 
 .my-nav-list{
     list-style: none;
@@ -205,6 +209,40 @@ backdrop-filter: blur(2rem);
 .ribbon{
     padding: .76471em0;
 }
+.item1 {
+     grid-area: header;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'menu main main main right right'
+      'menu footer footer footer footer footer';
+    gap: 100px;
+    padding: 10px;
+    grid-template-columns: auto auto auto;
+
+    
+  }
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.931);
+    text-align: center;
+    padding: 50px 0;
+    font-size: 30px;
+    background-position: center;
+    
+  }
+.help-store-pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+}
+.my-title-sub-store{
+    font-size:30px;
+}
+
 
 /*@media screen and(max-width: 767px){
     header{
