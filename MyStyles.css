@@ -240,7 +240,11 @@ backdrop-filter: blur(2rem);
 
 }
 .my-title-sub-store{
-    font-size:30px;
+    padding-top: 50px;
+    text-align: left;
+  background: -webkit-linear-gradient(#6e6e73,#000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 
