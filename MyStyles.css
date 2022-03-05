@@ -263,8 +263,11 @@ backdrop-filter: blur(2rem);
     padding: 0 2.2rem;
     align-content: center;
 }
-.itemWidth{
-    width: 0;
+.my-container3{
+    max-width: 170rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+    align-content: left;
 }
 /*@media screen and(max-width: 767px){
     header{
