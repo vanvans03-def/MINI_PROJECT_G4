@@ -8,8 +8,8 @@
 
 html{
     font-size:10px;
-    font-family: "SF Pro Display", sans-serif;
-    src: url(Font/SF-Pro-Text-Regular.otf);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    src: url("/Font/YosemiteSanFranciscoFont-master/System\ San\ Francisco\ Display\ Regular.ttf");
 }
 
 a{
