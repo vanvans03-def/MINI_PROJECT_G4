@@ -280,9 +280,46 @@ backdrop-filter: blur(2rem);
     position: absolute;
     top: 30%;
 }
-
-
+.rcorners {
+    border-radius: 25px;
+    border: 2px solid #6e6e73;
+    padding: 20px; 
   
+  }
+.underline{
+   
+    border-bottom: 1px solid black;
+}
+
+
+
+.container2x2{
+    margin: 20px auto;
+    width:400px;
+    height:200px;
+    background-color:#fff;
+    display:grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    text-align: center;
+
+}
+.box2x2{
+     
+      padding:20px;
+      border-radius:10px;
+      border:2px solid rgb(230, 230, 230);
+      display:flex;
+      justify-content:center;
+
+      font-family:sans-serif;
+    }
+  
+.rom{
+    background-color: rgba(255, 255, 255, 0.8);
+}
 /*@media screen and(max-width: 767px){
     header{
         height: 4.8rem;
