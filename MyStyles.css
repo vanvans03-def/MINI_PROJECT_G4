@@ -267,8 +267,22 @@ backdrop-filter: blur(2rem);
     max-width: 170rem;
     margin: 0 auto;
     padding: 0 2.2rem;
-    align-content: left;
+
+    
 }
+.owl-prev{
+    left: -30px;
+}
+.owl-next{
+    right: -30px;
+}
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 30%;
+}
+
+
+  
 /*@media screen and(max-width: 767px){
     header{
         height: 4.8rem;
