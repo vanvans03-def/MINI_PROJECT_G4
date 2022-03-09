@@ -17,6 +17,8 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
+/*
 var lastClickedFace = null;
 
 const divs = document.querySelectorAll('.rom');

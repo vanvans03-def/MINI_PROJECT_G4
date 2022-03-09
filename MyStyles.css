@@ -8,8 +8,17 @@
 
 html{
     font-size:10px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    src: url("/Font/YosemiteSanFranciscoFont-master/System\ San\ Francisco\ Display\ Regular.ttf");
+    font-family: 'MyWebFont', BlinkMacSystemFont, sans-serif;
+}
+
+
+@font-face {
+    font-family: 'MyWebFont';
+   
+    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Regular.ttf');
+    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Bold.ttf');
+    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Thin.ttf');
+    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Ultralight.ttf');
 }
 
 a{
