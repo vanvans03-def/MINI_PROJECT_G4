@@ -8,23 +8,27 @@
 
 html{
     font-size:10px;
-    font-family: 'MyWebFont', BlinkMacSystemFont, sans-serif;
-}
-
-
-@font-face {
-    font-family: 'MyWebFont';
-   
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Regular.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Bold.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Thin.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Ultralight.ttf');
+    font-family: "SF Pro Display", sans-serif;
+    src: url(Font/SF-Pro-Text-Regular.otf);
 }
 
 a{
     display: block;
     text-decoration: none;
 }
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a:active{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+
 
 .my-container{
     max-width: 98rem;
