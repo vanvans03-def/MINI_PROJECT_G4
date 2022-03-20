@@ -2,7 +2,7 @@
 <?php if(count($errors) > 0): ?>
     <div class="error">   
     <?php foreach($errors as $error): ?>
-        <p><?php echo $error ?></p>
+        <h1><?php echo $error ?></h1>
         <?php endforeach ?>
     </div>
 <?php endif ?>

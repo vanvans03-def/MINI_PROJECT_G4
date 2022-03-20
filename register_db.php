@@ -7,9 +7,9 @@
         $password = mysqli_real_escape_string($conn,$_POST['password']);
         $passwordCheck = mysqli_real_escape_string($conn,$_POST['password2']);
 
-        $name = mysqli_real_escape_string($conn,$_POST['name']);
-        $Lname = mysqli_real_escape_string($conn,$_POST['Lname']);
-        $telophone = mysqli_real_escape_string($conn,$_POST['telephone']);
+        $name = mysqli_real_escape_string($conn,$_POST['Frist_name']);
+        $Lname = mysqli_real_escape_string($conn,$_POST['Last_name']);
+        $telephone = mysqli_real_escape_string($conn,$_POST['telephone']);
         
         if(empty($email)){
             array_push($errors,"email is required");
@@ -38,12 +38,17 @@
         }
         if(count($errors) == 0){
             $Password = md5($password);
-            $sql = "INSERT INTO user (email,password,name,Lname,telephone) VALUES ('$eamil',
-            '$Password','$name','$Lname','$telephone' ";
+            $sql = "INSERT INTO user (email,password,name,Lname,telephone) VALUES ('$email','$Password','$name','$Lname','$telephone' )";
+           
+            mysqli_query($conn, $sql);
+
             mysqli_query($conn,$sql);
             $_SESSION['email'] = $email;
             $_SESSION['success'] = "Log In";
-            header('location: index.html'); 
+            header('location: index.php'); 
+            
+        }else {
+            header("location: register.php");
         }
     }
 

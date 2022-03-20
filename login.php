@@ -38,7 +38,7 @@ include('server.php');
                     </div>
                 </li>
                 <li class="my-nav-item">
-                    <a href="index.html" class="my-nav-link my-nav-link-apple"></a>
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
                     <a href="#" class="my-nav-link my-nav-link-bag"></a>
@@ -47,7 +47,7 @@ include('server.php');
             <!-- /.nav-list nav-list-mobile -->
             <ul class="my-nav-list my-nav-list-larger">
                 <li class="my-nav-item my-nav-item-hidden">
-                    <a href="index.html" class="my-nav-link my-nav-link-apple"></a>
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
                     <a href="store.html" class="my-nav-link">Store</a>
@@ -108,7 +108,19 @@ include('server.php');
 
                     <div class="d-flex justify-content-center ">
                         
-                        <form>
+                    <form action="login_db.php" metohd="post">
+                    <?php if (isset($_SESSION['error'])) : ?>
+                        <div class="error">
+                            <h3>
+            
+                                <?php
+                                    echo $_SESSION['error'];
+                                    unset($_SESSION['error']);
+                                ?>
+
+                            </h3>
+                                </div>
+                            <?php endif ?>
                             <div class="form-group" style="width: 350px; ">
                               <label for="exampleInputEmail1"><span class="fs-3 fw-bold">  Email address</span></label>
                               <input style="height: auto;"type="email" class="form-control fs-3" id="email" aria-describedby="emailHelp" placeholder="AppleID">
@@ -122,14 +134,15 @@ include('server.php');
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label fs-4 text-muted"  for="exampleCheck1">Check me out</label>
                             </div>
-                            <button type="submit" name="loginUser" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="login_user" class="btn btn-primary">Submit</button>
                             <div class="col" >
                                 <a class=" cta-link fs-4" href="#"> ลืม Apple ID หรือรหัสผ่านหรือไม่? </a>
                                 <a class="fs-4 text-muted" href="register.php">ไม่มี Apple ID ใช่ไหม? <span class="cta-link fs-4">สร้างของคุณเองตอนนี้</span></a>
                             </div>
         
         
-                          </form>
+                        
+                      </form>
                     </div>
                     
                

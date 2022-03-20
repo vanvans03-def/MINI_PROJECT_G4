@@ -1,5 +1,11 @@
+<?php
+include('server.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +15,7 @@
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
 
 </head>
+
 <body>
     <header>
         <div class="my-container">
@@ -21,7 +28,7 @@
                         </div>
                     </li>
                     <li class="my-nav-item">
-                        <a href="index.html" class="my-nav-link my-nav-link-apple"></a>
+                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                     </li>
                     <li class="my-nav-item">
                         <a href="#" class="my-nav-link my-nav-link-bag"></a>
@@ -30,7 +37,7 @@
                 <!-- /.nav-list nav-list-mobile -->
                 <ul class="my-nav-list my-nav-list-larger">
                     <li class="my-nav-item my-nav-item-hidden">
-                        <a href="index.html" class="my-nav-link my-nav-link-apple"></a>
+                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                     </li>
                     <li class="my-nav-item">
                         <a href="store.html" class="my-nav-link">Store</a>
@@ -63,13 +70,33 @@
                     <li class="my-nav-item my-nav-item-hidden ">
                         <a href="#" class="my-nav-link my-nav-link-bag"></a>
                     </li>
-                   
-                        
+
+
                 </ul>
-                 <!-- /.nav-list nav-list-larger -->
+                <!-- /.nav-list nav-list-larger -->
             </nav>
         </div>
     </header>
+    <!--noti msg-->
+    <?php if (isset($_SESSION['success'])) : ?>
+        <div class="success">
+                            <h3>
+            
+                                <?php
+                                    echo $_SESSION['success'];
+                                    unset($_SESSION['success']);
+                                ?>
+
+                            </h3>
+        </div>
+    <?php endif ?>
+
+    <!--logged information-->
+    <?php if (isset($_SESSION['email'])) : ?>
+        <p>Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+        <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    <?php endif ?>
+
 
     <section class="hero iphone-13-pro">
         <div class="my-container">
@@ -104,7 +131,7 @@
             <div class="my-title my-title-dark">
                 <h2 class="my-title-heading-watch"></h2>
                 <h3 class="my-title-sub-heading">With the new always-On Retina display. <br>
-                You've never seen a watch like this.</h3>
+                    You've never seen a watch like this.</h3>
                 <p class="my-title-price">From ฿2,590.00/mo</p>
             </div>
             <div class="cta">
@@ -114,6 +141,7 @@
         </div>
     </section>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
