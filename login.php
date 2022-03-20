@@ -1,3 +1,7 @@
+<?php 
+include('server.php');
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -6,9 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="MyStyles.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -20,7 +24,7 @@
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <title>ถุง-Apple (TH)</title>
-    <link rel="icon" href="/images/icons/apple.png" type="image/icon type">
+    <link rel="icon" href="http://127.0.0.1/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
 
 </head>
 <header>
@@ -107,21 +111,21 @@
                         <form>
                             <div class="form-group" style="width: 350px; ">
                               <label for="exampleInputEmail1"><span class="fs-3 fw-bold">  Email address</span></label>
-                              <input style="height: auto;"type="email" class="form-control fs-3" id=exampleInputEmail1" aria-describedby="emailHelp" placeholder="AppleID">
+                              <input style="height: auto;"type="email" class="form-control fs-3" id="email" aria-describedby="emailHelp" placeholder="AppleID">
                               <small id="emailHelp " class="form-text text-muted fs-4 text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1"><span class="fs-3 fw-bold">  Password</span></label>
-                              <input type="password" class="form-control fs-3" id="exampleInputPassword1" placeholder="Password">
+                              <input type="password" class="form-control fs-3" id="password" placeholder="Password">
                             </div>
                             <div class="form-check">
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label fs-4 text-muted"  for="exampleCheck1">Check me out</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="loginUser" class="btn btn-primary">Submit</button>
                             <div class="col" >
                                 <a class=" cta-link fs-4" href="#"> ลืม Apple ID หรือรหัสผ่านหรือไม่? </a>
-                                <a class="fs-4 text-muted" href="register.html">ไม่มี Apple ID ใช่ไหม? <span class="cta-link fs-4">สร้างของคุณเองตอนนี้</span></a>
+                                <a class="fs-4 text-muted" href="register.php">ไม่มี Apple ID ใช่ไหม? <span class="cta-link fs-4">สร้างของคุณเองตอนนี้</span></a>
                             </div>
         
         

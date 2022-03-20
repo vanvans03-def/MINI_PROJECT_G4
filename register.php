@@ -1,3 +1,8 @@
+<?php 
+include('server.php');
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -6,9 +11,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="MyStyles.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -19,8 +24,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <title>ถุง-Apple (TH)</title>
-    <link rel="icon" href="/images/icons/apple.png" type="image/icon type">
+    <title>สร้าง Apple ID ของคุณ</title>
+    <link rel="icon" href="http://127.0.0.1/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
 
 </head>
 <header>
@@ -112,14 +117,14 @@
                                     class="cta-link fs-4">ค้นหาได้ที่นี้</span></a>
                         </div><br>
                         <div class="containerRegister">
-                        <form>
+                        <form action="register_db.php" method="post">
 
 
                        
                                 <div class="row  "style="padding-left:15px;">
                                     <div class="col col-md-auto ">
                                         <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Name"
+                                            <input type="text" class="form-control form-control-lg fs-3" id="name"
                                                 placeholder="ชื่อ">
                                         </div>
                                     </div>
@@ -151,24 +156,24 @@
                                         </div>
                                             <div class="underline"style="padding-top:30px;"></div><br><br> 
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg fs-3" id="staticEmail"placeholder="email@example.com">          
+                                                <input type="text" class="form-control form-control-lg fs-3" id="email"placeholder="email@example.com">          
                                               </div><br>
                                               <div class="form-group ">
-                                                <input type="password" class="form-control form-control-lg fs-3" id="Password" placeholder="รหัสผ่าน">          
+                                                <input type="password" class="form-control form-control-lg fs-3" id="password" placeholder="รหัสผ่าน">          
                                               </div><br>
                                               <div class="form-group">
-                                                <input type="password" class="form-control form-control-lg fs-3" id="ConfirmPassword" placeholder="ยืนยันรหัสผ่าน">          
+                                                <input type="password" class="form-control form-control-lg fs-3" id="password2" placeholder="ยืนยันรหัสผ่าน">          
                                               </div> <br>
                                               <div class="form-group">
                                                 <input type="telephone" class="form-control form-control-lg fs-3" id="telephone" placeholder="หมายเลขโทรศัพท์">          
                                               </div> <br>   
                                               <div class="col col-md-auto">
                                                
-                                                <button type="button" class="btn btn-primary btn-lg btn-block fs-3"style="width: 150px;;">ดำเนินการต่อ</button>
+                                                <button type="button" name="regis_user"class="btn btn-primary btn-lg btn-block fs-3"style="width: 150px;;">ดำเนินการต่อ</button>
 
                                               </div>
-            
-   
+                                     </div>
+
                   
                                      
                                           

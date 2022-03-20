@@ -41,4 +41,4 @@ this.classList.remove(colors[enumerator-1]);
 const yellows = document.querySelectorAll('.beach')
 const infoLabel = document.querySelector('#info')
 infoLabel.innerHTML = "There are " + yellows.length + " yellow box(es)." 
-};
+};*/
