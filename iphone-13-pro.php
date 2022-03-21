@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: login.php');
+    }
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: login.php');
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -47,7 +63,7 @@
                     <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
-                    <a href="store.html" class="my-nav-link">Store</a>
+                    <a href="store.php" class="my-nav-link">Store</a>
                 </li>
                 <li class="my-nav-item">
                     <a href="#" class="my-nav-link">Mac</a>
@@ -77,6 +93,12 @@
                 <li class="my-nav-item my-nav-item-hidden">
                     <a href="#" class="my-nav-link my-nav-link-bag"></a>
                 </li>
+                <li class="my-nav-item ">
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
+                        <?php endif ?>
+                    </li>
             </ul>
             <!-- /.nav-list nav-list-larger -->
         </nav>
@@ -249,7 +271,7 @@
 
                                     <div class="d-grid gap-2">
 
-                                        <a href="bag.html" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">
+                                        <a href="bag.php" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">
                                             <p class="fs-5 display-1 fw-bold fs-2 mb-2">
                                                 ใส่ลงในถุง
                                             </p>

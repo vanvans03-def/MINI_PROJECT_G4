@@ -46,7 +46,7 @@ include('server.php');
                     <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
-                    <a href="store.html" class="my-nav-link">Store</a>
+                    <a href="store.php" class="my-nav-link">Store</a>
                 </li>
                 <li class="my-nav-item">
                     <a href="#" class="my-nav-link">Mac</a>
@@ -96,7 +96,7 @@ include('server.php');
                         </div>
 
                         <div class="col">
-                            <a href="login.html" class="text-end fs-5 cta-linkr">ลงชื่อเข้าใช้</a>
+                            <a href="login.php" class="text-end fs-5 cta-linkr">ลงชื่อเข้าใช้</a>
                         </div>
                         <div class="underline"></div>
 

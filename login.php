@@ -51,7 +51,7 @@ include('server.php');
                     <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
-                    <a href="store.html" class="my-nav-link">Store</a>
+                    <a href="store.php" class="my-nav-link">Store</a>
                 </li>
                 <li class="my-nav-item">
                     <a href="#" class="my-nav-link">Mac</a>

@@ -50,7 +50,7 @@
                         <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                     </li>
                     <li class="my-nav-item">
-                        <a href="store.html" class="my-nav-link">Store</a>
+                        <a href="store.php" class="my-nav-link">Store</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="login.php" class="my-nav-link">Mac</a>
@@ -80,7 +80,12 @@
                     <li class="my-nav-item my-nav-item-hidden ">
                         <a href="#" class="my-nav-link my-nav-link-bag"></a>
                     </li>
-
+                    <li class="my-nav-item ">
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
+                        <?php endif ?>
+                    </li>
 
                 </ul>
                 <!-- /.nav-list nav-list-larger -->
@@ -89,23 +94,23 @@
     </header>
     <!--noti msg-->
     <?php if (isset($_SESSION['success'])) : ?>
-        <div class="success">
-                            <h3>
-            
-                                <?php
-                                    echo $_SESSION['success'];
-                                    unset($_SESSION['success']);
-                                ?>
 
-                            </h3>
-        </div>
-    <?php endif ?>
+            <script>
+                var session = '<?php echo $_SESSION['success']; ?>';
+                alert(session);
+            </script>
+    <?php unset($_SESSION['success']);?>
+<?php endif ?>
 
-    <!--logged information-->
-    <?php if (isset($_SESSION['email'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
-        <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
+<?php if (isset($_SESSION['error'])) : ?>
+            <div class="error">
+            <script>
+                var session = '<?php echo $_SESSION['error']; ?>';
+                alert(session);
+            </script>
+            </div>
+            <?php unset($_SESSION['error']);?>
+<?php endif ?>
 
 
     <section class="hero iphone-13-pro">

@@ -1,3 +1,20 @@
+<?php 
+    session_start();
+
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: login.php');
+    }
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: login.php');
+    }
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -47,7 +64,7 @@
                     <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
                 </li>
                 <li class="my-nav-item">
-                    <a href="store.html" class="my-nav-link">Store</a>
+                    <a href="store.php" class="my-nav-link">Store</a>
                 </li>
                 <li class="my-nav-item">
                     <a href="#" class="my-nav-link">Mac</a>
@@ -77,6 +94,12 @@
                 <li class="my-nav-item my-nav-item-hidden">
                     <a href="#" class="my-nav-link my-nav-link-bag"></a>
                 </li>
+                <li class="my-nav-item ">
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
+                        <?php endif ?>
+                    </li>
             </ul>
             <!-- /.nav-list nav-list-larger -->
         </nav>
@@ -204,7 +227,7 @@
 
                     <div class="item">
                         <div class="card border-0 shadow">
-                            <a href="iphone-13-pro.html" >
+                            <a href="iphone-13-pro.php" >
                             <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-pro-202109.jfif"     alt="" class="card-img-top"></a>
                             <div class="card-body">
                                 <div class="card-title text-center">
