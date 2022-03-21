@@ -8,8 +8,8 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-        if (empty($username)) {
-            array_push($errors, "AppleID is required");
+        if (empty($email)) {
+            array_push($errors, "Username is required");
         }
 
         if (empty($password)) {
@@ -17,8 +17,8 @@
         }
 
         if (count($errors) == 0) {
-            $password = md5($password);
-            $query = "SELECT * FROM user WHERE email= '$email' AND password = '$password' ";
+ 
+            $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password' ";
             $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) == 1) {

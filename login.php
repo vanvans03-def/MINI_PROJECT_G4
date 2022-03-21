@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include('server.php');
 
 ?>
@@ -108,27 +109,25 @@ include('server.php');
 
                     <div class="d-flex justify-content-center ">
                         
-                    <form action="login_db.php" metohd="post">
-                    <?php if (isset($_SESSION['error'])) : ?>
-                        <div class="error">
-                            <h3>
-            
-                                <?php
-                                    echo $_SESSION['error'];
-                                    unset($_SESSION['error']);
-                                ?>
-
-                            </h3>
-                                </div>
-                            <?php endif ?>
+                    <form action="login_db.php" method="post">
+                                            <?php if (isset($_SESSION['error'])) : ?>
+                                    <div class="error" >
+                                        <h1 class="text-danger border border-danger">
+                                            <?php 
+                                                echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                            ?>
+                                        </h1>
+                                    </div>
+                                <?php endif ?>
                             <div class="form-group" style="width: 350px; ">
                               <label for="exampleInputEmail1"><span class="fs-3 fw-bold">  Email address</span></label>
-                              <input style="height: auto;"type="email" class="form-control fs-3" id="email" aria-describedby="emailHelp" placeholder="AppleID">
+                              <input style="height: auto;"type="email" class="form-control fs-3" name = "email" id="email" aria-describedby="emailHelp" placeholder="AppleID">
                               <small id="emailHelp " class="form-text text-muted fs-4 text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1"><span class="fs-3 fw-bold">  Password</span></label>
-                              <input type="password" class="form-control fs-3" id="password" placeholder="Password">
+                              <input type="password" class="form-control fs-3" name="password" id="password" placeholder="Password">
                             </div>
                             <div class="form-check">
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -144,10 +143,7 @@ include('server.php');
                         
                       </form>
                     </div>
-                    
-               
-
-                    
+                
                 </div>
 
             </div>

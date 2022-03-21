@@ -1,4 +1,5 @@
 <?php
+  session_start();
 include('server.php');
 
 ?>
@@ -112,18 +113,16 @@ include('server.php');
                     <div class="containerRegister">
                             
                         <form action="register_db.php" method="post">
-                            <?php include('errors.php'); ?>
-                                <?php if (isset($_SESSION['error'])) : ?>
-                                    <div class="error">
-                                        <h3>
+                        <?php if (isset($_SESSION['error'])) : ?>
+                                    <div class="error" >
+                                        <h1 class="text-danger border border-danger">
                                             <?php 
                                                 echo $_SESSION['error'];
                                                 unset($_SESSION['error']);
                                             ?>
-                                        </h3>
-                                            </div>
-                                                <?php endif ?>
-
+                                        </h1>
+                                    </div>
+                                <?php endif ?>
 
                                 <div class="row  " style="padding-left:15px;">
                                     <div class="col col-md-auto ">
