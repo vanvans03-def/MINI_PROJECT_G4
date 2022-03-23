@@ -62,7 +62,10 @@
                         <a href="#" class="my-nav-link">iPhone</a>
                     </li>
                     <li class="my-nav-item">
-                        <a href="#" class="my-nav-link">Watch</a>
+                    <a href="#" class="my-nav-link">Watch</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="airpods.html" class="my-nav-link">AirPods</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="TV.html" class="my-nav-link">TV</a>
@@ -71,6 +74,8 @@
                         <a href="#" class="my-nav-link">Music</a>
                     </li>
                     <li class="my-nav-item">
+                        <a href="accessories.html" class="my-nav-link">Accessories</a>
+                    </li>
                         <a href="#" class="my-nav-link">Support</a>
                     </li>
 

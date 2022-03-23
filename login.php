@@ -29,64 +29,75 @@ include('server.php');
 
 </head>
 <header>
-    <div class="my-container">
-        <nav class="my-nav">
-            <ul class="my-nav-list my-nav-list-mobile">
-                <li class="my-nav-item">
-                    <div class="mobile-menu">
-                        <span class="line line-top"></span>
-                        <span class="line line-bottom"></span>
-                    </div>
-                </li>
-                <li class="my-nav-item">
-                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                </li>
-            </ul>
-            <!-- /.nav-list nav-list-mobile -->
-            <ul class="my-nav-list my-nav-list-larger">
-                <li class="my-nav-item my-nav-item-hidden">
-                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="store.php" class="my-nav-link">Store</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">iPad</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">iPhone</a>
-                </li>
-                <li class="my-nav-item">
+        <div class="my-container">
+            <nav class="my-nav">
+                <ul class="my-nav-list my-nav-list-mobile">
+                    <li class="my-nav-item">
+                        <div class="mobile-menu">
+                            <span class="line line-top"></span>
+                            <span class="line line-bottom"></span>
+                        </div>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                    </li>
+                </ul>
+                <!-- /.nav-list nav-list-mobile -->
+                <ul class="my-nav-list my-nav-list-larger">
+                    <li class="my-nav-item my-nav-item-hidden">
+                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="store.php" class="my-nav-link">Store</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="login.php" class="my-nav-link">Mac</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="#" class="my-nav-link">iPad</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="#" class="my-nav-link">iPhone</a>
+                    </li>
+                    <li class="my-nav-item">
                     <a href="#" class="my-nav-link">Watch</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="TV.html" class="my-nav-link">TV</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Music</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Support</a>
-                </li>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="airpods.html" class="my-nav-link">AirPods</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="TV.html" class="my-nav-link">TV</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="#" class="my-nav-link">Music</a>
+                    </li>
+                    <li class="my-nav-item">
+                        <a href="accessories.html" class="my-nav-link">Accessories</a>
+                    </li>
+                        <a href="#" class="my-nav-link">Support</a>
+                    </li>
 
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link-search"></a>
-                </li>
-                <li class="my-nav-item my-nav-item-hidden">
-                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                </li>
-            </ul>
-            <!-- /.nav-list nav-list-larger -->
-        </nav>
-    </div>
-</header>
+                    <li class="my-nav-item nav-item dropdown">
+                        <a href="#" class="my-nav-link-search"></a>
+                    </li>
+                    <li class="my-nav-item my-nav-item-hidden ">
+                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                    </li>
+                    <li class="my-nav-item ">
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
+                        <?php endif ?>
+                    </li>
 
+                </ul>
+                <!-- /.nav-list nav-list-larger -->
+            </nav>
+        </div>
+    </header>
 <body>
 
     <div class="container-fluid my-5"> <br> <br>

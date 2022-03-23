@@ -5,11 +5,17 @@
     margin: 0 ;
     padding: 0;
 }
+html {
+    font-size: 10px;
+    font-family: 'MyWebFont', BlinkMacSystemFont, sans-serif;
+}
 
-html{
-    font-size:10px;
-    font-family: "SF Pro Display", sans-serif;
-    src: url(Font/SF-Pro-Text-Regular.otf);
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Regular.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Bold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Thin.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Ultralight.ttf');
 }
 
 a{
@@ -339,6 +345,10 @@ backdrop-filter: blur(2rem);
     padding: 0 2.2rem;
 
 }
+.section-airpods-pro .pro-left {
+    margin-right: 56px
+}
+
 /*@media screen and(max-width: 767px){
     header{
         height: 4.8rem;
