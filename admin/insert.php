@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $category_id = $_POST['category_id'];
     $price = $_POST['price'];
     $img = $_FILES['img'];
-
+  
         $allow = array('jpg', 'jpeg', 'png');
         $extension = explode('.', $img['name']);
         $fileActExt = strtolower(end($extension));
@@ -20,14 +20,17 @@ if (isset($_POST['submit'])) {
         if (in_array($fileActExt, $allow)) {
             if ($img['size'] > 0 && $img['error'] == 0) {
                 if (move_uploaded_file($img['tmp_name'], $filePath)) {
-                    $sql = $conn->prepare("INSERT INTO product(name, desc, quantity,category_Id, price,img) VALUES(:name, :desc, :quantity, :category_id, :price, :img)");
+                   
+                    $sql = $conn->prepare("INSERT INTO product(product_id ,name,descrip, quantity, category_id, price,img) VALUES(:product_id ,:name,:descrip. :quantity, :category_id, :price, :img)");      
+                    $sql->bindParam(":product_id",  $category_id);
                     $sql->bindParam(":name", $productname);
-                    $sql->bindParam(":desc", $desc);
+                    $sql->bindParam(":descrip", $desc);
                     $sql->bindParam(":quantity", $quantity);
                     $sql->bindParam(":category_id", $category_id);
                     $sql->bindParam(":price", $price);
                     $sql->bindParam(":img", $fileNew);
                     $sql->execute();
+
 
                     if ($sql) {
                         $_SESSION['success'] = "Data has been inserted successfully";
