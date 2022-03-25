@@ -170,7 +170,9 @@
                     </div>
                   </div>
                   <div class="card border-0" style="width: 15rem;">
+                  <a href="airpods.html" >
                     <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-airpods-nav-202110.png" class="card-img-top" alt="...">
+                  </a>
                     <div class="card-body">
                         <p class="text-center fw-bold fs-4 "> AirPods</p>
                     </div>
@@ -244,7 +246,10 @@
                     </div>
                     <div class="item">
                         <div class="card border-0 shadow">
+                        <a href="airpods.html" >
                             <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-airpodsmagsafe-202110.png"alt="" class="card-img-top">
+                        </a>
+                            
                             <div class="card-body">
                                 <div class="card-title text-center">
                                     <h5 class="fw-bold display-6 mb-3">จังหวะใหม่แห่งความมหัศจรรย์</h5>
