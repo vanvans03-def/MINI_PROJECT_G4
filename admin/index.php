@@ -80,10 +80,11 @@
     </div>
     </div>
     
+    
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <h1>CRUD Bootstrap 5</h1>
+                <h1>CRUD Dashboard </h1>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-whatever="@mdo">Add Product</button>
@@ -111,34 +112,40 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Img</th>
+                    <th scope="col">Productname</th>
+                    <th scope="col">Desc</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Category_id</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                    $stmt = $conn->query("SELECT * FROM users");
+                    $stmt = $conn->query("SELECT * FROM product");
                     $stmt->execute();
-                    $users = $stmt->fetchAll();
+                    $products = $stmt->fetchAll();
 
-                    if (!$users) {
+                    if (!$products) {
                         echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                     } else {
-                    foreach($users as $user)  {  
+                    foreach($products as $product)  {  
                 ?>
                     <tr>
-                        <th scope="row"><?php echo $user['id']; ?></th>
-                        <td><?php echo $user['firstname']; ?></td>
-                        <td><?php echo $user['lastname']; ?></td>
-                        <td><?php echo $user['position']; ?></td>
-                        <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $user['img']; ?>" alt=""></td>
+                        <th scope="row"><?php echo $product['product_id']; ?></th>
+                        <td><?php echo $product['name']; ?></td>
+                        <td><?php echo $product['descrip']; ?></td>
+                        <td><?php echo $product['quantity']; ?></td>
+                        <td><?php echo $product['category_id']; ?></td>
+                        <td><?php echo $product['price']; ?></td>
+                        <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $product['img']; ?>" alt=""></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $user['id']; ?>" class="btn btn-warning">Edit</a>
-                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
-                        </td>
+                            <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-warning">Edit</a>
+                         </td>
+                         <td>
+                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $product['product_id']; ?>" class="btn btn-danger">Delete</a>
+                            </td>
                     </tr>
                 <?php }  } ?>
             </tbody>

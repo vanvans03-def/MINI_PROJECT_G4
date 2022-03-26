@@ -4,7 +4,7 @@ session_start();
 require_once "config/db.php";
 
 if (isset($_POST['submit'])) {
-    $productname = $_POST['name'];
+    $productname = $_POST['productname'];
     $desc = $_POST['desc'];
     $quantity = $_POST['quantity'];
     $category_id = $_POST['category_id'];
