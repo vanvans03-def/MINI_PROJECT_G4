@@ -4,7 +4,7 @@ session_start();
 require_once "config/db.php";
 
 if (isset($_POST['submit'])) {
-    $productname = $_POST['productname'];
+    $productname = $_POST['name'];
     $desc = $_POST['desc'];
     $quantity = $_POST['quantity'];
     $category_id = $_POST['category_id'];
@@ -21,8 +21,7 @@ if (isset($_POST['submit'])) {
             if ($img['size'] > 0 && $img['error'] == 0) {
                 if (move_uploaded_file($img['tmp_name'], $filePath)) {
                    
-                    $sql = $conn->prepare("INSERT INTO product(product_id ,name,descrip, quantity, category_id, price,img) VALUES(:product_id ,:name,:descrip. :quantity, :category_id, :price, :img)");      
-                    $sql->bindParam(":product_id",  $category_id);
+                    $sql = $conn->prepare("INSERT INTO `product`( `name`, `descrip`, `quantity`, `category_id`, `price`, `img`) VALUES (:name,:descrip,:quantity,:category_id,:price,:img) ");      
                     $sql->bindParam(":name", $productname);
                     $sql->bindParam(":descrip", $desc);
                     $sql->bindParam(":quantity", $quantity);
