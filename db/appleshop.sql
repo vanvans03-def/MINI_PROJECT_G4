@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2022 at 05:07 AM
+-- Generation Time: Mar 27, 2022 at 07:50 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -83,11 +83,24 @@ CREATE TABLE `payment_details` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `desc` varchar(255) NOT NULL,
+  `descrip` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `name`, `descrip`, `quantity`, `category_id`, `price`, `img`) VALUES
+(1, 'สามช่ามัลติเวิส', 'รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่หฟกรูปหนึ่งสุดหล่อเท่รูปหนึ่งสุดหล่อเท่', 2, 2, 9999, '923884435.jpg'),
+(2, 'จุก', '12123123', 122, 3, 123, '577345528.jpg'),
+(3, 'วินเบนซิน', 'เทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะเทสนะ', 20, 2, 2900, '235633582.jpg'),
+(4, 'หินเหล็กปูน', 'ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวดหัว ปวด', 112, 1, 999, '313395193.jpg'),
+(5, 'โจ๊กไก่', 'อะโหน่งมาแว้วว', 20, 3, 99, '1765806077.jpg'),
+(8, 'iPhone 13', 'สีฟ้าสุดเท่เลยนะจ้ะ', 22, 1, 328900, '76016279.jpg');
 
 -- --------------------------------------------------------
 
@@ -121,12 +134,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `Lname`, `telephone`, `type`) VALUES
-(1, 'teera@email.com', '1234', 'teera', 'hitchana', '0989503183', 0),
 (2, 'barentalo@gmail.com', '1234', 'bento', 'jinjung', '0989503183', 0),
 (3, 'admin1234@email.com', '1234', 'teera', 'meow', '0989503183', 1),
 (5, 'peemai@email.com', '1234', 'peemai', 'meow', '191', 0),
 (6, 'testt@email.com', '1234', 'teera', 'jinjung', '', 0),
-(7, 'aa@email.com', '1234', 'aaa', 'aaa', '191', 0);
+(8, 'user@email.com', '1234', 'คนธรรมดา', 'ทดสอบ', '191', 0);
 
 -- --------------------------------------------------------
 
@@ -250,7 +262,7 @@ ALTER TABLE `payment_details`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -262,7 +274,7 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users_payment`
