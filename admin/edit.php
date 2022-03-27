@@ -5,7 +5,8 @@
     require_once "config/db.php";
 
     if (isset($_POST['update'])) {
-        $product_id = $_POST['id'];
+        $product_id = $_POST['product_id'];
+        $name = $_POST['name'];
         $descrip = $_POST['descrip'];
         $quantity = $_POST['quantity'];
         $category_id = $_POST['category_id'];
@@ -73,9 +74,9 @@
         <hr>
         <form action="edit.php" method="post" enctype="multipart/form-data">
             <?php
-                if (isset($_GET['product_id'])) {
-                        $id = $_GET['product_id'];
-                        $stmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = $product_id");
+                if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        $stmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = $id");
                         $stmt->execute();
                         $data = $stmt->fetch();
                 }
@@ -83,21 +84,26 @@
                 <div class="mb-3">
                     <label for="product_id" class="col-form-label">ID:</label>
                     <input type="text" readonly value="<?php echo $data['product_id']; ?>" required class="form-control" name="product_id" >
+
                     <label for="name" class="col-form-label">Product Name:</label>
                     <input type="text" value="<?php echo $data['name']; ?>" required class="form-control" name="name" >
                     <input type="hidden" value="<?php echo $data['img']; ?>" required class="form-control" name="img2" >
                 </div>
                 <div class="mb-3">
                     <label for="descrip" class="col-form-label">Desc :</label>
-                    <input type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip">
+                    <textarea style="height:100px;" type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip"></textarea> 
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="col-form-label">quantity:</label>
-                    <input type="number" value="<?php echo $data['quantity']; ?>" required class="form-control" name="quantity">
+                    <input  type="number" value="<?php echo $data['quantity']; ?>" required class="form-control" name="quantity">
                 </div>
+
+               
+
+
                 <div class="mb-3">
                     <label for="category_id" class="col-form-label">category_id:</label>
-                    <input type="number" value="<?php echo $data['category_id']; ?>" required class="form-control" name="category_id">
+                    <input readonly type="number" value="<?php echo $data['category_id']; ?>" required class="form-control" name="category_id">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="col-form-label">price:</label>
