@@ -22,10 +22,18 @@
             $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_array($result);
+
                 $username = "SELECT * FROM user WHERE email='$email' ";
                 $_SESSION['email'] = $email;
+                $_SESSION['type'] = $row['type'];
                 $_SESSION['success'] = "Your are now logged in ";
+                if($_SESSION['type'] == '1'){
+                    header("location: admin");
+                }
+                elseif($_SESSION['type'] == '0'){
                 header("location: index.php");
+                }
             } else {
                 array_push($errors, "Wrong Username or Password");
                 $_SESSION['error'] = "Wrong Username or Password!";
@@ -37,5 +45,3 @@
             header("location: login.php");
         }
     }
-
-?>

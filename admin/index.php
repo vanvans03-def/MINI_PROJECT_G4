@@ -6,7 +6,7 @@
 
     if (isset($_GET['delete'])) {
         $delete_id = $_GET['delete'];
-        $deletestmt = $conn->query("DELETE FROM users WHERE id = $delete_id");
+        $deletestmt = $conn->query("DELETE FROM product WHERE product_id = $delete_id");
         $deletestmt->execute();
 
         if ($deletestmt) {
@@ -55,10 +55,21 @@
                     <label for="quantity" class="col-form-label">Quantity:</label>
                     <input type="number" required class="form-control" name="quantity">
                 </div>
-                <div class="mb-3">
-                    <label for="category_id" class="col-form-label">Category_id</label>
-                    <input type="number" required class="form-control" name="category_id">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="category_id">Category_id</label>
+                    </div>
+                    <select class="custom-select col-form-label " id="category_id" name="category_id">
+                        <option selected >Choose...</option>
+                        <option value="1">iPhone (01)</option>
+                        <option value="2">Airpods (02)</option>
+                        <option value="3">TV (03)</option>
+                    </select>
                 </div>
+
+                
+
                 <div class="mb-3">
                     <label for="price" class="col-form-label">Price</label>
                     <input type="number" required class="form-control" name="price">
@@ -111,7 +122,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">id</th>
                     <th scope="col">Productname</th>
                     <th scope="col">Desc</th>
                     <th scope="col">Quantity</th>
