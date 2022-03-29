@@ -137,7 +137,7 @@
                     $stmt = $conn->query("SELECT * FROM product");
                     $stmt->execute();
                     $products = $stmt->fetchAll();
-
+                    $img = ("SELECT * FROM product img");
                     if (!$products) {
                         echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                     } else {
