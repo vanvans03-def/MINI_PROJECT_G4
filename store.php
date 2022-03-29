@@ -23,6 +23,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1/Mini_Project_G4/font.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
  

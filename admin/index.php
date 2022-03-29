@@ -16,7 +16,15 @@
         }
         
     }
-
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: ../login.php');
+    }
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: ../login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +35,16 @@
     <title>CRUD</title>
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
+
+
+    
 </head>
 <body>
+   
 
-
+<li class="my-nav-item ">                 
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -120,7 +133,8 @@
         <?php } ?>
 
         <table class="table">
-            <thead>
+       
+        <thead class="thead-dark">
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Productname</th>

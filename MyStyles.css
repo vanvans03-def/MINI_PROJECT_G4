@@ -269,7 +269,7 @@ backdrop-filter: blur(2rem);
     padding-top: 50px;
     text-align: left;
   background: -webkit-linear-gradient(#6e6e73,#000);
-  -webkit-background-clip: text;
+  /*-webkit-background-clip: text;*/
   -webkit-text-fill-color: transparent;
 }
 .box {

@@ -5,6 +5,12 @@
         $_SESSION['msg'] = "You must log in first";
         header('location: login.php');
     }
+ 
+    if(isset ($_SESSION['type']) == 0  ){
+        header('location: admin');
+
+    }
+
 
     if (isset($_GET['logout'])) {
         session_destroy();
@@ -23,6 +29,7 @@
     <title>Apple_test</title>
 
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1/Mini_Project_G4/font.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
 
