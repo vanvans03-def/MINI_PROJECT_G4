@@ -145,7 +145,7 @@ include('server.php');
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label fs-4 text-muted"  for="exampleCheck1">Check me out</label>
                             </div>
-                            <button type="submit" name="login_user" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="login_user" class="btn btn-primary"><span class="fs-3">submit</span></button>
                             <div class="col" >
                                 <a class=" cta-link fs-4" href="#"> ลืม Apple ID หรือรหัสผ่านหรือไม่? </a>
                                 <a class="fs-4 text-muted" href="register.php">ไม่มี Apple ID ใช่ไหม? <span class="cta-link fs-4">สร้างของคุณเองตอนนี้</span></a>
