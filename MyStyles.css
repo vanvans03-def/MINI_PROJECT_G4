@@ -5,18 +5,25 @@
     margin: 0 ;
     padding: 0;
 }
-html {
+html{
     font-size: 10px;
-    font-family: 'MyWebFont', BlinkMacSystemFont, sans-serif;
+    font-family: 'MyWebFont' !important;
+
 }
 
 @font-face {
-    font-family: 'MyWebFont';
-    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Regular.ttf');
-    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Bold.ttf');
-    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Thin.ttf');
-    src: url('http://127.0.0.1/Mini_Project_G4/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Ultralight.ttf');
+    font-family: 'MyWebFont'!important;
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Bold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Light.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Medium.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-SemiBold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Text.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Thin.ttf');
+
+
 }
+
+
 
 a{
     display: block;

@@ -21,8 +21,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apple_test</title>
+
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1/Mini_Project_G4/font.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
-    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css">
 
 </head>
 
@@ -121,7 +123,7 @@
     <section class="hero iphone-13-pro">
         <div class="my-container">
             <div class="my-title">
-                <h2 class="my-title-heading">iPhone 13 Pro</h2>
+                <h2 class="my-title-heading fw-bold">iPhone 13 Pro</h2>
                 <h3 class="my-title-sub-heading">Pro cameras. Pro display. Pro performance.</h3>
                 <p class="my-title-price">From ฿3,890/mo.</p>
             </div>
@@ -135,7 +137,7 @@
     <section class="hero iphone-13">
         <div class="my-container">
             <div class="my-title my-title-dark">
-                <h2 class="my-title-heading">iPhone 13 </h2>
+                <h2 class="my-title-heading fw-bold ">iPhone 13 </h2>
                 <h3 class="my-title-sub-heading">Just the right amount of everything.</h3>
                 <p class="my-title-price">From ฿2,590.00/mo</p>
             </div>

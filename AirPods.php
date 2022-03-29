@@ -22,6 +22,7 @@ if (isset($_GET['logout'])) {
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="canonical" href="#" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  
   <link rel="stylesheet" type="text/css" href="http://localhost/Mini_Project_G4/overview/ac-globalnav.built.css" />
   <link rel="stylesheet" type="text/css" href="http://localhost/Mini_Project_G4/overview/ac-localnav.built.css" />
   <link rel="stylesheet" type="text/css" href="http://localhost/Mini_Project_G4/overview/ac-globalfooter.built.css" />
