@@ -1,6 +1,6 @@
 <?php 
     session_start();
-
+    require_once "admin/config/db.php";
     if (!isset($_SESSION['email'])) {
         $_SESSION['msg'] = "You must log in first";
         header('location: login.php');
@@ -37,7 +37,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <title>Store</title>
+    <title>ซื้อ iPhone</title>
     <link rel="icon" href="http://127.0.0.1/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
 
    
@@ -115,15 +115,24 @@
 
 <body>
 
-    <div class="container-fluid my-5"> <br /> <br />
-        <div class="my-container2 ">
+  
+  
+            
+           
+            
+       
+   
+   
+        <br><br><br><div class="container-fluid my-5" >
+          
+            
+        <div class="my-container2" style="width: 150rem;">
+      
         <div class="row justify-content-md-left">
-            <div class="col-md-auto">
-                <div class="my-container">
-                    <h4 class="text-left fw-bold display-1 mb-5">ร้านของเรา
-                        <span class="text-muted">คือที่ที่ดีที่สุดในการซื้อผลิตภัณฑ์ที่คุณรัก</span>
-                    </h4>
-                </div>
+            <div class=" col col-md-6">
+             
+                    <h4 class="text-start fw-bold display-1">ซื้อ iPhone</h4>
+         
             </div>
             <div class="col-md-auto">
                 <div class="my-container">
@@ -142,158 +151,42 @@
                 </div>
             </div>
 
-            </div>
-            
-           
-            <br><br><br><div class="row  align-items-center justify-content-center ">
-                <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-mac-nav-202110.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> Mac</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                  <a href="iphone.php" >
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-iphone-nav-202109.png" class="card-img-top" alt="...">
-                  </a>
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> iPhoe</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-ipad-nav-202108.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> iPad</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-watch-nav-202110.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> Apple Watch</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                  <a href="airpods.html" >
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-airpods-nav-202110.png" class="card-img-top" alt="...">
-                  </a>
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> AirPods</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-airtags-nav-202108.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 ">AirTag</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <a href="TV.html" >
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-appletv-nav-202108.png" class="card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        
-                        <p class="text-center fw-bold fs-4 "> Apple TV</p>
-                  
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-accessories-nav-202109.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> อุปกรณ์เสริม</p>
-                    </div>
-                  </div>
-                  <div class="card border-0" style="width: 15rem;">
-                    <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-holiday-giftcards-asc-nav-202111.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="text-center fw-bold fs-4 "> บัตรของขวัญ Apple Store</p>
-                    </div>
-                  </div>
-                
-                </div>
 
-            </div>
-            </div>
-        </div>
-        <!--end of box header-->
-       
-   
-   
-        <br><br><br><div class="container-fluid my-5" >
-          
-            
-        <div class="my-container2" style="width: 150rem;">
             <h1 class="text-left fw-bold display-3 mb-5">ผลิตภัณฑ์ล่าสุดของเรา <span class="text-muted"> มาดูว่ามีอะไรใหม่บ้างได้เลย</span></h1>
+
+
+            <?php 
+                    $stmt = $conn->query("SELECT * FROM product");
+                    $stmt->execute();
+                    $products = $stmt->fetchAll();
+                    $img = ("SELECT * FROM product img");
+                    if (!$products) {
+                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    } else {
+                    foreach($products as $product)  {  
+                ?>
+
+
             <div class="row">
-            <div class="col-12 m-auto">
+            <div class="col-12 " style="width: 150rem;">
                 <div class="owl-carousel owl-theme">
-                    <div class="item mb-4">
+                    <div class="item mb-3">
                         <div class="card border-0 shadow">
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-unity-202201.jfif" alt="" class="card-img-top">
+                            <img src="http://127.0.0.1/Mini_Project_G4/admin/uploads/<?php echo $product['img']; ?>" alt="" class="card-img-top">
                             <div class="card-body">
                                 <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">เวลาแห่งอนาคต</h5>
+                                    <h5 class="fw-bold display-6 mb-3"><?php echo $product['name']; ?></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="item">
-                        <div class="card border-0 shadow">
-                            <a href="iphone-13-pro.php" >
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-pro-202109.jfif"     alt="" class="card-img-top"></a>
-                            <div class="card-body">
-                                <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">โปรสมชื่อ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-0 shadow">
-                        <a href="airpods.html" >
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-airpodsmagsafe-202110.png"alt="" class="card-img-top">
-                        </a>
-                            
-                            <div class="card-body">
-                                <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">จังหวะใหม่แห่งความมหัศจรรย์</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-0 shadow">
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-watch-s7-202109.jfif"  alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">จัดเต็มแบบเต็มจอ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-0 shadow">
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-iphone-202109.jfif"  alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">พลังพิเศษในมือคุณ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-0 shadow">
-                            <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-mac-202110.jfif" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-title text-center">
-                                    <h5 class="fw-bold display-6 mb-3">พลังสุดแรงเพื่อมือโปร</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    
                 </div>
             </div>
-       
+
+            
+            <?php }  } ?>
         <!--end card row-->
         <h1 class="text-left fw-bold display-3 mb-5">ความช่วยเหลืออยู่ที่นี่ <span class="text-muted"> ไม่ว่าเมื่อไหร่หรือแบบไหนที่คุณต้องการ</span></h1>
     
@@ -304,46 +197,48 @@
 
     
         <div class="row justify-content-md-left">
-           
-            <div class="col-md-auto">
-                <div class="my-container2">
-                    <div class="card border-0 shadow"  style="width: 57rem;">
+        <div class="col-md-auto">
+              
+                    <div class="card border-0 shadow"  style="width: 40rem;">
                        
-                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-50-specialist-202108_GEO_TH.jfif" alt="" class="card-img-top">
+                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/iphone-card-50-stack-202109.jpg" alt="" class="card-img-top">
                         <div class="card-body">
                             <div class="card-title text-center">
-                                <h5 class="fw-bold display-6 mb-2 textcard">ช้อปปิ้งแบบตัวต่อตัวกับ Specailist ออนไลน์หรือภายในร้าน</h5>
+                                <h5 class="fw-bold display-6 mb-2 textcard">iPhone รุ่นไหนเหมาะกับคุณ</h5>
+                              
                             </div>
                         </div>
                     </div>
-                </div>
+       
+            </div>
+          
+            <div class="col-md-auto">
+                              <div class="card border-0 shadow"  style="width: 40rem;">
+                       
+                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/iphone-card-50-specialist-help-202108.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h5 class="fw-bold display-6 mb-2 textcard">ช้อปปิ้งแบบตัวต่อตัว</h5>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-md-auto">
+                              <div class="card border-0 shadow"  style="width: 40rem;">
+                       
+                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/iphone-card-50-whyswitch-202109_GEO_TH_LANG_TH.jpg" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="card-title text-center">
+                                <h5 class="fw-bold display-6 mb-2 textcard">ทำให้การเปลี่ยนมาใช้ง่ายกว่าที่คุณคิด</h5>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
 
 
-            <div class="col-md-auto">
-                <div class="my-container2">
-                    <div class="card border-0 shadow"  style="width: 50rem;">
-                       
-                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-25-apps-202108.jfif" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <div class="card-title text-center">
-                                <h5 class="fw-bold display-6 mb-3">ทำความรู้จักอุปกรณ์เครื่องใหม่ของคุณด้วยเซสชั่นส่วนบุคคล</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-0 shadow"  style="width: 50rem;">
-                        <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-25-genius-202108.jfif" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <div class="card-title text-center">
-                                <h5 class="fw-bold display-6 mb-3">รับบริการและความช่วยเหลือจากผู้เชี่ยวชาญที่ Genius Bar</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-   
             
         </div>
     </div>
@@ -518,8 +413,10 @@
                     items: 2
                 },
                 1000: {
-                    items: 3
+                    items: 4
+                   
                 }
+                
             }
         })
     </script>
