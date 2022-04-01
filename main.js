@@ -17,6 +17,20 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
+document.getElementById("price").onblur =function (){    
+
+    //number-format the user input
+    this.value = parseFloat(this.value.replace(/,/g, ""))
+                    .toFixed(2)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    //set the numeric value to a number input
+    document.getElementById("price").value = this.value.replace(/,/g, "")
+
+}
+
+
 /*
 var lastClickedFace = null;
 

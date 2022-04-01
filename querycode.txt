@@ -1,0 +1,24 @@
+    
+            <?php 
+               
+               
+                    $cateID = '1';
+                    $stmt = $conn->query("SELECT * FROM product  WHERE category_id = '$cateID'");
+                    $stmt->execute();
+                    $products = $stmt->fetchAll();
+                    
+                        
+
+                    $img = ("SELECT * FROM product img");
+                    if (!$products) {
+                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    } else {
+                    foreach($products as $product){
+                
+
+                      
+                ?>
+<?php echo $product['name']; ?>
+
+
+                <?php }  } ?>

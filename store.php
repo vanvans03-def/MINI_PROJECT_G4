@@ -115,17 +115,21 @@
 
 <body>
 
-    <div class="container-fluid my-5"> <br /> <br />
-        <div class="my-container2 ">
-        <div class="row justify-content-md-left">
-            <div class="col-md-auto">
-                <div class="my-container">
+    
+<br><br><br><div class="container-fluid my-5" >
+          
+            
+          <div class="my-container2" style="width: 150rem;">
+        
+            <div class="row justify-content-md-left">
+                <div class="col-md-auto">
                     <h4 class="text-left fw-bold display-1 mb-5">ร้านของเรา
-                        <span class="text-muted">คือที่ที่ดีที่สุดในการซื้อผลิตภัณฑ์ที่คุณรัก</span>
-                    </h4>
+                                <span class="text-muted">คือที่ที่ดีที่สุดในการซื้อผลิตภัณฑ์ที่คุณรัก</span>
+                            </h4>
                 </div>
-            </div>
-            <div class="col-md-auto">
+
+
+                <div class="col-md-auto">
                 <div class="my-container">
                     <div class="box">
                         <img src="http://127.0.0.1/Mini_Project_G4/images/icons/store-chat-specialist-icon_AV1.jfif" class="help-store-pic">
@@ -143,7 +147,14 @@
             </div>
 
             </div>
-            
+           
+          </div>
+                   
+       
+           
+
+      
+     
            
             <br><br><br><div class="row  align-items-center justify-content-center ">
                 <div class="card border-0" style="width: 15rem;">
@@ -223,7 +234,7 @@
         <div class="my-container2" style="width: 150rem;">
             <h1 class="text-left fw-bold display-3 mb-5">ผลิตภัณฑ์ล่าสุดของเรา <span class="text-muted"> มาดูว่ามีอะไรใหม่บ้างได้เลย</span></h1>
             <div class="row">
-            <div class="col-12 m-auto">
+            <div class="col-12 " style="width: 150rem;">
                 <div class="owl-carousel owl-theme">
                     <div class="item mb-4">
                         <div class="card border-0 shadow">
@@ -355,7 +366,7 @@
     <br><br><br>
     <h1 class="text-left fw-bold display-3 mb-5">อุปกรณ์เสริม  <span class="text-muted"> สิ่งที่ขาดไม่ได้ที่จับคู่กับอุปกรณ์โปรดของคุณได้อย่างลงตัว</span></h1>
     <div class="row" >
-        <div class="col-12 m-auto"  >
+    <div class="col-12 "  style="width: 150rem;" >
         <div class="owl-carousel owl-theme">
             <div class="item mb-4 ">
                 <div class="card border-0 shadow">
@@ -421,7 +432,7 @@
            
     <div class="row" >
         
-        <div class="col-12 m-auto"  >
+        <div class="col-12 "  style="width: 150rem;" >
         <div class="owl-carousel owl-theme">
             <div class="item mb-4 " >
                 <div class="card border-0 shadow">
@@ -451,7 +462,7 @@
                     <div class="card-body">
                         <div class="card-title text-center">
                            
-                            <h5 class="fw-bold display-6 mb-3">Beats Fit Pro หูฟังไร้สายที่แท้จริง</h5>
+                            <h5 class="fw-bold display-6 mb-3">Beats Fit Pro </h5>
                         </div>
                     </div>
                 </div>
@@ -518,7 +529,7 @@
                     items: 2
                 },
                 1000: {
-                    items: 3
+                    items: 4
                 }
             }
         })

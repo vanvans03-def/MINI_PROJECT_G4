@@ -6,6 +6,7 @@ require_once "config/db.php";
 if (isset($_POST['submit'])) {
     $productname = $_POST['productname'];
     $desc = $_POST['desc'];
+    $rom = $_POST['rom'];
     $quantity = $_POST['quantity'];
     $category_id = $_POST['category_id'];
     $price = $_POST['price'];
@@ -21,9 +22,10 @@ if (isset($_POST['submit'])) {
             if ($img['size'] > 0 && $img['error'] == 0) {
                 if (move_uploaded_file($img['tmp_name'], $filePath)) {
                    
-                    $sql = $conn->prepare("INSERT INTO `product`( `name`, `descrip`, `quantity`, `category_id`, `price`, `img`) VALUES (:name,:descrip,:quantity,:category_id,:price,:img) ");      
+                    $sql = $conn->prepare("INSERT INTO `product`( `name`, `descrip`,`rom`, `quantity`, `category_id`, `price`, `img`) VALUES (:name,:descrip,:rom,:quantity,:category_id,:price,:img) ");      
                     $sql->bindParam(":name", $productname);
                     $sql->bindParam(":descrip", $desc);
+                    $sql->bindParam(":rom", $rom);
                     $sql->bindParam(":quantity", $quantity);
                     $sql->bindParam(":category_id", $category_id);
                     $sql->bindParam(":price", $price);

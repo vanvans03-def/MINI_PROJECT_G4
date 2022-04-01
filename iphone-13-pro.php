@@ -1,6 +1,7 @@
 <?php 
     session_start();
 
+    require_once "admin/config/db.php";
     if (!isset($_SESSION['email'])) {
         $_SESSION['msg'] = "You must log in first";
         header('location: login.php');
@@ -184,7 +185,21 @@
                                         รุ่นไหนเหมาะกับคุณ</span>
                                 </p>
 
+                                <?php 
+                    $stmt = $conn->query("SELECT * FROM product");
+                    $stmt->execute();
+                    $products = $stmt->fetchAll();
+                    $img = ("SELECT * FROM product img");
+                  
 
+
+                    if (!$products) {
+                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    } else {
+                    foreach($products as $product)  {  
+                   
+                      
+                ?>
                                 <div class="card  ">
                                     <div class="card-body">
                                         <div class="row">
@@ -230,6 +245,9 @@
                                 <br>
                                 <br>
                                 <div class="row d-flex justify-content-center">
+                                <div class="row d-flex justify-content-center">
+                                    <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-pro-finish-green-202203.jpg" alt="" style="width: 7rem;"
+                                        onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-green-select.png';">
                                     <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-blue-2021.jfif" alt="" style="width: 7rem;"
                                         onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-blue-select.png';">
                                     <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-graphite-2021.jfif" alt="" style="width: 7rem;"
@@ -281,6 +299,8 @@
                                     </div>
 
                                 </div>
+
+                                <?php }  } ?>
                             </div>
                         </div>
                     </div>

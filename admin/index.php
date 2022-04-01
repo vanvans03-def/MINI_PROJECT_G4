@@ -3,7 +3,7 @@
     session_start();
 
     require_once "config/db.php";
-
+   
     if (isset($_GET['delete'])) {
         $delete_id = $_GET['delete'];
         $deletestmt = $conn->query("DELETE FROM product WHERE product_id = $delete_id");
@@ -38,7 +38,11 @@
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
 
-
+    <style>
+        .currSign:before {
+            content: '฿';
+        }
+    </style>
     
 </head>
 <body>
@@ -65,6 +69,12 @@
                     <textarea type="text"style="height:100px;" required class="form-control" name="desc"></textarea>
                 </div>
                 <div class="mb-3">
+                    <label for="price" class="col-form-label">Rom</label>
+                    <input type="text" required class="form-control currency" name="rom">
+                </div>
+               
+
+                <div class="mb-3">
                     <label for="quantity" class="col-form-label">Quantity:</label>
                     <input type="number" required class="form-control" name="quantity">
                 </div>
@@ -73,6 +83,16 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="category_id">Category_id</label>
                     </div>
+                    <?php 
+                    $stmt = $conn->query("SELECT * FROM product ");
+                    $stmt->execute();
+                    $products = $stmt->fetchAll();
+                    $img = ("SELECT * FROM product img");
+                    if (!$products) {
+                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    } else {
+                    
+                ?>
                     <select class="custom-select col-form-label " id="category_id" name="category_id">
                         <option selected >Choose...</option>
                         <option value="1">iPhone (01)</option>
@@ -80,12 +100,12 @@
                         <option value="3">TV (03)</option>
                     </select>
                 </div>
-
+                <?php  } ?>
                 
 
                 <div class="mb-3">
                     <label for="price" class="col-form-label">Price</label>
-                    <input type="number" required class="form-control" name="price">
+                    <input type="text" required class="form-control currency" name="price">
                 </div>
                 <div class="mb-3">
                     <label for="img" class="col-form-label">Image:</label>
@@ -139,6 +159,8 @@
                     <th scope="col">id</th>
                     <th scope="col">Productname</th>
                     <th scope="col">Desc</th>
+                    <th scope="col">Rom</th>
+             
                     <th scope="col">Quantity</th>
                     <th scope="col">Category_id</th>
                     <th scope="col">Price</th>
@@ -152,18 +174,42 @@
                     $stmt->execute();
                     $products = $stmt->fetchAll();
                     $img = ("SELECT * FROM product img");
+                  
+
+
                     if (!$products) {
                         echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                     } else {
                     foreach($products as $product)  {  
+                   
+                      
                 ?>
+
+
+
+
+
+                
                     <tr>
                         <th scope="row"><?php echo $product['product_id']; ?></th>
                         <td><?php echo $product['name']; ?></td>
                         <td><?php echo $product['descrip']; ?></td>
+                        <td><?php echo $product['rom']; ?></td>
                         <td><?php echo $product['quantity']; ?></td>
-                        <td><?php echo $product['category_id']; ?></td>
-                        <td><?php echo $product['price']; ?></td>
+                        <td><?php echo $product['category_id']; ?>
+                            <span>
+                                (<?php
+                                $idcate = $product['category_id'];
+                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id` = $idcate");
+                                $stmt->execute();
+                                $data = $stmt->fetch();
+                                echo $data['name'];
+                                ?>)
+                            </span>
+                        </td>
+
+                        
+                        <td class="currency"><?php echo $product['price']; ?></td>
                         <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $product['img']; ?>" alt=""></td>
                         <td>
                             <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-warning">Edit</a>
@@ -172,7 +218,9 @@
                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $product['product_id']; ?>" class="btn btn-danger">Delete</a>
                             </td>
                     </tr>
-                <?php }  } ?>
+                    <?php }  } ?>
+               
+         
             </tbody>
             </table>
     </div>
@@ -190,6 +238,15 @@
             }
         }
 
+    </script>
+    <script >
+        let x = document.querySelectorAll(".currency");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        }
     </script>
 </body>
 </html>

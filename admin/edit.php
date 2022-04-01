@@ -8,6 +8,8 @@
         $product_id = $_POST['product_id'];
         $name = $_POST['name'];
         $descrip = $_POST['descrip'];
+        $rom = $_POST['rom'];
+        
         $quantity = $_POST['quantity'];
         $category_id = $_POST['category_id'];
         $price = $_POST['price'];
@@ -33,10 +35,12 @@
             $fileNew = $img2;
         }
 
-        $sql = $conn->prepare("UPDATE `product` SET `product_id` = :product_id, `name` = :name, `descrip` = :descrip, `quantity` = :quantity,`category_id` = :category_id,`price` = :price, img = :img WHERE `product_id` = :product_id");
+        $sql = $conn->prepare("UPDATE `product` SET `product_id` = :product_id, `name` = :name, `descrip` = :descrip,`rom` = :rom , `quantity` = :quantity,`category_id` = :category_id,`price` = :price, img = :img WHERE `product_id` = :product_id");
         $sql->bindParam(":product_id", $product_id);
         $sql->bindParam(":name", $name);
         $sql->bindParam(":descrip", $descrip);
+        $sql->bindParam(":rom", $rom);
+     
         $sql->bindParam(":quantity", $quantity);
         $sql->bindParam(":category_id", $category_id);
         $sql->bindParam(":price", $price);
@@ -91,8 +95,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="descrip" class="col-form-label">Desc :</label>
-                    <textarea style="height:100px;" type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip"></textarea> 
+                    <input   type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip">
                 </div>
+                <div class="mb-3">
+                    <label for="rom" class="col-form-label">Rom:</label>
+                    <input type="number" value="<?php echo $data['rom']; ?>" required class="form-control" name="rom">
+                </div>
+
+                
                 <div class="mb-3">
                     <label for="quantity" class="col-form-label">quantity:</label>
                     <input  type="number" value="<?php echo $data['quantity']; ?>" required class="form-control" name="quantity">
