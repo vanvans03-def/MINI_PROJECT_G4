@@ -140,6 +140,8 @@
                 <?php 
                     echo $_SESSION['success'];
                     unset($_SESSION['success']); 
+                    //header("refresh:1; url=index.php");
+                    
                 ?>
             </div>
         <?php } ?>
@@ -148,6 +150,7 @@
                 <?php 
                     echo $_SESSION['error'];
                     unset($_SESSION['error']); 
+                    header("refresh:1; url=index.php");
                 ?>
             </div>
         <?php } ?>

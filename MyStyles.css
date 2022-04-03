@@ -322,25 +322,21 @@ backdrop-filter: blur(2rem);
 .container2x2{
     margin: 20px auto;
     width:400px;
-    height:200px;
+    height:300px;
     background-color:#fff;
     display:grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+     /*grid-column-gap: 20px;
+    grid-row-gap: 20px;*/
     text-align: center;
 
 }
 .box2x2{
-     
       padding:20px;
-      border-radius:10px;
-      border:2px solid rgb(230, 230, 230);
+     
       display:flex;
       justify-content:center;
-
-      font-family:sans-serif;
     }
   
 .rom{

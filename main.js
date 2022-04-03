@@ -17,6 +17,7 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
+        
 document.getElementById("price").onblur =function (){    
 
     //number-format the user input

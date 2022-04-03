@@ -1,6 +1,11 @@
 <?php 
     session_start();
+    require_once "admin/config/db.php";
 
+    $chk = 0;
+    $_SESSION['order.id'] ;
+    $_SESSION['cart'] ;
+    $pd_id = $_SESSION['order.id'];
     if (!isset($_SESSION['email'])) {
         $_SESSION['msg'] = "You must log in first";
         header('location: login.php');
@@ -37,7 +42,11 @@
         crossorigin="anonymous" />
     <title>ถุง-Apple (TH)</title>
     <link rel="icon" href="http://127.0.0.1/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
-
+    <style>
+        .currSign:before {
+            content: '฿';
+        }
+    </style>
 </head>
 <header>
     <div class="my-container">
@@ -110,12 +119,20 @@
         <div class="my-container ">
 
             <div class="row justify-content-md-left">
-
+<h1>
+    <?php 
+    echo  $pd_id;
+    $stmt = $conn->query("SELECT * FROM product  WHERE product_id = '$pd_id' ");
+    $stmt->execute();
+    $data = $stmt->fetch();
+   
+    ?>
+</h1>
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <p class="text-center fw-bold display-3 mb-5">
-                                นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span>฿38,900.00</span> </p>
+                            <p class="text-center fw-bold display-3 mb-5 ">
+                                นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span class="currency"><?php echo $data['price'];?></span> </p>
                             <p class="text-center fs-2 display-3 mb-5">รับบริการจัดส่งฟรีและส่งคืนฟรีทุกคำสั่งซื้อ</p>
 
 
@@ -149,7 +166,7 @@
         <div class="row">
             <div class="col-sm-auto">
                 <div class="card  border-0" style="width: 20rem;">
-                    <img id="iphone13-shop" src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-family-hero.png" alt=""
+                    <img id="pd_img" src="http://127.0.0.1/Mini_Project_G4/admin/uploads/<?php echo $data['img']; ?>" alt=""
                         class="card-img-top">
 
                 </div>
@@ -167,15 +184,15 @@
                                 <div class="row">
                                     <div class="col col-md-auto">
 
-                                        <p class="text-left display-1 fw-bold fs-2 mb-2 textcard "> iPhone 13 Pro
-                                            ความจุ 128GB สีเซียร์ร่าบลู
+                                        <p class="text-left display-1 fw-bold fs-1 mb-2 textcard "> <?php echo $data['name'];?>
+                                            ความจุ <?php echo $data['rom']?>GB <?php echo $data['descrip']?>
                                         </p>
                                     </div>
 
 
                                     <div class="col ">
-                                        <p class="fs-5 display-1 fw-bold fs-2 text-end mb-2 textcard">
-                                            ฿38,900.00</p>
+                                        <p class="fs-5 display-1 currency fw-bold fs-2 text-end mb-2 textcard">
+                                        <?php echo $data['price'];?></p>
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +321,7 @@
                                             </div>
 
                                             <div class="col ">
-                                                <p class="fs-1 display-1 text-mutedfs-2 text-end mb-2 "> ฿38,900.00</p>
+                                                <p class="fs-1 display-1 text-mutedfs-2 text-end mb-2 currency "> <?php echo $data['price'];?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -329,7 +346,7 @@
                                             </div>
 
                                             <div class="col ">
-                                                <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2 "> ฿38,900.00</p>
+                                                <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2 currency ">  <?php echo $data['price'];?></p>
                                             </div>
                                         </div>
                                         
@@ -340,7 +357,15 @@
                                             </div>
 
                                             <div class="col ">
-                                                <p class="fs-5 display-1 text-mutedfs-2 text-end mb-2 "> รวม VAT จำนวน ฿2,544.86</p>
+                                                <p class="fs-5 display-1 text-mutedfs-2 text-end mb-2  "> รวม VAT จำนวน
+                                                    <span calss="currency"> 
+                                                        <?php 
+                                                       
+                                                        $vat =  $data['price']*7/100;
+                                                        echo $vat;
+                                                        ?>
+                                                    </span>
+                                                </p>
                                             </div>
 
                                            
@@ -413,7 +438,15 @@
 
 
 
-
+        <script >
+        let x = document.querySelectorAll(".currency");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        }
+    </script>
 
 
 
