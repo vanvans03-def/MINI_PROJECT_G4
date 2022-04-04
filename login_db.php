@@ -27,6 +27,7 @@
                 $username = "SELECT * FROM user WHERE email='$email' ";
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = $row['type'];
+                $_SESSION['id'] = $row['id'];
                 $_SESSION['success'] = "Your are now logged in ";
                 if($_SESSION['type'] == '1'){
                     header("location: admin");

@@ -11,6 +11,21 @@
         header('location: login.php');
     }
 
+    
+    if (isset($_GET['delete'])) {
+        $delete_id = $_GET['delete'];
+        $deletestmt = $conn->query("DELETE FROM cart_item WHERE product_id = $delete_id");
+        $deletestmt->execute();
+
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            $_SESSION['success'] = "Data has been deleted succesfully";
+            header("refresh:1; url=index.php");
+        }
+        
+    }
+
+
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['email']);
@@ -125,7 +140,12 @@
     $stmt = $conn->query("SELECT * FROM product  WHERE product_id = '$pd_id' ");
     $stmt->execute();
     $data = $stmt->fetch();
-   
+    if (!$data) {
+        
+        echo "<div  class='text-center fw-bold alert alert-warning fs-1'><td>กรุณาเพิ่มสินค้าลงในตระกร้า</td></div>";
+    }
+    if($data){
+    
     ?>
 </h1>
                 <div class="container">
@@ -160,6 +180,7 @@
 
 
     <br><br><br>
+    <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
     <div class="my-container ">
         <p class="underline"></p>
         <br><br>
@@ -193,6 +214,10 @@
                                     <div class="col ">
                                         <p class="fs-5 display-1 currency fw-bold fs-2 text-end mb-2 textcard">
                                         <?php echo $data['price'];?></p>
+                                    
+                                    <div class="col text-end">
+                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $data['product_id']; ?>" class="cta fs-3 cta-link">Delete</a>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -377,10 +402,10 @@
                                             </div>
 
                                             <div class="col text-end " style="padding-top: 1rem;">
-                                                <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " style="width: 40rem; height: 7rem;">Confirm identity</button>
+                                                <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">Confirm identity</button>
                                             </div>
-
-                                           
+<?php } ?>
+</form>                                          
                                         </div>
                                         </div>
 

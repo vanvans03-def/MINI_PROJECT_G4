@@ -139,11 +139,11 @@ if (isset($_GET['logout'])) {
                 ?>
             </div>
         <?php } ?>
-            <?php if (isset($_SESSION['error'])) { ?>
+            <?php if (isset($_SESSION['errorshop'])) { ?>
             <div class="alert alert-danger fs-2">
                 <?php 
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']); 
+                    echo $_SESSION['errorshop'];
+                    unset($_SESSION['errorshop']); 
                  
                 ?>
             </div>
