@@ -30,7 +30,7 @@ if ($sql) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   
 } else {
-    $_SESSION['errorshop'] = "ขออภัยสินค้าหมด";
+    $_SESSION['errorshop'] = "ไม่สำเร็จ";
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 }

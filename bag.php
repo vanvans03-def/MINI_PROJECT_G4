@@ -6,6 +6,9 @@
     $_SESSION['order.id'] ;
     $_SESSION['cart'] ;
     $pd_id = $_SESSION['order.id'];
+    
+
+
     if (!isset($_SESSION['email'])) {
         $_SESSION['msg'] = "You must log in first";
         header('location: login.php');
@@ -25,11 +28,8 @@
         
     }
 
-    if(isset($_SESSION["cart_item"])){
-        $total_quantity = 0;
-        $total_price = 0;
-
-    }
+   
+    
 
 
 
@@ -187,9 +187,12 @@
 
 
     </div>
+<?php 
 
-
-
+    if(isset($_SESSION["cart_item"])){
+        $total_quantity = 0;
+        $total_price = 0;}
+?>
 
 
     <br><br><br>
@@ -234,18 +237,15 @@
                                                 ?>
                                                     <option name="quantity" value="<?php echo $i;?>"><?php echo $i;?></option>
                                                 <?php
+                                                
                                             }
                                         ?>
                                     </select>
-                                   <?php 
                                    
-                                   $total_quantity += $item["quantity"];
-                                   $total_price += ($item["price"] * $item["quantity"]);
-
-//ถึงนี้นะ 19.52
-                                   ?>
                                         <p class="fs-5 display-1  fw-bold fs-2 text-end mb-2 textcard">
-                                        <?php echo "฿" . number_format($total_price,2);?></p>
+                                        <?php
+                                     
+                                        echo "฿" . number_format($data['price'],2);?></p>
                                     
                                     <div class="col text-end">
                                     <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $data['product_id']; ?>" class="cta fs-3 cta-link">Delete</a>

@@ -361,16 +361,16 @@ if (isset($_GET['logout'])) {
 
                             <div class="d-flex justify-content-end">
 
-
+                            <form method="post" action="bag.php?action=add">
                                 <div class="d-grid gap-2 col-6 justify">
-                                    <button class="btn btn-primary" type="submit" name="shoping">
+                                    <button class="btn btn-primary" type="submit"href="bag.php?action=add" name="shoping">
                                         <p class="fs-5 display-1 fw-bold fs-2 mb-2">
                                             ใส่ลงในถุง
                                         </p>
                                     </button>
 
                                 </div>
-
+                            </form>
 
 
                                 
