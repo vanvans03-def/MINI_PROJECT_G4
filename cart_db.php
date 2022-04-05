@@ -13,6 +13,8 @@ if (isset($_POST['submitbag'])) {
     $quantity = 1;
   
 
+}else{
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
   

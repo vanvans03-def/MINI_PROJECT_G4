@@ -20,6 +20,9 @@
         $_SESSION['msg'] = "You must log in first";
         header('location: ../login.php');
     }
+    elseif($_SESSION['type'] == '0'){
+        header("location: ../store.php");
+        }
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['email']);

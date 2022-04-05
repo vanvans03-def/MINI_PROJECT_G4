@@ -223,7 +223,7 @@ if (isset($_GET['logout'])) {
 
 
 
-                                        <input type="checkbox" class="btn-check" id="iphone13pro"  autocomplete="off" name='porduct_name' value="iphone 13 Pro">
+                                        <input type="radio" class="btn-check" id="iphone13pro"  autocomplete="off" name='porduct_name' value="iphone 13 Pro">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone13pro" style="height: 80px;">
                                             <div class="row" style="padding-top: 10px;">
 
@@ -246,7 +246,7 @@ if (isset($_GET['logout'])) {
 
 
                                         <p>&nbsp;</p>
-                                        <input type="checkbox" class="btn-check" id="iphone13promax" autocomplete="off" name='porduct_name' value="iphone 13 Pro Max">
+                                        <input type="radio" class="btn-check" id="iphone13promax" autocomplete="off" name='porduct_name' value="iphone 13 Pro Max">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone13promax" style="height: 80px;">
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col">
@@ -279,7 +279,7 @@ if (isset($_GET['logout'])) {
                             <div class="container2x2 ">
 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="checkbox" class="btn-check" id="colorgreen"  autocomplete="off" name="color" value="0">
+                                    <input type="radio" class="btn-check" id="colorgreen"  autocomplete="off" name="color" value="0">
                                         <label class="btn btn-outline" for="colorgreen" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-pro-finish-green-202203.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-green-select.png';">
                                         </label>
@@ -287,7 +287,7 @@ if (isset($_GET['logout'])) {
                                 
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="checkbox" class="btn-check" id="colorblue"  autocomplete="off" name="color" value="1">
+                                    <input type="radio" class="btn-check" id="colorblue"  autocomplete="off" name="color" value="1">
                                         <label class="btn btn-outline" for="colorblue" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-blue-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-blue-select.png';">
                                         </label>
@@ -295,21 +295,21 @@ if (isset($_GET['logout'])) {
                                     
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="checkbox" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="2">
+                                    <input type="radio" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="2">
                                         <label class="btn btn-outline" for="colorblack" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-graphite-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-graphite-select.png';">
                                         </label>
                                 </div>
                                     
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="checkbox" class="btn-check" id="colorgold"  autocomplete="off" name="color" value="3">
+                                    <input type="radio" class="btn-check" id="colorgold"  autocomplete="off" name="color" value="3">
                                         <label class="btn btn-outline" for="colorgold" >    
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-gold-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-gold-select.png';">
                                         </label>
                                 </div>
                                         
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="checkbox" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="4">
+                                    <input type="radio" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="4">
                                         <label class="btn btn-outline" for="colorwhite" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-silver-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone-13-pro-max-silver-select.png';">
                                         </label>
@@ -327,26 +327,26 @@ if (isset($_GET['logout'])) {
                                         เลือกความจุ</span>
                                 <div class="container2x2 ">
                                     <div class="box2x2 border-0 ">
-                                        <input type="checkbox" class="btn-check" id="rom128"  autocomplete="off" name="rom" value="128">
+                                        <input type="radio" class="btn-check" id="rom128"  autocomplete="off" name="rom" value="128">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="rom128" style="height: 80px;">
                                             <p class="fs-5 display-1 fw-bold fs-2 mb-2 textcard" style="padding-top: 20px;">128 Gb</p>
                                         </label><br>
                                     </div>
 
                                     <div class="box2x2 border-0 ">
-                                        <input type="checkbox" class="btn-check" id="rom256"  autocomplete="off" name="rom" value="256">
+                                        <input type="radio" class="btn-check" id="rom256"  autocomplete="off" name="rom" value="256">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="rom256" style="height: 80px;">
                                             <p class="fs-5 display-1 fw-bold fs-2 mb-2 textcard" style="padding-top: 20px;">256 Gb</p>
                                         </label><br>
                                     </div>
                                     <div class="box2x2 border-0 ">
-                                        <input type="checkbox" class="btn-check" id="rom512"  autocomplete="off" name="rom" value="512">
+                                        <input type="radio" class="btn-check" id="rom512"  autocomplete="off" name="rom" value="512">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="rom512" style="height: 80px;">
                                             <p class="fs-5 display-1 fw-bold fs-2 mb-2 textcard" style="padding-top: 20px;">512 Gb</p>
                                         </label><br>
                                     </div>
                                     <div class="box2x2 border-0 ">
-                                        <input type="checkbox" class="btn-check" id="rom1024"  autocomplete="off" name="rom" value="1024">
+                                        <input type="radio" class="btn-check" id="rom1024"  autocomplete="off" name="rom" value="1024">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="rom1024" style="height: 80px;">
                                             <p class="fs-5 display-1 fw-bold fs-2 mb-2 textcard" style="padding-top: 20px;">1 TB</p>
                                         </label><br>

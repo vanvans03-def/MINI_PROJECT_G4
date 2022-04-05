@@ -25,6 +25,13 @@
         
     }
 
+    if(isset($_SESSION["cart_item"])){
+        $total_quantity = 0;
+        $total_price = 0;
+
+    }
+
+
 
     if (isset($_GET['logout'])) {
         session_destroy();
@@ -129,7 +136,13 @@
 </header>
 
 <body>
+<?php 
 
+      /*  foreach($_SESSION["cart_item"] as $item){
+            $item_price = $item["quantity"]* $item["price"];
+  */     
+
+?>
     <div class="container-fluid my-5"> <br> <br>
         <div class="my-container ">
 
@@ -152,7 +165,7 @@
                     <div class="row">
                         <div class="col">
                             <p class="text-center fw-bold display-3 mb-5 ">
-                                นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span class="currency"><?php echo $data['price'];?></span> </p>
+                                นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span class="">  <?php echo "฿" . number_format($data['price'],2);?></span> </p>
                             <p class="text-center fs-2 display-3 mb-5">รับบริการจัดส่งฟรีและส่งคืนฟรีทุกคำสั่งซื้อ</p>
 
 
@@ -208,12 +221,31 @@
                                         <p class="text-left display-1 fw-bold fs-1 mb-2 textcard "> <?php echo $data['name'];?>
                                             ความจุ <?php echo $data['rom']?>GB <?php echo $data['descrip']?>
                                         </p>
-                                    </div>
-
+                                  
+                                        </div>
+                                    
 
                                     <div class="col ">
-                                        <p class="fs-5 display-1 currency fw-bold fs-2 text-end mb-2 textcard">
-                                        <?php echo $data['price'];?></p>
+                                    <select class="text-start fw-bold fs-2">
+                                        <?php
+                                       
+                                            for ($i=1; $i<=10; $i++)
+                                            {
+                                                ?>
+                                                    <option name="quantity" value="<?php echo $i;?>"><?php echo $i;?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                   <?php 
+                                   
+                                   $total_quantity += $item["quantity"];
+                                   $total_price += ($item["price"] * $item["quantity"]);
+
+//ถึงนี้นะ 19.52
+                                   ?>
+                                        <p class="fs-5 display-1  fw-bold fs-2 text-end mb-2 textcard">
+                                        <?php echo "฿" . number_format($total_price,2);?></p>
                                     
                                     <div class="col text-end">
                                     <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $data['product_id']; ?>" class="cta fs-3 cta-link">Delete</a>
@@ -371,7 +403,7 @@
                                             </div>
 
                                             <div class="col ">
-                                                <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2 currency ">  <?php echo $data['price'];?></p>
+                                                <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2  ">    <?php echo "฿" . number_format($data['price'],2);?></p>
                                             </div>
                                         </div>
                                         
@@ -383,11 +415,11 @@
 
                                             <div class="col ">
                                                 <p class="fs-5 display-1 text-mutedfs-2 text-end mb-2  "> รวม VAT จำนวน
-                                                    <span calss="currency"> 
+                                                    <span calss=""> 
                                                         <?php 
                                                        
                                                         $vat =  $data['price']*7/100;
-                                                        echo $vat;
+                                                        echo "฿" . number_format($vat,2);
                                                         ?>
                                                     </span>
                                                 </p>
@@ -404,7 +436,8 @@
                                             <div class="col text-end " style="padding-top: 1rem;">
                                                 <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">Confirm identity</button>
                                             </div>
-<?php } ?>
+<?php }  /*}*/
+?>
 </form>                                          
                                         </div>
                                         </div>
