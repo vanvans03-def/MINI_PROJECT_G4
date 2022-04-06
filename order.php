@@ -126,23 +126,31 @@ if (isset($_GET['logout'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <p class="text-start fw-bold fs-2">Apple ID</p>
+                            <p class="text-start fw-bold fs-2">กรอกที่อยู่เพื่อจัดส่งสินค้า</p>
                         </div>
 
-                        <div class="col">
-                            <a href="login.php" class="text-end fs-5 cta-linkr">ลงชื่อเข้าใช้</a>
-                        </div>
+                         
                         <div class="underline"></div>
 
                     </div></br>
 
+<?php 
+   $userOrder = json_decode($_COOKIE['userOrder'], true);
+                       
+   foreach($userOrder as $userOrder){
+    print $userOrder."\n";
+}
 
-
+$stmt = $conn->query("SELECT * FROM `order_detail` WHERE `product_id` = $id");
+$stmt->execute();
+$data = $stmt->fetch();
+?>
+<pre><?php print_r( $_COOKIE["userOrder"] ); ?></pre>
                     <div class="col" style="height: 100px;">
-                        <p class="text-center  fw-bold display-6 mb-6"> สร้าง Apple ID ของคุณเอง</p>
+                        <p class="text-center  fw-bold display-6 mb-6">กรอกที่อยู่เพื่อจัดส่งสินค้า</p>
                         <p class="text-center  text-muted fs-4">Apple ID
                             คือบัญชีเดียวเท่านั้นที่คุณต้องการสำหรับการใช้บริการทุกอย่างจาก Apple</p>
-                        <a class="fs-4 text-center text-muted" href="findid.html">มี Apple ID แล้วใช่ไหม? <span class="cta-link fs-4">ค้นหาได้ที่นี้</span></a>
+                    
                     </div><br>
                     <div class="containerRegister">
                             

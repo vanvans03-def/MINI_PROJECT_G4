@@ -2,14 +2,21 @@
 session_start();
 require_once "admin/config/db.php";
 
+$userid = $_SESSION["id"];
+//get cart id 
+$stmt = $conn->query("SELECT * FROM `cart_item` WHERE `user_id` = $userid");
+$stmt->execute();
+$data = $stmt->fetch();
 
 
-$quantity =  $_COOKIE['quantity'];
-$item_array = $item_array;
 
+
+//order 
+
+$userOrder = json_decode($_COOKIE['userOrder'], true);
 $sql = $conn->prepare("INSERT INTO order_detail ( `user_id`,`cart_id`,`quantity`)VALUES (:user,:cart_id,:quantity)");
 $sql->bindParam(":user",$userid); 
-$sql->bindParam(":cart_id",$cartid );
+$sql->bindParam(":cart_id",$data['cart_id'] );
 $sql->bindParam(":quantity", $quantity);
 $sql->execute();
  
