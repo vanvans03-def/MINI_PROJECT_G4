@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once "admin/config/db.php";
 
@@ -195,20 +196,30 @@ if (isset($_GET['logout'])) {
                             $item_array = array(
                                 'item_id' => $pd_id,
                                 'item_name' => $data['name'],
-                                'item_price' => $data['price'],
+                                'item_price' => $quantity*$data['price'],
                                 'item_quantity' =>  $quantity
 
 
                             );
+                           
                         }
-                        $_COOKIE['quantity'] = $quantity;  
-                        if($item_array==null){}else{
-                        foreach($item_array as $item_array){
-                            print $item_array."\n";
-                        }}
-                      
-                ?>
 
+                        setcookie('userOrder', json_encode($item_array), time()+3600);
+                        $userOrder = json_decode($_COOKIE['userOrder'], true);
+                       
+                        
+                        if (isset($_GET['quantity'])) {
+
+                            foreach($userOrder as $userOrder){
+                                print $userOrder."\n";
+                            }
+                          
+
+                        }
+                 
+                       
+                ?>
+<pre><?php print_r( ($_COOKIE['userOrder'] )); ?></pre>
 
                 <div class="container">
                     <div class="row">

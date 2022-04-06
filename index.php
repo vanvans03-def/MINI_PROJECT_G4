@@ -131,7 +131,7 @@
         <div class="my-container">
             <div class="my-title">
                 <h2 class="my-title-heading fw-bold">iPhone 13 Pro</h2>
-                <h3 class="my-title-sub-heading">Pro cameras. Pro display. Pro performance.</h3>
+                <h3 class="my-title-sub-heading fs-2 text-ligth" >Pro cameras. Pro display. Pro performance.</h3>
                 <p class="my-title-price">From ฿3,890/mo.</p>
             </div>
             <div class="cta">
@@ -145,7 +145,7 @@
         <div class="my-container">
             <div class="my-title my-title-dark">
                 <h2 class="my-title-heading fw-bold ">iPhone 13 </h2>
-                <h3 class="my-title-sub-heading">Just the right amount of everything.</h3>
+                <h3 class="my-title-sub-heading  fs-2">Just the right amount of everything.</h3>
                 <p class="my-title-price">From ฿2,590.00/mo</p>
             </div>
             <div class="cta">
@@ -159,7 +159,7 @@
         <div class="my-container">
             <div class="my-title my-title-dark">
                 <h2 class="my-title-heading-watch"></h2>
-                <h3 class="my-title-sub-heading">With the new always-On Retina display. <br>
+                <h3 class="my-title-sub-heading  fs-2">With the new always-On Retina display. <br>
                     You've never seen a watch like this.</h3>
                 <p class="my-title-price">From ฿2,590.00/mo</p>
             </div>

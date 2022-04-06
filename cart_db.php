@@ -16,11 +16,14 @@ if (isset($_POST['submitbag'])) {
 }
 $quan  =1 ;
 //addcart
+
+$userOrder = json_decode($_COOKIE['userOrder'], true);
+
 $sql = $conn->prepare("INSERT INTO cart_item ( `user_id`,`product_id`,`date`,`quantity`)VALUES (:user,:product_id,:dttm,:quantity)");
 $sql->bindParam(":user",$userid); 
-$sql->bindParam(":product_id",$pdid );
+$sql->bindParam(":product_id",$userOrder['item_id'] );
 $sql->bindParam(":dttm", $dttm);
-$sql->bindParam(":quantity", $quan);
+$sql->bindParam(":quantity", $userOrder['item_quantity']);
 $sql->execute();
  
 if ($sql) {
