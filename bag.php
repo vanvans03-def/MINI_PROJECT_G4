@@ -143,7 +143,7 @@ if (isset($_GET['logout'])) {
             <div class="row justify-content-md-left">
                 <h1>
                     <?php
-                    echo  $pd_id;
+                   
                     $stmt = $conn->query("SELECT * FROM product  WHERE product_id = '$pd_id' ");
                     $stmt->execute();
                     $data = $stmt->fetch();
@@ -217,7 +217,7 @@ if (isset($_GET['logout'])) {
                         
                        
                 ?>
-<pre><?php echo $_SESSION['id']; print_r( ($_COOKIE['userOrder'] )); ?></pre>
+<pre><?php  echo "userID = ".$_SESSION['id']."<br>"; print_r( ($_COOKIE['userOrder'] )); ?></pre>
 
                 <div class="container">
                     <div class="row">
@@ -513,7 +513,7 @@ if (isset($_GET['logout'])) {
                                             </div>
                                             <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
                                                 <div class="col text-end " style="padding-top: 1rem;" >
-                                                    <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">Confirm identity</button>
+                                                    <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">บันทึกสินค้าลงตระกร้า</button>
                                                 </div>
                                             <?php }  /*}*/
                                             ?>
