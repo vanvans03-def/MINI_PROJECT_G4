@@ -152,7 +152,7 @@ if (isset($_GET['logout'])) {
                         echo "<div  class='text-center fw-bold alert alert-warning fs-1'><td>กรุณาเพิ่มสินค้าลงในตระกร้า</td></div>";
                     }
                     if ($data) {
-                        if(isset ($_POST_['shoping'])){
+                       /* if(isset ($_POST_['shoping'])){
                         if (isset($_SESSION['shop_cart'])) {
                             $item_array_id = array_column($_SESSION['shop_cart'], $pd_id);
                             if (!in_array($_SESSION['order.id'], $item_array_id)) {
@@ -181,14 +181,20 @@ if (isset($_GET['logout'])) {
                             );
                             $_SESSION["shop_cart"][0] = $item_array;
                           } 
-                         }
+                         }*/
 
                     ?>
                 </h1>
 
                 <?php
 
+                        $item_array = array(
+                            'item_id' => $pd_id,
+                            'item_name' => $data['name'],
+                            'item_price' => $data['price'],
+                            'item_quantity' => $quantity
 
+                        );
                         if (isset($_GET['quantity'])) {
 
                             $k = $_GET['quantity'];
