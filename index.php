@@ -6,11 +6,7 @@
         header('location: login.php');
     }
  
-    if(isset ($_SESSION['type']) == 0  ){
-        header('location: admin');
-
-    }
-
+   
 
     if (isset($_GET['logout'])) {
         session_destroy();

@@ -208,18 +208,10 @@ if (isset($_GET['logout'])) {
                         $userOrder = json_decode($_COOKIE['userOrder'], true);
                        
                         
-                        if (isset($_GET['quantity'])) {
-
-                            foreach($userOrder as $userOrder){
-                                print $userOrder."\n";
-                            }
-                          
-
-                        }
-                 
+                        
                        
                 ?>
-<pre><?php print_r( ($_COOKIE['userOrder'] )); ?></pre>
+<pre><?php echo $_SESSION['id']; print_r( ($_COOKIE['userOrder'] )); ?></pre>
 
                 <div class="container">
                     <div class="row">
@@ -382,7 +374,7 @@ if (isset($_GET['logout'])) {
 
                         <p class="underline"></p>
 
-                        <p class="text-left fs-3 fw-bold ">
+                        <!-- <p class="text-left fs-3 fw-bold ">
 
                             <span> ดูว่าคุณจะได้รับสินค้ารายการนี้เร็วที่สุดเมื่อไหร่</span>
                         </p>
@@ -399,21 +391,21 @@ if (isset($_GET['logout'])) {
 
                         <p></p>
                         <br>
-
+ -->
 
                         <br>
                         <div class="row  text-start  ">
                             <div class="col box">
 
                                 <img src="http://127.0.0.1/Mini_Project_G4/images/icons/box.png" style="width: 3rem;">
-                                <p class="fs-5 display-6 mb-2 textcard text-muted">&nbsp;&nbsp;มีในสต๊อคพร้อมจัดส่ง</p>
+                                <p class="fs-4  mb-2 textcard text-muted" style="padding-left: 10px;">&nbsp;&nbsp;มีในสต๊อคพร้อมจัดส่ง</p>
                             </div>
                             <div class="col col-md-auto">
                                 &nbsp;
                             </div>
                             <div class="col box">
                                 <img src="http://127.0.0.1/Mini_Project_G4/images/icons/return.png" style="width: 3rem;">
-                                <p class="fs-5 display-6 mb-2 textcard text-muted">&nbsp;&nbsp;รับด้วยตัวเองที่ Apple
+                                <p class="fs-4 mb-2 textcard text-muted" style="padding-left: 10px;">&nbsp;&nbsp;รับด้วยตัวเองที่ Apple
                                     Store ใกล้คุณ</p>
                             </div>
                         </div>
@@ -432,11 +424,8 @@ if (isset($_GET['logout'])) {
             <br>
             <p class="underline"></p>
 
-            <div class="my-container ">
 
-
-
-                <div class="row">
+                <div class="row d-flex flex-row-reverse">
                     <div class="col-sm-auto">
                         <div class="card  border-0" style="width: 20rem;">
 
@@ -539,8 +528,6 @@ if (isset($_GET['logout'])) {
 
 
 
-
-            </div>
 
 
         </div>

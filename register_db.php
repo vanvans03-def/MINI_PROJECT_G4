@@ -36,14 +36,16 @@
             }
            
         }
+        $type = 0;
         if(count($errors) == 0){
-            $sql = "INSERT INTO users (email,password,name,Lname,telephone) VALUES ('$email','$password','$name','$Lname','$telephone' )";
+            $sql = "INSERT INTO users (email,password,name,Lname,telephone,type) VALUES ('$email','$password','$name','$Lname','$telephone' ,'$type')";
            
             mysqli_query($conn, $sql);
 
           
             $_SESSION['email'] = $email;
             $_SESSION['success'] = "Log In";
+            
             header('location: index.php'); 
             
         }else {

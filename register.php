@@ -76,6 +76,13 @@ include('server.php');
                 <li class="my-nav-item my-nav-item-hidden">
                     <a href="#" class="my-nav-link my-nav-link-bag"></a>
                 </li>
+                <li class="my-nav-item ">
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
+                        <?php endif ?>
+                    </li>
+
             </ul>
             <!-- /.nav-list nav-list-larger -->
         </nav>

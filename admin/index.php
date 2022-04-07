@@ -20,9 +20,12 @@
         $_SESSION['msg'] = "You must log in first";
         header('location: ../login.php');
     }
-    elseif($_SESSION['type'] == '0'){
-        header("location: ../store.php");
-        }
+
+    if($_SESSION['type'] != 1 ){
+        header("location: ../index.php");
+     }
+
+
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['email']);
@@ -87,6 +90,7 @@
                         <label class="input-group-text" for="category_id">Category_id</label>
                     </div>
                     <?php 
+                 
                     $stmt = $conn->query("SELECT * FROM product ");
                     $stmt->execute();
                     $products = $stmt->fetchAll();
@@ -198,7 +202,7 @@
                 
                     <tr>
                         <th scope="row"><?php echo $product['product_id']; ?></th>
-                        <td><?php echo $product['name']; ?></td>
+                        <td><?php    echo $_SESSION['type']; echo $product['name']; ?></td>
                         <td><?php echo $product['descrip']; ?></td>
                         <td><?php echo $product['rom']; ?></td>
                         <td><?php echo $product['quantity']; ?></td>

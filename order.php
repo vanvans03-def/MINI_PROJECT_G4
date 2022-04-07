@@ -4,7 +4,7 @@ require_once "admin/config/db.php";
 
 
 $_SESSION['order.id'];
-
+$userid = $_SESSION['id'];
 $pd_id = $_SESSION['order.id'];
 
 $quantity = 1;
@@ -117,8 +117,8 @@ if (isset($_GET['logout'])) {
 </header>
 
 <body>
-   
-<div class="container-fluid my-5"> <br> <br>
+
+    <div class="container-fluid my-5"> <br> <br>
         <div class="my-container ">
 
             <div class="row justify-content-md-left">
@@ -129,113 +129,162 @@ if (isset($_GET['logout'])) {
                             <p class="text-start fw-bold fs-2">กรอกที่อยู่เพื่อจัดส่งสินค้า</p>
                         </div>
 
-                         
+
                         <div class="underline"></div>
 
                     </div></br>
 
-<?php 
-   $userOrder = json_decode($_COOKIE['userOrder'], true);
-                       
-   foreach($userOrder as $userOrder){
-    print $userOrder."\n";
-}
+                    <?php
+                    $userOrder = json_decode($_COOKIE['userOrder'], true);
 
-$stmt = $conn->query("SELECT * FROM `order_detail` WHERE `product_id` = $id");
+                    foreach ($userOrder as $userOrder) {
+                        print $userOrder . "\n";
+                    }
+
+                    /*$stmt = $conn->query("SELECT * FROM `order_detail` WHERE `product_id` = $id");
 $stmt->execute();
-$data = $stmt->fetch();
-?>
-<pre><?php print_r( $_COOKIE["userOrder"] ); ?></pre>
+$data = $stmt->fetch();*/
+                    ?>
+                     <?php
+                        //check useraddress 
+                        $stmt = $conn->query("SELECT * FROM `users_address` WHERE `user_id` = $userid");
+                        $stmt->execute();
+                        $checkuser = $stmt->fetch();
+
+                        if ($checkuser) {
+                        ?>
+                        <form action="" method="GET" >
+                        <div class="alert alert-light text-center fw-bold display-1" >
+                                <?php
+                                echo "คุณมีข้อมูลที่อยู่แล้ว  ";
+                                ?>
+                                <div class="col " >
+                                    <button type="button"name="ConfirmAddress" value ="1"class="btn btn-primary   fw-bold fs-4 " style="width:150px;">กดปุ่มนี้เพื่อใช้ที่อยู่เดิม</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" name="EditAddress"value ="2"class="btn btn-warning  fw-bold fs-4"style="width:150px;">กดปุ่มเพื่อแก้ไขที่อยู่ใหม่</button>
+
+                                </div>
+                            </div>
+
+
+                        </form>
+                        <?php 
+                       ?>
+                        
+                           
+
+
+
+                      
+
+
+
+
+
+
+                <?php   } else {
+
+                ?>
+
+                    <pre><?php print_r($_COOKIE['userOrder']); ?></pre>
                     <div class="col" style="height: 100px;">
                         <p class="text-center  fw-bold display-6 mb-6">กรอกที่อยู่เพื่อจัดส่งสินค้า</p>
                         <p class="text-center  text-muted fs-4">Apple ID
                             คือบัญชีเดียวเท่านั้นที่คุณต้องการสำหรับการใช้บริการทุกอย่างจาก Apple</p>
-                    
+
                     </div><br>
                     <div class="containerRegister">
-                            
-                        <form action="register_db.php" method="post">
-                        <?php if (isset($_SESSION['error'])) : ?>
-                                    <div class="error" >
-                                        <h1 class="text-danger border border-danger">
-                                            <?php 
-                                                echo $_SESSION['error'];
-                                                unset($_SESSION['error']);
-                                            ?>
-                                        </h1>
-                                    </div>
-                                <?php endif ?>
 
-                                <div class="row  " style="padding-left:15px;">
-                                    <div class="col col-md-auto ">
-                                        <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Frist_name" name="Frist_name" placeholder="ชื่อ">
-                                        </div>
-                                    </div>
 
-                                    <div class="col col-md-auto">
-                                        <div class="form-group mx-sm-5 mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Last_name" name="Last_name"placeholder="นามสกุล">
-                                        </div>
-                                    </div>
+                        <?php if (isset($_SESSION['successOrder'])) { ?>
+                            <div class="alert alert-success fs-2">
+                                <?php
+                                echo $_SESSION['successOrder'];
+                                unset($_SESSION['successOrder']);
+                                //header("refresh:1; url=index.php");
 
+                                ?>
+                            </div>
+                        <?php } ?>
+                        <?php if (isset($_SESSION['error'])) { ?>
+                            <div class="alert alert-danger fs-2">
+                                <?php
+                                echo $_SESSION['error'];
+                                unset($_SESSION['error']);
+                                header("refresh:1; url=index.php");
+                                ?>
+                            </div>
+                        <?php } ?>
+                       
+                    <form action="order_db.php" method="post">
+                        <div class="col col-md-auto ">
+                            <p class="fs-3 fw-bold text-muted " style="padding-left:25px;">ประเทศ/ภูมิภาค</p>
+                        </div>
+
+
+                        <div class="col col-md-auto  " style="padding-left:25px;">
+
+
+                            <select class="form-control form-control-lg fs-4 fw-bold text-muted " name="country">
+                                <option>--เลือกประเทศ--</option>
+                                <option value="ไทย">ไทย</option>
+
+                            </select></br>
+                            <p class="fs-3 fw-bold text-muted">ที่อยู่ </p>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg fs-3" name="address1" id="address1" placeholder="กรอกที่อยู่บรรทัดที่ 1 ">
+                            </div></br>
+                            <p class="fs-3 fw-bold text-muted">ที่อยู่ที่ เพิ่มเติม </p>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg fs-3" name="address2" id="address2" placeholder="กรอกที่อยู่บรรทัดที่ 2 ">
+                            </div></br>
+
+                            <p class="fs-3 fw-bold text-muted">เมือง/รหัสไปรษณีย์</p>
+                            <div class="row  ">
+
+                                <div class="form-group col">
+                                    <input type="text" class="form-control form-control-lg fs-3" id="city" name="city" placeholder="กรุงเทพมหานคร">
                                 </div>
 
 
-                                <div class="col col-md-auto ">
-                                    <p class="fs-3 fw-bold text-muted " style="padding-left:25px;">ประเทศ/ภูมิภาค</p>
+
+                                <div class="form-group col">
+                                    <input type="text" class="form-control form-control-lg fs-3" id="postcode" name="postcode" placeholder="11000">
                                 </div>
+                            </div>
+
+                            <br>
+                            <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
+                            <div class="form-group">
+                                <input type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" placeholder="091-xxx-xxxx">
+                            </div><br>
 
 
-                                <div class="col col-md-auto  " style="padding-left:25px;">
-
-
-                                    <select class="form-control form-control-lg fs-4 fw-bold text-muted ">
-                                        <option>--เลือกประเทศ--</option>
-                                        <option>ไทย</option>
-                                    </select></br>
-                                    <div class="forom-group">
-                                        <input type="date" class="form-control form-control-lg fs-3" name="DaysOfBirth"id="DaysOfBirth"></br>
-                                    </div>
-                                    <div class="underline" style="padding-top:30px;"></div><br><br>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg fs-3" name="email" id="email" placeholder="email@example.com">
-                                    </div><br>
-                                    <div class="form-group ">
-                                        <input type="password" class="form-control form-control-lg fs-3" name="password" id="password" placeholder="รหัสผ่าน">
-                                    </div><br>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-lg fs-3" id="password2" name="password2" placeholder="ยืนยันรหัสผ่าน">
-                                    </div> <br>
-                                    <div class="form-group">
-                                        <input type="telephone" class="form-control form-control-lg fs-3" id="telephone" name="telephone" placeholder="หมายเลขโทรศัพท์">
-                                    </div> <br>
-                                    <div class="col col-md-auto">
-
-                                        <button type="submit" name="regis_user" class="btn btn-primary btn-lg btn-block "><span class="fs-3">Register</span></button>
-
-                                    </div>
-
-
-
-
-                                </div>
-                         </form>
+                            <button type="submit" name="order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
 
                         </div>
-                    </div>
-                   
+
+
+                    <?php } ?>
+
                 </div>
-
-
-
-
-
+                </form>
 
             </div>
-
-
         </div>
+
+    </div>
+
+
+
+
+
+
+    </div>
+
+
+    </div>
     </div>
     </div>
     </div>
@@ -271,7 +320,7 @@ $data = $stmt->fetch();
 
 
 
-   
+
 
 
 

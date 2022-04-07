@@ -14,7 +14,7 @@ if (isset($_POST['submitbag'])) {
 }else{
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
-$quan  =1 ;
+
 //addcart
 
 $userOrder = json_decode($_COOKIE['userOrder'], true);
@@ -25,7 +25,8 @@ $sql->bindParam(":product_id",$userOrder['item_id'] );
 $sql->bindParam(":dttm", $dttm);
 $sql->bindParam(":quantity", $userOrder['item_quantity']);
 $sql->execute();
- 
+$cartid = $conn->lastInsertId();
+$_SESSION['cartid'] = $cartid;
 if ($sql) {
     $_SESSION['success'] = "Add Product to cart successfully";
     header('location: order.php');
@@ -51,7 +52,7 @@ if ($sql) {
 <body>
     <h1>
  <?php 
- 
+
 ?>
     </h1>
 </body>
