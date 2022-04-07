@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2022 at 09:36 AM
+-- Generation Time: Apr 07, 2022 at 01:55 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -40,16 +40,30 @@ CREATE TABLE `cart_item` (
 --
 
 INSERT INTO `cart_item` (`cart_id`, `user_id`, `product_id`, `date`, `quantity`) VALUES
-(1, 8, 13, '2022-04-04 10:00:08', 1),
-(2, 8, 13, '2022-04-04 10:00:23', 1),
-(3, 8, 13, '2022-04-04 10:00:31', 1),
-(4, 8, 13, '2022-04-04 10:12:51', 1),
-(5, 8, 13, '2022-04-04 10:12:56', 1),
-(6, 8, 13, '2022-04-04 10:13:12', 1),
-(7, 8, 13, '2022-04-04 15:17:50', 1),
-(8, 8, 21, '2022-04-04 15:18:52', 1),
-(9, 8, 13, '2022-04-05 10:37:25', 1),
-(10, 8, 13, '2022-04-05 10:37:28', 1);
+(13, 8, 13, '2022-04-06 19:03:07', 1),
+(14, 8, 13, '2022-04-06 19:47:29', 1),
+(15, 8, 13, '2022-04-06 19:47:34', 1),
+(16, 8, 13, '2022-04-06 19:50:20', 1),
+(17, 8, 23, '2022-04-06 22:17:18', 1),
+(18, 8, 23, '2022-04-06 22:26:41', 1),
+(19, 8, 23, '2022-04-06 22:26:55', 1),
+(20, 8, 23, '2022-04-06 22:54:22', 1),
+(21, 8, 23, '2022-04-06 23:10:44', 1),
+(22, 8, 23, '2022-04-06 23:11:22', 1),
+(23, 8, 23, '2022-04-06 23:27:10', 2),
+(24, 8, 13, '2022-04-07 09:07:11', 2),
+(25, 8, 13, '2022-04-07 09:07:19', 2),
+(26, 8, 13, '2022-04-07 09:09:26', 2),
+(27, 8, 22, '2022-04-07 15:22:32', 2),
+(28, 8, 22, '2022-04-07 15:22:32', 2),
+(29, 8, 22, '2022-04-07 15:48:28', 7),
+(30, 8, 13, '2022-04-07 16:24:54', 1),
+(31, 8, 13, '2022-04-07 17:30:02', 2),
+(32, 17, 13, '2022-04-07 18:29:49', 1),
+(33, 17, 13, '2022-04-07 18:30:49', 1),
+(34, 8, 13, '2022-04-07 18:35:31', 4),
+(35, 8, 13, '2022-04-07 18:44:28', 3),
+(36, 18, 22, '2022-04-07 18:46:40', 1);
 
 -- --------------------------------------------------------
 
@@ -61,8 +75,16 @@ CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `total` int(100) NOT NULL
+  `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `user_id`, `payment_id`, `total`) VALUES
+(18, 8, 927123, 116700),
+(19, 18, 417008, 38900);
 
 -- --------------------------------------------------------
 
@@ -75,6 +97,31 @@ CREATE TABLE `order_item` (
   `cart_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_item`
+--
+
+INSERT INTO `order_item` (`order_id`, `cart_id`, `quantity`) VALUES
+(1, 29, 7),
+(2, 29, 7),
+(3, 30, 1),
+(4, 30, 1),
+(5, 30, 1),
+(6, 30, 1),
+(7, 30, 1),
+(8, 30, 1),
+(9, 30, 1),
+(10, 30, 1),
+(11, 30, 1),
+(12, 30, 1),
+(13, 30, 1),
+(14, 30, 1),
+(15, 33, 1),
+(16, 33, 1),
+(17, 34, 4),
+(18, 35, 3),
+(19, 36, 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +215,13 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `Lname`, `telephone`, `t
 (3, 'admin1234@email.com', '1234', 'teera', 'meow', '0989503183', 1),
 (5, 'peemai@email.com', '1234', 'peemai', 'meow', '191', 0),
 (6, 'testt@email.com', '1234', 'teera', 'jinjung', '', 0),
-(8, 'user@email.com', '1234', 'คนธรรมดา', 'ทดสอบ', '191', 0);
+(8, 'user@email.com', '1234', 'คนธรรมดา', 'ทดสอบ', '191', 0),
+(16, 'usertest888@email.com', '1234', 'tera', 'reta', '0989503183', 0),
+(17, 'testuser222@email.com', '1234', 'teera', 'hitchana', '+66989503183', 0),
+(18, 'qwer@email.com', '1234', 'bento', 'ppp', '123', 0),
+(19, 'qwer11@email.com', '1234', 'wwea', 'wwww', '1234', 0),
+(20, 'user1234@email.com', '1234', 'wwea', 'qweqweqwe', '1234', 0),
+(21, 'user11111@email.com', '1234', 'peemai', 'ppp', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -186,6 +239,14 @@ CREATE TABLE `users_address` (
   `country` varchar(100) NOT NULL,
   `telephone` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users_address`
+--
+
+INSERT INTO `users_address` (`user_id`, `id`, `address_line_1`, `address_line_2`, `city`, `Postcode`, `country`, `telephone`) VALUES
+(8, 0, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
+(18, 0, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596');
 
 -- --------------------------------------------------------
 
@@ -217,7 +278,9 @@ ALTER TABLE `cart_item`
 -- Indexes for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `payment_id` (`payment_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `order_item`
@@ -229,7 +292,8 @@ ALTER TABLE `order_item`
 -- Indexes for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  ADD PRIMARY KEY (`payment_id`);
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -270,19 +334,19 @@ ALTER TABLE `users_payment`
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
@@ -306,7 +370,7 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users_payment`
@@ -323,6 +387,19 @@ ALTER TABLE `users_payment`
 --
 ALTER TABLE `cart_item`
   ADD CONSTRAINT `cart_item_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment_details`
+--
+ALTER TABLE `payment_details`
+  ADD CONSTRAINT `payment_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `payment_details_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `order_detail` (`payment_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product`
