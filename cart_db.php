@@ -11,8 +11,9 @@ if (isset($_POST['submitbag'])) {
     $pdid =  $_SESSION['order.id'];
 
 
+    
 }else{
-    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 //addcart

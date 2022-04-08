@@ -217,7 +217,7 @@ if (isset($_GET['logout'])) {
                         
                        
                 ?>
-<pre><?php  echo "userID = ".$_SESSION['id']."<br>"; print_r( ($_COOKIE['userOrder'] )); ?></pre>
+<pre><?php // echo "userID = ".$_SESSION['id']."<br>"; print_r( ($_COOKIE['userOrder'] )); ?></pre>
 
                 <div class="container">
                     <div class="row">
@@ -225,7 +225,7 @@ if (isset($_GET['logout'])) {
                             <p class="text-center fw-bold display-3 mb-5 ">
                                 นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span class=""> <?php
                                                                                             echo "฿" . number_format($quantity*$data['price'], 2); ?></span> </p>
-                            <p class="text-center fs-2 display-3 mb-5">รับบริการจัดส่งฟรีและส่งคืนฟรีทุกคำสั่งซื้อ</p>
+                            <p class="text-center fs-2 fw-bold  text-muted display-3 mb-5">รับบริการจัดส่งฟรีและส่งคืนฟรีทุกคำสั่งซื้อ</p>
 
 
                             <div class="d-grid gap-2 col-6 mx-auto" style="width: 30rem; height: 1rem;">

@@ -275,8 +275,8 @@
                                                 <textarea type="text" style="height:100px;" required="" class="form-control" name="desc"></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="rom" class="col-form-label">Rom</label>
-                                                <input type="number" required="" class="form-control currency currSign" name="rom">
+                                                <label for="price" class="col-form-label">Rom</label>
+                                                <input type="text" required="" class="form-control currency currSign" name="rom">
                                             </div>
 
 
@@ -329,7 +329,7 @@
 
                                             <div class="mb-3">
                                                 <label for="price" class="col-form-label">Price</label>
-                                                <input type="number"  required="" class="form-control currency currSign" name="price" placeholder="฿39,000.00">
+                                                <input type="text"  required="" class="form-control currency currSign" name="price" placeholder="฿39,000.00">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="img" class="col-form-label">Image:</label>
@@ -380,31 +380,30 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">id</th>
-                                        <th scope="col">Productname</th>
-                                        <th scope="col">Desc</th>
-                                        <th scope="col">Rom</th>
-
+                                        <th scope="col">User</th>
+                                        <th scope="col">PaymentID</th>
+                                        <th scope="col">CartID</th>
+                                        <th scope="col">Product</th>
                                         <th scope="col">Quantity</th>
-                                        <th scope="col">Category_id</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Image</th>
-                                        <th></th>
+                                        <th scope="col">Total</th>
+                                      
+                                        
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php 
-                                        $stmt = $conn->query("SELECT * FROM product");
+                                        $stmt = $conn->query("SELECT * FROM order_detail");
                                         $stmt->execute();
-                                        $products = $stmt->fetchAll();
-                                        $img = ("SELECT * FROM product img");
+                                        $orders = $stmt->fetchAll();
+                                
                                     
 
 
-                                        if (!$products) {
+                                        if (!$orders) {
                                             echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                                         } else {
-                                        foreach($products as $product)  {  
+                                        foreach($orders as $order)  {  
                                     
                                         
                                     ?>
@@ -415,32 +414,21 @@
 
                 
                     <tr>
-                        <th scope="row"><?php echo $product['product_id']; ?></th>
-                        <td><?php echo $product['name']; ?></td>
-                        <td><?php echo $product['descrip']; ?></td>
-                        <td><?php echo $product['rom']; ?></td>
-                        <td><?php echo $product['quantity']; ?></td>
-                        <td><?php echo $product['category_id']; ?>
-                            <span>
-                                (<?php
-                                $idcate = $product['category_id'];
-                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id` = $idcate");
-                                $stmt->execute();
-                                $data = $stmt->fetch();
-                                echo $data['name'];
-                                ?>)
-                            </span>
-                        </td>
-
+                        <th scope="row"><?php echo $order['id']; ?></th>
+                        <td><?php echo $order['user_id']; ?></td>
+                        <td><?php echo $order['payment_id']; ?></td>
+                        <td><?php ?></td>
+                      
+                        <td></td>
                         
-                        <td class="currency"><?php echo $product['price']; ?></td>
-                        <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $product['img']; ?>" alt=""></td>
+                        <td></td>
+                        <td><?php echo "฿" . number_format($order['total'],2);?> </td>
+
                         <td>
                             <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-warning">Edit</a>
-                         </td>
-                         <td>
                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $product['product_id']; ?>" class="btn btn-danger">Delete</a>
-                            </td>
+                         </td>
+                       
                     </tr>
                     <?php }  } ?>
 

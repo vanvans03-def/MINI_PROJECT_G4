@@ -44,6 +44,22 @@ if (isset($_POST['submit'])) {
             }
         }
 }
+if (isset($_POST['addcate'])) {
+    $cateID = $_POST['cateID'];
+    $CateName = $_POST['CateName'];
+    $sql = $conn->prepare("INSERT INTO `product_category`( `category_id`,`name`) VALUES (:cateId,:name)");      
+                    $sql->bindParam(":cateId", $cateID);
+                    $sql->bindParam(":name", $CateName);
+                    $sql->execute();
 
+                    if ($sql) {
+                        $_SESSION['success'] = "Data has been inserted successfully";
+                        header("location: index.php");
+                    } else {
+                        $_SESSION['error'] = "Data has not been inserted successfully";
+                        header("location: index.php");
+                    }
+
+}
 
 ?>
