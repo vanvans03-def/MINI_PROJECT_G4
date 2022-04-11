@@ -368,11 +368,9 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h1>CRUD Dashboard </h1>
+                                    <h1>Check Order </h1>
                                 </div>
-                                <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-whatever="@mdo">Add Product</button>
-                                </div>
+                                
                             </div>
                             <hr>
                             <table class="table">

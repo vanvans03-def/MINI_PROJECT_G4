@@ -148,10 +148,10 @@
                                 
                                 
                                     <div class="modal-body">
-                                        <form action="insert.php" method="post" enctype="multipart/form-data">
+                                        <form action="edit.php" method="post" enctype="multipart/form-data">
                                              <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <label class="input-group-text" for="category_id">Category_id</label>
+                                                    <label class="input-group-text" for="category_id">Old Category_id</label>
                                                 </div>
 
 
@@ -188,7 +188,7 @@
 
 
                                             <div class="mb-3">
-                                                <label for="CateID" class="col-form-label">Category ID:</label>
+                                                <label for="CateID" class="col-form-label">New Category ID:</label>
                                                 <input type="number" required="" class="form-control" name="CateID">
                                             </div>
                                             <div class="mb-3">
@@ -294,7 +294,7 @@
 
 
                                                 <select class="custom-select col-form-label " id="category_id" name="category_id">
-                                                    <option selected="">Choose...</option>
+                                                    <option selected="" value="0">Choose...</option>
                                                 <?php 
                                                 
                                                 
@@ -329,7 +329,7 @@
 
                                             <div class="mb-3">
                                                 <label for="price" class="col-form-label">Price</label>
-                                                <input type="number"  required="" class="form-control currency currSign" name="price" placeholder="฿39,000.00">
+                                                <input type="text"  required="" class="form-control currency currSign" name="price" placeholder="฿39,000.00">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="img" class="col-form-label">Image:</label>
@@ -361,11 +361,20 @@
                 <?php 
                     echo $_SESSION['error'];
                     unset($_SESSION['error']); 
-                    header("refresh:1; url=index.php");
+               
                 ?>
             </div>
         <?php } ?>
+        
 
+        <?php if (isset($_SESSION['errorCate'])) { ?>
+            <div class="alert alert-danger">
+                <?php 
+                    echo $_SESSION['errorCate'];
+                    unset($_SESSION['errorCate']); 
+                  
+                ?> </div>
+                <?php } ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <h1>CRUD Dashboard </h1>
@@ -388,7 +397,7 @@
                                         <th scope="col">Category_id</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Image</th>
-                                        <th></th>
+                                  
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -433,12 +442,11 @@
                         </td>
 
                         
-                        <td class="currency"><?php echo $product['price']; ?></td>
+                        <td class=""><?php echo "฿" . number_format( $product['price'], 2,'.',); ?></td>
                         <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $product['img']; ?>" alt=""></td>
                         <td>
                             <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-warning">Edit</a>
-                         </td>
-                         <td>
+                        
                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $product['product_id']; ?>" class="btn btn-danger">Delete</a>
                             </td>
                     </tr>

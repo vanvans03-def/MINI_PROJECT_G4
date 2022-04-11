@@ -159,13 +159,85 @@ $data = $stmt->fetch();*/
                                 echo "คุณมีข้อมูลที่อยู่แล้ว  ";
                                 ?>
                                 <div class="col " >
-                                    <button type="button"name="ConfirmAddress" value ="1"class="btn btn-primary   fw-bold fs-4 " style="width:150px;">กดปุ่มนี้เพื่อใช้ที่อยู่เดิม</button>
+                                    <button type="button"name="ConfirmAddress" value ="1"data-bs-toggle="modal"  data-bs-target="#ConfirmAddress" data-bs-whatever="@mdo" class="btn btn-primary   fw-bold fs-4 " style="width:150px;">กดปุ่มนี้เพื่อใช้ที่อยู่เดิม</button>
                                 </div>
+                                
                                 <div class="col">
-                                    <button type="button" name="EditAddress"value ="2"class="btn btn-warning  fw-bold fs-4"style="width:150px;">กดปุ่มเพื่อแก้ไขที่อยู่ใหม่</button>
+                                    <button type="button" name="EditAddress"  data-bs-toggle="modal"  data-bs-target="#EditAddress" data-bs-whatever="@mdo" class="btn btn-warning  fw-bold fs-4"style="width:150px;">กดปุ่มเพื่อแก้ไขที่อยู่ใหม่</button>
 
                                 </div>
                             </div>
+
+
+                            <div class="container-md-auto">
+                            <div class="modal fade" id="EditAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form action="insert.php" method="post" enctype="multipart/form-data">
+                                            <div class="mb-3">
+                                                <label for="productname" class="col-form-label">Product Name:</label>
+                                                <input type="text" required="" class="form-control" name="productname">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="desc" class="col-form-label">Desc</label>
+                                                <textarea type="text" style="height:100px;" required="" class="form-control" name="desc"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="rom" class="col-form-label">Rom</label>
+                                                <input type="number" required="" class="form-control currency currSign" name="rom">
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label for="quantity" class="col-form-label">Quantity:</label>
+                                                <input type="number" required="" class="form-control" name="quantity">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="category_id">Category_id</label>
+                                                </div>
+
+
+
+
+                                             
+                                            </div>
+
+
+
+
+
+
+                                            <div class="mb-3">
+                                                <label for="price" class="col-form-label">Price</label>
+                                                <input type="text"  required="" class="form-control currency currSign" name="price" placeholder="฿39,000.00">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="img" class="col-form-label">Image:</label>
+                                                <input type="file" required="" class="form-control" id="imgInput" name="img">
+                                                <img loading="lazy" width="100%" id="previewImg" alt="">
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>l
+
+
 
 
                         </form>

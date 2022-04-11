@@ -3,6 +3,30 @@
     session_start();
 
     require_once "config/db.php";
+    if (isset($_POST['editeCate'])) {
+
+
+        $oldCate_id = $_POST['category_id'];
+        $cateID = $_POST['CateID'];
+        $cateName= $_POST['CateName'];
+
+        $sql = $conn->prepare("UPDATE 'product_category' SET 'category_id' = :category_id, 'name' = :name, WHERE 'category_id' = :OldCategory_id ");
+        $sql->bindParam(":OldCategory_id", $oldCate_id);
+        $sql->bindParam(":category_id", $cateID);
+        $sql->bindParam(":name", $cateName);
+        $sql->execute();
+
+        if ($sql) {
+            $_SESSION['success'] = "Data has been updated successfully";
+            header("location: index.php");
+        } else {
+            $_SESSION['error'] = "Data has not been updated successfully";
+            header("location: index.php");
+        }
+
+
+    }
+
 
     if (isset($_POST['update'])) {
         $product_id = $_POST['product_id'];
@@ -111,13 +135,44 @@
                
 
 
-                <div class="mb-3">
-                    <label for="category_id" class="col-form-label">category_id:</label>
-                    <input readonly type="number" value="<?php echo $data['category_id']; ?>" required class="form-control" name="category_id">
+                <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="category_id">Category_id</label>
+                                                </div>
+
+                                                    <select class="custom-select col-form-label " id="category_id" name="category_id">
+                                                    <option selected="">Choose...</option>
+                                                <?php 
+                                                
+                                                
+                                              
+                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
+                                                $stmt->execute();
+                                                $catedatas = $stmt->fetchAll();
+                                                
+                                                if (!$catedatas) {
+                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                                }else{
+
+                                                foreach($catedatas as $catedata){
+                                                 
+                                            
+                                                
+                                                
+                                                ?>
+                                              
+                                                    <option value="<?php   echo $catedata['category_id']; ?>">
+                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
+                                                 
+                                              
+                                                <?php   }}?>
+                                                </select>
+
                 </div>
+               
                 <div class="mb-3">
                     <label for="price" class="col-form-label">price:</label>
-                    <input type="number" value="<?php echo $data['price']; ?>" required class="form-control" name="price">
+                    <input type="text" value="<?php echo  number_format( $data['price'], 2,'.',);?>" required class="form-control" name="price">
                 </div>
                 <div class="mb-3">
                     <label for="img" class="col-form-label">Image:</label>

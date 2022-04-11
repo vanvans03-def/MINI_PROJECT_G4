@@ -2,7 +2,10 @@
 
 session_start();
 require_once "config/db.php";
-
+if (isset($_SESSION['email'])) {
+    $_SESSION['error'] = "มีบ้างอย่างผิดพลาด";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 if (isset($_POST['submit'])) {
     $productname = $_POST['productname'];
     $desc = $_POST['desc'];
@@ -47,19 +50,20 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['addcate'])) {
     $cateID = $_POST['cateID'];
     $CateName = $_POST['CateName'];
+
     $sql = $conn->prepare("INSERT INTO `product_category`( `category_id`,`name`) VALUES (:cateId,:name)");      
                     $sql->bindParam(":cateId", $cateID);
                     $sql->bindParam(":name", $CateName);
                     $sql->execute();
-
                     if ($sql) {
                         $_SESSION['success'] = "Data has been inserted successfully";
-                        header("location: index.php");
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
                     } else {
                         $_SESSION['error'] = "Data has not been inserted successfully";
-                        header("location: index.php");
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
+                }
 
-}
+
 
 ?>
