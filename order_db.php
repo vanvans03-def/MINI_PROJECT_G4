@@ -7,6 +7,10 @@ $userid = $_SESSION["id"];
 $cartid = $_SESSION['cartid'];
 $userOrder = $_COOKIE['userOrder'];
 $userOrder = json_decode($_COOKIE['userOrder'], true);
+
+
+
+
 if (isset($_POST['order_db'])) {
     $address1 = $_POST['address1'];
     $address2 = $_POST['address2'];
@@ -77,5 +81,6 @@ if($checkpay){
 
     }
 }
+
 
 ?>
