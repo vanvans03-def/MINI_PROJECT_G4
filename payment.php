@@ -40,6 +40,8 @@ if (isset($_GET['logout'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1/Mini_Project_G4/font.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
@@ -125,7 +127,9 @@ if (isset($_GET['logout'])) {
         <div class="my-container ">
 
             <div class="row justify-content-md-left">
-
+            <pre><?php print_r($_COOKIE['userOrder']);
+            $userOrder = json_decode($_COOKIE['userOrder'], true);
+             ?></pre>
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -141,18 +145,60 @@ if (isset($_GET['logout'])) {
 
 
                     <?php 
-                    $stmt = $conn->query("SELECT * FROM `order_detail` WHERE `user_id` = $userid");
+                    $cartid = $_SESSION['cartid'];
+                     echo $_SESSION['orderid'];
+                     $orderid = $_SESSION['orderid'];
+                    $stmt = $conn->query("SELECT * FROM `order_detail` WHERE `user_id` = $userid AND `id` = $orderid ");
                     $stmt->execute();
                     $data = $stmt->fetch();
 
                     if ($data) {
+                        
                     ?>
+
+          
+
+
+
+
+
+
                     <div class="col" style="height: 100px;">
-                        <p class="text-center  text-muted fw-bold display-6 mb-6"> รายการออเดอร์ที่ต้องชำระ</p>
-                        <p class="text-center  fw-bold display-2 mb-2"> รหัสชำระเงินคือ : </p>
-                    </div><br>
+                    
+                    <div class="row d-flex justify-content-center">
+                        <div class="col col-md-auto">
+                        <p class=" text-muted fw-bold display-6 mb-6"> รายการออเดอร์ที่ต้องชำระ</p>
+                        </div>
+                        <div class="col col-md-auto">
+                            <!-- Button trigger modal -->
+                      <!--      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                            ดูรายการสินค้า
+                            </button>-->
+                        </div>
+                      
+                    </div>
+             
+                  
+
+                    <p class=" text-center  fw-bold fs-3">  <?php 
+                     echo $userOrder['item_name']." "."ราคา"." ".number_format($userOrder['item_price'],2) ;
+                          
+                          ?>
+                          </p>
+             
+                    <p class="text-center  fw-bold display-2 mb-2"> รหัสชำระเงินคือ : <span class="text-danger"><?php echo $data['payment_id'];?></span></p>
+                    </div><br><br>
                     <div class="containerRegister">
+                            <?php 
                             
+                        $stmt = $conn->query("SELECT * FROM `users` WHERE `id` = $userid  ");
+                        $stmt->execute();
+                        $dataUser = $stmt->fetch();
+
+                        if ($dataUser) {
+                        
+                            
+                            ?>
                     <form action="order_db.php" method="post">
                         
 
@@ -161,56 +207,63 @@ if (isset($_GET['logout'])) {
                                     <div class="row  ">
 
                                         <div class="form-group col">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="name" name="name" >
+                                            <input type="text"readonly  class="form-control form-control-lg fs-3"  value="<?php echo $dataUser['name'] ?>"id="name" name="name" >
                                         </div>
 
 
 
                                         <div class="form-group col">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Lname" name="Lname" >
+                                            <input type="text"readonly  class="form-control form-control-lg fs-3" value="<?php echo $dataUser['Lname'] ?>"id="Lname" name="Lname" >
                                         </div>
                                     </div>
                
-
+                                    </br>
+                                    <?php
+                                        $stmt = $conn->query("SELECT * FROM `users_address` WHERE `user_id` = $userid  ");
+                                        $stmt->execute();
+                                        $User = $stmt->fetch();
+                
+                                        if ($User) {
+                                    
+                                    ?>
                                 <div class="col col-md-auto ">
                                     <p class="fs-3 fw-bold text-muted " >ประเทศ/ภูมิภาค</p>
                                 </div>
 
+                                <div class="form-group col">
+                                            <input type="text"readonly  class="form-control form-control-lg fs-3" value="<?php echo $User['country'] ?>" >
+                                        </div>
 
 
-
-                                    <select class="form-control form-control-lg fs-4 fw-bold text-muted " name="country">
-                                        <option>--เลือกประเทศ--</option>
-                                        <option value="ไทย">ไทย</option>
-
-                                    </select></br>
+                                   
+                                </br>
                                     <p class="fs-3 fw-bold text-muted">ที่อยู่ </p>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg fs-3" name="address1" id="address1" placeholder="กรอกที่อยู่บรรทัดที่ 1 ">
+                                        <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $User['address_line_1'] ?>" name="address1" id="address1" >
                                     </div></br>
                                     <p class="fs-3 fw-bold text-muted">ที่อยู่ที่ เพิ่มเติม </p>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg fs-3" name="address2" id="address2" placeholder="กรอกที่อยู่บรรทัดที่ 2 ">
+                                        <input readonly  type="text" class="form-control form-control-lg fs-3" name="address2" id="address2" value="<?php echo $User['address_line_2'] ?> ">
                                     </div></br>
 
                                     <p class="fs-3 fw-bold text-muted">เมือง/รหัสไปรษณีย์</p>
                                     <div class="row  ">
 
                                         <div class="form-group col">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="city" name="city" placeholder="กรุงเทพมหานคร">
+                                            <input  readonly  type="text" class="form-control form-control-lg fs-3" id="city" name="city" value="<?php echo $User['city'] ?>" >
                                         </div>
 
 
 
                                         <div class="form-group col">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="postcode" name="postcode" placeholder="11000">
+                                            <input readonly type="text" class="form-control form-control-lg fs-3" id="postcode" name="postcode" value="<?php echo $User['Postcode'] ?>">
                                         </div>
                                     </div>
 
                                     <br>
                                     <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
                                     <div class="form-group">
-                                        <input type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" placeholder="091-xxx-xxxx">
+                                        <input readonly type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" value="<?php echo $User['telephone'] ?>">
                                     </div><br>
 
 
@@ -229,7 +282,7 @@ if (isset($_GET['logout'])) {
                 </div>
 
 
-<?php }?>
+<?php }}}?>
 
 
 

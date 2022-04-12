@@ -29,36 +29,7 @@ if (isset($_GET['logout'])) {
 
 
 
-if (isset($_POST['update_order_db'])) {
 
-
-    $address1 = $_POST['address1'];
-    $address2 = $_POST['address2'];
-    $city = $_POST['city'];
-    $postcode = $_POST['postcode'];
-    $country = $_POST['country'];
-    $telephone = $_POST['telephone'];
-
-    $sql = $conn->prepare("UPDATE `users_address` SET `address_line_1` = :address1, `address_line_2` = :address2,`city` = :city , `Postcode` = :postcode,`country` = :country ,`telephone`=:telephone WHERE `user_id` = :id ");
-    $sql->bindParam(":id", $userid);
-    $sql->bindParam(":address1", $address1);
-    $sql->bindParam(":address2", $address2);
-    $sql->bindParam(":city", $city);
-    $sql->bindParam(":postcode", $postcode);
-    $sql->bindParam(":country", $country);
-    $sql->bindParam(":telephone", $telephone);
-    $sql->execute();
-
-    if ($sql) {
-        $_SESSION['success'] = "Data has been updated successfully";
-        header('location: payment.php');
-    } else {
-        $_SESSION['error'] = "Data has not been updated successfully";
-         header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-
-
-}
 ?>
 
 <!doctype html>
@@ -222,7 +193,7 @@ $data = $stmt->fetch();*/
 
 
 
-                        <form action="" method="post">
+                        <form action="order_db.php" method="post">
                                 <div class="col col-md-auto ">
                                     <p class="fs-3 fw-bold text-muted " style="padding-left:25px;">ประเทศ/ภูมิภาค</p>
                                 </div>
@@ -377,11 +348,10 @@ $data = $stmt->fetch();*/
                                 </div>
 
 
-                            <?php } ?>
-
-                        </div>
+                                <?php } ?>
+                              
+                       
                         </form>
-
                 </div>
             </div>
 
