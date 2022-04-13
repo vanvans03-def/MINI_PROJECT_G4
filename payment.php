@@ -186,7 +186,7 @@ if (isset($_GET['logout'])) {
                           ?>
                           </p>
              
-                    <p class="text-center  fw-bold display-2 mb-2"> รหัสชำระเงินคือ : <span class="text-danger"><?php echo $data['payment_id'];?></span></p>
+                    <p class="text-center  fw-bold display-2 mb-2"> รหัสชำระเงินคือ : <span class="  text-white bg-danger mb-3 "><?php echo $data['payment_id'];?></span></p>
                     </div><br><br>
                     <div class="containerRegister">
                             <?php 
@@ -264,10 +264,54 @@ if (isset($_GET['logout'])) {
                                     <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
                                     <div class="form-group">
                                         <input readonly type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" value="<?php echo $User['telephone'] ?>">
-                                    </div><br>
+                                        
+                            <div class="row d-flex justify-content-center" style="padding-top: 30px;" >
 
+                            <p class="fs-3 fw-bold text-muted">เลือกธนาคารที่จะชำระ : </p>
 
-                                    <button type="submit" name="order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
+                                          
+                                <div class="col col-md-auto">
+                                    <input type="radio" class="btn-check" id="bkk"  autocomplete="off" name="bank" value="bkk">
+                                        <label class="btn btn-outline-secondary border border-2 rounded-3" for="bkk" >
+                                            <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/bkk.png" alt="" style="width: 7rem;">
+                                        </label>
+                                </div>
+                                
+                                <div class="col col-md-auto">
+                                    <input type="radio" class="btn-check" id="scb"  autocomplete="off" name="bank" value="scb">
+                                        <label class="btn btn-outline-secondary border border-2 rounded-3" for="scb" >
+                                            <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/scb.png" alt="" style="width: 7rem;" >
+                                        </label>
+                                </div>
+                                
+                                <div class="col col-md-auto">
+                                    <input type="radio" class="btn-check" id="kasikorn"  autocomplete="off" name="bank" value="kasikorn">
+                                        <label class="btn btn-outline-secondary border border-2 rounded-3" for="kasikorn" >
+                                            <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/kasikorn.png" alt="" style="width: 7rem;">
+                                        </label>
+                                </div>
+                                
+                                <div class="col col-md-auto">
+                                    <input type="radio" class="btn-check" id="aomsin"  autocomplete="off" name="bank" value="aomsin">
+                                        <label class="btn btn-outline-secondary border border-2 rounded-3" for="aomsin"  >
+                                            <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/aomsin.png" alt="" style="width: 7rem;" ">
+                                        </label>
+                                  </div>
+
+                                  <div class="col col-md-auto">
+                                    <input type="radio" class="btn-check" id="prompay"  autocomplete="off" name="bank" value="prompay">
+                                        <label class="btn btn-outline-secondary border border-2 rounded-3" for="prompay" style="height: 61px;" >
+                                            <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/prompay.png" alt="" style="width: 7rem;">
+                                        </label>
+                                </div>
+                                <div class="mb-3 fs-3 fw-bold text-muted0.
+                                 style="padding-top: 10px;">                                                <label for="img" class="col-form-label ">อัพโหลดสลิปธนาคาร :</label>
+                                                <input type="file" required="" class="form-control" id="imgInput" name="img">
+                                                <img loading="lazy" width="100%" id="previewImg" alt="">
+                                            </div>
+                                 </div>
+                                      <br style="padding-top: 20px;">              
+                                    <button type="submit" name="order_db" class="btn btn-primary btn-lg btn-block " ><span class="fs-3">ยืนยันการชำระเงิน</span></button>
 
                                 </div>
 

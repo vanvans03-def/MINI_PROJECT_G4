@@ -137,7 +137,16 @@ if (isset($_GET['logout'])) {
                         <div class="underline"></div>
 
                     </div></br>
-                    <pre><?php print_r($_COOKIE['userOrder']); ?></pre>
+
+
+                        <pre>
+                            <?php 
+                            print_r($_COOKIE['userOrder']); 
+                          
+                            ?>
+                        </pre>
+
+
                     <?php
                     $userOrder = json_decode($_COOKIE['userOrder'], true);
 
@@ -175,6 +184,74 @@ $data = $stmt->fetch();*/
 
                           
                         </form>
+                        <?php
+                        
+                        if(isset($_POST['ConfirmAddress'])){
+      
+                           
+                        ?>
+            <div class="col" style="height: 100px;">
+                            <p class="text-center  fw-bold display-6 mb-6">ยืนยันที่อยู่เดิมเพื่อจัดส่งสินค้า</p>
+                            <p class="text-center  text-muted fs-4">Apple ID
+                                คือบัญชีเดียวเท่านั้นที่คุณต้องการสำหรับการใช้บริการทุกอย่างจาก Apple</p>
+
+                        </div><br>
+                        <div class="containerRegister">
+
+
+
+                        <form action="order_db.php" method="post">
+                                <div class="col col-md-auto ">
+                                    <p class="fs-3 fw-bold text-muted " style="padding-left:25px;">ประเทศ/ภูมิภาค</p>
+                                </div>
+
+
+                                <div class="col col-md-auto  " style="padding-left:25px;">
+
+                                <div class="form-group">
+                                        <input readonly type="text" readonly class="form-control form-control-lg fs-3"  name="country"  value="<?php echo $data['country']; ?>">
+                                    </div></br>
+                                    <p class="fs-3 fw-bold text-muted">ที่อยู่ </p>
+                                    <div class="form-group">
+                                        <input type="text" readonly class="form-control form-control-lg fs-3" name="address1" id="address1"  value="<?php echo $data['address_line_1']; ?>"placeholder="กรอกที่อยู่บรรทัดที่ 1 ">
+                                    </div></br>
+                                    <p class="fs-3 fw-bold text-muted">ที่อยู่ที่ เพิ่มเติม </p>
+                                    <div class="form-group">
+                                        <input type="text"  readonly class="form-control form-control-lg fs-3" name="address2" id="address2"  value="<?php echo $data['address_line_2']; ?>"placeholder="กรอกที่อยู่บรรทัดที่ 2 ">
+                                    </div></br>
+
+                                    <p class="fs-3 fw-bold text-muted">เมือง/รหัสไปรษณีย์</p>
+                                    <div class="row  ">
+
+                                        <div class="form-group col">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" id="city" name="city" value="<?php echo $data['city']; ?>" placeholder="กรุงเทพมหานคร">
+                                        </div>
+
+
+
+                                        <div class="form-group col">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" id="postcode" name="postcode" value="<?php echo $data['Postcode']; ?> "placeholder="11000">
+                                        </div>
+                                    </div>
+
+                                
+                                    <br>
+                                    <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
+                                    <div class="form-group">
+                                        <input type="tel"  readonly class="form-control form-control-lg fs-3" name="telephone" id="telephone"  value="<?php echo $data['telephone']; ?>"placeholder="091-xxx-xxxx">
+                                    </div><br>
+
+
+                                    <button type="submit" name="olduser_order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
+
+                                </div>
+                        </div>
+                        </form>
+
+
+
+<?php } ?>
+                        
                     
                         <?php
                         
@@ -203,7 +280,7 @@ $data = $stmt->fetch();*/
 
 
                                     <select class="form-control form-control-lg fs-4 fw-bold text-muted " name="country">
-                                        <option style="background-color:#DCDCDC;"value="<?php echo $data['country']; ?>" ><?php echo $data['country']; ?></option>
+                                        <option  style="background-color:#DCDCDC;"value="<?php echo $data['country']; ?>" ><?php echo $data['country']; ?></option>
                                         <option >เลือกที่อยู่</option>
                                         <option value="ไทย">ไทย</option>
                                        
@@ -238,7 +315,7 @@ $data = $stmt->fetch();*/
                                     </div><br>
 
 
-                                    <button type="submit" name="update_order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
+                                    <button type="submit" name="con_order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
 
                                 </div>
                         </div>

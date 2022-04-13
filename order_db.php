@@ -5,14 +5,57 @@ require_once "admin/config/db.php";
 $userid = $_SESSION["id"];
 //get cart id 
 $cartid = $_SESSION['cartid'];
+
 $userOrder = $_COOKIE['userOrder'];
 $userOrder = json_decode($_COOKIE['userOrder'], true);
+
 if (isset($_SESSION['email'])) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+if (isset($_POST['olduser_order_db'])){
+    //order item
+$sql = $conn->prepare("INSERT INTO order_item ( `cart_id`,`quantity`)VALUES (:cart_id,:quantity)");
 
-if (isset($_POST['update_order_db'])) {
+$sql->bindParam(":cart_id",$cartid );
+$sql->bindParam(":quantity", $userOrder['item_quantity']);
+$sql->execute();
+$orderid = $conn->lastInsertId();
+$_SESSION['orderid'] = $orderid ;
+
+$payment_id = rand(100000,999999);
+//check payment
+$stmt = $conn->query("SELECT * FROM order_detail WHERE 'payment_id' = '$payment_id' ");
+$stmt->execute();
+$checkpay = $stmt->fetch();
+if($checkpay){
+    if($checkpay['paymeny_id'] == $payment_id){
+        $payment_id = rand(100000,999999);
+    }
+}else{
+    //order detail
+        $sql = $conn->prepare("INSERT INTO order_detail (`id`, `user_id`,`payment_id`,`total`)VALUES (:id,:user,:payment_id,:total)");
+        $sql->bindParam(":id",$orderid);
+        $sql->bindParam(":user",$userid); 
+        $sql->bindParam(":payment_id",$payment_id );
+        $sql->bindParam(":total", $userOrder['item_price']);
+        $sql->execute();
+        
+   
+        if ($sql) {
+                $_SESSION['successOrder'] = "Recrod address successfully";
+                header('location: payment.php');
+            
+            } else {
+                $_SESSION['error'] = "บันทึกที่อยู่ไม่สำเร็จ";
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+            }
+
+     }
+
+}
+if (isset($_POST['con_order_db'])) {
 
 
     $address1 = $_POST['address1'];
