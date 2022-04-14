@@ -189,9 +189,9 @@ if (isset($_GET['logout'])) {
                 <?php
 
                         $item_array = array(
-                            'item_id' => $pd_id,
-                            'item_name' => $data['name'],
-                            'item_price' => $data['price'],
+                           'item_id' => $pd_id,
+                           'item_name' => $data['name'],
+                           'item_price' => $data['price'],
                             'item_quantity' => $quantity
 
                         );
@@ -202,7 +202,7 @@ if (isset($_GET['logout'])) {
                             $item_array = array(
                                 'item_id' => $pd_id,
                                 'item_name' => $data['name'],
-                                'item_price' => $quantity*$data['price'],
+                                 'item_price' => $quantity*$data['price'],
                                 'item_quantity' =>  $quantity
 
 
@@ -217,7 +217,7 @@ if (isset($_GET['logout'])) {
                         
                        
                 ?>
-<pre><?php // echo "userID = ".$_SESSION['id']."<br>"; print_r( ($_COOKIE['userOrder'] )); ?></pre>
+<pre><?php  print_r( ($_COOKIE['userOrder'] )); ?></pre>
 
                 <div class="container">
                     <div class="row">

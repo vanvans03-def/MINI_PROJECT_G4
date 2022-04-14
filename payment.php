@@ -147,6 +147,25 @@ if (isset($_GET['logout'])) {
 
                     </div></br>
 
+                    <?php if (isset($_SESSION['success'])) { ?>
+            <div class="alert alert-success fs-2">
+                <?php 
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']); 
+                 
+               
+                ?>
+            </div>
+        <?php } ?>
+            <?php if (isset($_SESSION['errorpay'])) { ?>
+            <div class="alert alert-danger fw-bold fs-3">
+                <?php 
+                    echo $_SESSION['errorpay'];
+                    unset($_SESSION['errorpay']); 
+                 
+                ?>
+            </div>
+        <?php } ?>
 
                     <?php
                     $cartid = $_SESSION['cartid'];
@@ -216,12 +235,13 @@ if (isset($_GET['logout'])) {
                                 $dataUser = $stmt->fetch();
 
                                 if ($dataUser) {
+                                    $_SESSION['payment_id'] = $data['payment_id'];
                                 }
                             ?>
 
 
                                 <p class="text-center  fw-bold display-4 mb-4"> รหัสชำระเงินคือ : <span class="  text-danger "><?php echo $data['payment_id']; ?></span></p>
-                                <form action="order_db.php" method="post">
+                               
 
 
                                     <div class="col col-md-auto  " style="padding-left:25px;">
@@ -286,6 +306,8 @@ if (isset($_GET['logout'])) {
                                             <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
                                             <div class="form-group">
                                                 <input readonly type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" value="<?php echo $User['telephone'] ?>">
+                                              
+                                                <form action="payment_db.php" method="post" enctype="multipart/form-data">
 
                                                 <div class="row d-flex justify-content-center" style="padding-top: 30px;">
 
@@ -318,22 +340,25 @@ if (isset($_GET['logout'])) {
                                                         <label class="btn btn-outline-secondary border border-2 rounded-3" for="aomsin">
                                                             <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/aomsin.png" alt="" style="width: 7rem;" ">
                                         </label>
-                                  </div>
+                                            </div>
 
-                                  <div class=" col col-md-auto">
+                                                <div class=" col col-md-auto">
                                                             <input type="radio" class="btn-check" id="prompay" autocomplete="off" name="bank" value="prompay">
                                                             <label class="btn btn-outline-secondary border border-2 rounded-3" for="prompay" style="height: 61px;">
                                                                 <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/prompay.png" alt="" style="width: 7rem;">
                                                             </label>
                                                     </div>
-                                                    <div class="mb-3 fs-3 fw-bold text-muted0.
-                                 style=" padding-top: 10px;"> <label for="img" class="col-form-label ">อัพโหลดสลิปธนาคาร :</label>
+                                                    
+                                                </div>
+
+                                                <div class="mb-3 fs-3 fw-bold text-muted style=" padding-top: 10px;">
+                                                   <label for="img" class="col-form-label ">อัพโหลดสลิปธนาคาร :</label>
                                                         <input type="file" required="" class="form-control" id="imgInput" name="img">
                                                         <img loading="lazy" width="100%" id="previewImg" alt="">
+                                                        
                                                     </div>
-                                                </div>
                                                 <br style="padding-top: 20px;">
-                                                <button type="submit" name="order_db" class="btn btn-primary btn-lg btn-block "><span class="fs-3">ยืนยันการชำระเงิน</span></button>
+                                                <button type="submit" name="payment" class="btn btn-primary btn-lg btn-block "><span class="fs-3">ยืนยันการชำระเงิน</span></button>
 
                                             </div>
 
@@ -393,7 +418,17 @@ if (isset($_GET['logout'])) {
 
 
 
+ <script>
+                            let imgInput = document.getElementById('imgInput');
+                            let previewImg = document.getElementById('previewImg');
 
+                            imgInput.onchange = evt => {
+                                const [file] = imgInput.files;
+                                if (file) {
+                                    previewImg.src = URL.createObjectURL(file)
+                                }
+                            }
+                        </script>
 
 
 

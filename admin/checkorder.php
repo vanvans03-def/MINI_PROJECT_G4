@@ -26,11 +26,6 @@
      }
 
 
-    if (isset($_GET['logout'])) {
-        session_destroy();
-        unset($_SESSION['email']);
-        header('location: ../login.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -361,7 +356,7 @@
                 <?php 
                     echo $_SESSION['error'];
                     unset($_SESSION['error']); 
-                    header("refresh:1; url=index.php");
+                    
                 ?>
             </div>
         <?php } ?>
@@ -391,7 +386,7 @@
                                 </thead>
                                 <tbody>
                                   <?php 
-                                        $stmt = $conn->query("SELECT * FROM order_detail");
+                                        $stmt = $conn->query("SELECT * FROM order_detail  ORDER BY id DESC");
                                         $stmt->execute();
                                         $orders = $stmt->fetchAll();
                                 

@@ -16,6 +16,10 @@
         }
         
     }
+
+  
+    
+    
     if (!isset($_SESSION['email'])) {
         $_SESSION['msg'] = "You must log in first";
         header('location: ../login.php');
@@ -150,10 +154,10 @@
                                     <div class="modal-body">
                                         <form action="edit.php" method="post" enctype="multipart/form-data">
                                              <div class="input-group mb-3">
+                                               
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text" for="category_id">Old Category_id</label>
                                                 </div>
-
 
 
 
@@ -198,11 +202,11 @@
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
-                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php  ?>" class="btn btn-danger">Delete</a>
-                                          
-                                                
+                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?deletecate=category_id" class="btn btn-danger">Delete</a>
+
+                                            
                                             </div>
-                                        </form>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -358,15 +362,7 @@
                 ?>
             </div>
         <?php } ?>
-        <?php if (isset($_SESSION['error'])) { ?>
-            <div class="alert alert-danger">
-                <?php 
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']); 
-               
-                ?>
-            </div>
-        <?php } ?>
+       
         
 
         <?php if (isset($_SESSION['errorCate'])) { ?>

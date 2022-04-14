@@ -11,15 +11,17 @@ require_once "admin/config/db.php";
   echo '</pre>';*/
   $name = '';
      
-  
+  $color = array("สีเขียวอัลไพน์","สีเชียร์ร่าบลู","สีมิดไนท์","สีทอง","สีขาว","สีชมพู","น้ำเงิน","สตาร์ไลท์","(PRODUCT)RED");
+  for($i = 0 ; $i <= count($color)-1; $i++){
+      echo $color[$i]." " .$i. "<br>";
+  }
   $cart = array('');
 
     if (isset($_POST['shoping'])) {
    $name = $_POST["porduct_name"];
     $descirp = $_POST["color"];
     $rom = $_POST["rom"];
-    $color = array("สีเขียวอัลไพน์","สีเชียร์ร่าบลู","สีมิดไนท์","สีทอง","สีขาว");
-
+    
    
 
     }

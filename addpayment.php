@@ -159,19 +159,19 @@ if (isset($_GET['logout'])) {
 
                             <div class="col col-md-auto  " style="padding-left:25px;">
 
-                                <div class="form-group">
+                                <div class="form-group " >
 
                                     <div class="form-check">
 
-                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1" checked>
-                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault1" value="Debit">
+                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1"value="Debit" checked>
+                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault1" >
                                             บัตรเดบิต
                                         </label>
 
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault2">
-                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault2"value="Credit">
+                                        <input class="form-check-input" type="radio"  name="type" id="flexRadioDefault2" value="Credit">
+                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault2">
                                             บัตรเครดิต
                                         </label>
                                     </div>
