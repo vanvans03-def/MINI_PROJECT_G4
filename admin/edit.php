@@ -10,7 +10,7 @@
         $cateID = $_POST['CateID'];
         $cateName= $_POST['CateName'];
 
-        $sql = $conn->prepare("UPDATE 'product_category' SET 'category_id' = :category_id, 'name' = :name, WHERE 'category_id' = :OldCategory_id ");
+        $sql = $conn->prepare("UPDATE `product_category` SET `category_id` = :category_id, `name` = :name WHERE `category_id` = :OldCategory_id ");
         $sql->bindParam(":OldCategory_id", $oldCate_id);
         $sql->bindParam(":category_id", $cateID);
         $sql->bindParam(":name", $cateName);
@@ -26,6 +26,7 @@
 
 
     }
+  
 
 
     if (isset($_POST['update'])) {
@@ -64,7 +65,6 @@
         $sql->bindParam(":name", $name);
         $sql->bindParam(":descrip", $descrip);
         $sql->bindParam(":rom", $rom);
-     
         $sql->bindParam(":quantity", $quantity);
         $sql->bindParam(":category_id", $category_id);
         $sql->bindParam(":price", $price);
@@ -140,8 +140,8 @@
                                                     <label class="input-group-text" for="category_id">Category_id</label>
                                                 </div>
 
-                                                    <select class="custom-select col-form-label " id="category_id" name="category_id">
-                                                    <option selected="">Choose...</option>
+                                                    <select class="custom-select col-form-label " id="category_id" name="category_id" required>
+                                                  
                                                 <?php 
                                                 
                                                 
@@ -172,7 +172,7 @@
                
                 <div class="mb-3">
                     <label for="price" class="col-form-label">price:</label>
-                    <input type="text" value="<?php echo  number_format( $data['price'], 2,'.',);?>" required class="form-control" name="price">
+                    <input type="text" value="<?php echo  $data['price'];?>" required class="form-control" name="price">
                 </div>
                 <div class="mb-3">
                     <label for="img" class="col-form-label">Image:</label>
