@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2022 at 01:14 PM
+-- Generation Time: Apr 15, 2022 at 05:54 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -95,7 +95,12 @@ INSERT INTO `cart_item` (`cart_id`, `user_id`, `product_id`, `date`, `quantity`)
 (76, 8, 17, '2022-04-15 11:47:14', 3),
 (77, 3, 20, '2022-04-15 14:29:32', 2),
 (78, 8, 38, '2022-04-15 14:30:20', 2),
-(79, 8, 32, '2022-04-15 14:59:03', 2);
+(79, 8, 32, '2022-04-15 14:59:03', 2),
+(80, 8, 20, '2022-04-15 18:29:51', 3),
+(81, 8, 20, '2022-04-15 18:57:02', 2),
+(82, 8, 13, '2022-04-15 21:54:29', 1),
+(83, 8, 13, '2022-04-15 22:02:43', 1),
+(84, 8, 38, '2022-04-15 22:48:46', 1);
 
 -- --------------------------------------------------------
 
@@ -105,6 +110,7 @@ INSERT INTO `cart_item` (`cart_id`, `user_id`, `product_id`, `date`, `quantity`)
 
 CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
   `total` float NOT NULL
@@ -114,43 +120,50 @@ CREATE TABLE `order_detail` (
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `user_id`, `payment_id`, `total`) VALUES
-(18, 8, 927123, 116700),
-(19, 18, 417008, 38900),
-(20, 8, 781514, 300300),
-(21, 8, 903814, 77800),
-(22, 8, 194529, 38900),
-(23, 8, 182533, 116700),
-(24, 8, 948507, 38900),
-(25, 8, 914810, 38900),
-(26, 8, 920271, 389000),
-(27, 8, 543881, 38900),
-(28, 8, 164840, 38900),
-(29, 8, 860153, 77800),
-(30, 8, 221824, 77800),
-(31, 8, 801962, 38900),
-(32, 8, 830344, 38900),
-(33, 8, 306723, 77800),
-(34, 8, 761833, 77800),
-(35, 8, 496522, 77800),
-(36, 8, 813095, 77800),
-(37, 8, 567799, 429000),
-(38, 8, 703076, 429000),
-(39, 8, 121995, 42900),
-(40, 8, 282782, 116700),
-(41, 8, 931866, 38900),
-(42, 8, 720300, 38900),
-(43, 8, 488596, 38900),
-(44, 8, 595266, 59800),
-(45, 8, 162530, 171600),
-(46, 8, 432133, 59800),
-(47, 8, 690287, 59800),
-(48, 8, 879420, 31800),
-(49, 8, 222042, 21900),
-(50, 8, 258424, 58500),
-(51, 3, 619463, 13400),
-(52, 8, 580126, 14800),
-(53, 8, 763883, 51800);
+INSERT INTO `order_detail` (`id`, `order_id`, `user_id`, `payment_id`, `total`) VALUES
+(1, 39, 8, 121995, 42900),
+(2, 45, 8, 162530, 171600),
+(3, 28, 8, 164840, 38900),
+(4, 54, 8, 170428, 20100),
+(5, 23, 8, 182533, 116700),
+(6, 22, 8, 194529, 38900),
+(7, 30, 8, 221824, 77800),
+(8, 49, 8, 222042, 21900),
+(9, 50, 8, 258424, 58500),
+(10, 40, 8, 282782, 116700),
+(11, 33, 8, 306723, 77800),
+(12, 19, 18, 417008, 38900),
+(13, 56, 8, 431819, 38900),
+(14, 46, 8, 432133, 59800),
+(15, 43, 8, 488596, 38900),
+(16, 35, 8, 496522, 77800),
+(17, 27, 8, 543881, 38900),
+(18, 37, 8, 567799, 429000),
+(19, 52, 8, 580126, 14800),
+(20, 44, 8, 595266, 59800),
+(21, 51, 3, 619463, 13400),
+(22, 47, 8, 690287, 59800),
+(23, 38, 8, 703076, 429000),
+(24, 42, 8, 720300, 38900),
+(25, 57, 8, 729165, 38900),
+(26, 34, 8, 761833, 77800),
+(27, 53, 8, 763883, 51800),
+(28, 20, 8, 781514, 300300),
+(29, 31, 8, 801962, 38900),
+(30, 36, 8, 813095, 77800),
+(31, 32, 8, 830344, 38900),
+(32, 29, 8, 860153, 77800),
+(33, 48, 8, 879420, 31800),
+(34, 21, 8, 903814, 77800),
+(35, 25, 8, 914810, 38900),
+(36, 26, 8, 920271, 389000),
+(37, 18, 8, 927123, 116700),
+(38, 41, 8, 931866, 38900),
+(39, 24, 8, 948507, 38900),
+(40, 55, 8, 980889, 13400),
+(41, 65, 8, 738255, 38900),
+(42, 66, 8, 788871, 38900),
+(43, 67, 8, 578939, 7400);
 
 -- --------------------------------------------------------
 
@@ -221,7 +234,21 @@ INSERT INTO `order_item` (`order_id`, `cart_id`, `quantity`) VALUES
 (50, 76, 3),
 (51, 77, 2),
 (52, 78, 2),
-(53, 79, 2);
+(53, 79, 2),
+(54, 80, 3),
+(55, 81, 2),
+(56, 82, 1),
+(57, 82, 1),
+(58, 83, 1),
+(59, 83, 1),
+(60, 83, 1),
+(61, 83, 1),
+(62, 83, 1),
+(63, 83, 1),
+(64, 83, 1),
+(65, 83, 1),
+(66, 83, 1),
+(67, 84, 1);
 
 -- --------------------------------------------------------
 
@@ -243,13 +270,17 @@ CREATE TABLE `payment_details` (
 
 INSERT INTO `payment_details` (`payment_id`, `order_id`, `status`, `provider`, `img`) VALUES
 (162530, 45, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '2099147351.jpg'),
+(170428, 54, 'ชำระเงินแล้ว(รอยืนยัน)', 'scb', '1007838585.jpg'),
 (222042, 49, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '928150256.jpg'),
 (258424, 50, 'ชำระเงินแล้ว(รอยืนยัน)', 'aomsin', '1626454292.jpg'),
 (488596, 43, 'ชำระเงินแล้ว(รอยืนยัน)', 'scb', '1110933801.png'),
+(578939, 67, 'ชำระเงินแล้ว(รอยืนยัน)', 'scb', '1706404433.jpg'),
 (595266, 44, 'ชำระเงินแล้ว(รอยืนยัน)', 'aomsin', '1056294461.png'),
 (690287, 47, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '522051353.png'),
 (763883, 53, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '281076649.png'),
-(879420, 48, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '1682392320.png');
+(788871, 66, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '789659389.png'),
+(879420, 48, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '1682392320.png'),
+(980889, 55, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '839152188.jpg');
 
 -- --------------------------------------------------------
 
@@ -357,6 +388,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `Lname`, `telephone`, `t
 --
 
 CREATE TABLE `users_address` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `address_line_1` varchar(100) NOT NULL,
   `address_line_2` varchar(100) DEFAULT NULL,
@@ -370,10 +402,10 @@ CREATE TABLE `users_address` (
 -- Dumping data for table `users_address`
 --
 
-INSERT INTO `users_address` (`user_id`, `address_line_1`, `address_line_2`, `city`, `Postcode`, `country`, `telephone`) VALUES
-(3, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
-(8, 'test', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
-(18, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596');
+INSERT INTO `users_address` (`id`, `user_id`, `address_line_1`, `address_line_2`, `city`, `Postcode`, `country`, `telephone`) VALUES
+(1, 3, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
+(2, 8, 'test', 'thaworistow', 'bkk', '151210       ', 'ไทย', '+66985021596'),
+(3, 18, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596');
 
 -- --------------------------------------------------------
 
@@ -382,6 +414,7 @@ INSERT INTO `users_address` (`user_id`, `address_line_1`, `address_line_2`, `cit
 --
 
 CREATE TABLE `users_payment` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `Payment_type` varchar(100) NOT NULL,
   `Provider` varchar(100) NOT NULL,
@@ -393,8 +426,8 @@ CREATE TABLE `users_payment` (
 -- Dumping data for table `users_payment`
 --
 
-INSERT INTO `users_payment` (`user_id`, `Payment_type`, `Provider`, `Account_no`, `expiry`) VALUES
-(8, 'Debit', 'SCB', '1234', '09/22');
+INSERT INTO `users_payment` (`id`, `user_id`, `Payment_type`, `Provider`, `Account_no`, `expiry`) VALUES
+(1, 8, 'Debit', 'SCB', '1234', '09/22');
 
 --
 -- Indexes for dumped tables
@@ -413,13 +446,15 @@ ALTER TABLE `cart_item`
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `payment_id` (`payment_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `order_item`
 --
 ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `cart_id` (`cart_id`);
 
 --
 -- Indexes for table `payment_details`
@@ -451,13 +486,14 @@ ALTER TABLE `users`
 -- Indexes for table `users_address`
 --
 ALTER TABLE `users_address`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users_payment`
 --
 ALTER TABLE `users_payment`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -467,19 +503,19 @@ ALTER TABLE `users_payment`
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -500,6 +536,12 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `users_payment`
+--
+ALTER TABLE `users_payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -514,13 +556,19 @@ ALTER TABLE `cart_item`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`id`) REFERENCES `order_item` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order_item` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart_item` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  ADD CONSTRAINT `payment_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `payment_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_detail` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `payment_details_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `order_detail` (`payment_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -528,12 +576,6 @@ ALTER TABLE `payment_details`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users_address`
---
-ALTER TABLE `users_address`
-  ADD CONSTRAINT `users_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users_payment`

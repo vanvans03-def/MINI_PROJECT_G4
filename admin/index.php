@@ -461,7 +461,8 @@
                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $product['product_id']; ?>" class="btn btn-danger">Delete</a>
                             </td>
                     </tr>
-                    <?php }  } ?>
+                    <?php } 
+                 } ?>
 
 
 

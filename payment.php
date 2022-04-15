@@ -171,7 +171,7 @@ if (isset($_GET['logout'])) {
                     $cartid = $_SESSION['cartid'];
                     echo $_SESSION['orderid'];
                     $orderid = $_SESSION['orderid'];
-                    $stmt = $conn->query("SELECT * FROM `order_detail` WHERE `user_id` = $userid AND `id` = $orderid ");
+                    $stmt = $conn->query("SELECT * FROM `order_detail` WHERE `user_id` = $userid AND `order_id` = $orderid ");
                     $stmt->execute();
                     $data = $stmt->fetch();
 
