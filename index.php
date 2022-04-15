@@ -1,18 +1,18 @@
-<?php 
-    session_start();
+<?php
+session_start();
 
-    if (!isset($_SESSION['email'])) {
-        $_SESSION['msg'] = "You must log in first";
-        header('location: login.php');
-    }
- 
-   
+if (!isset($_SESSION['email'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
+}
 
-    if (isset($_GET['logout'])) {
-        session_destroy();
-        unset($_SESSION['email']);
-        header('location: login.php');
-    }
+
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['email']);
+    header('location: login.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple_test</title>
+    <title>Apple</title>
 
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
@@ -67,7 +67,7 @@
                         <a href="#" class="my-nav-link">iPhone</a>
                     </li>
                     <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Watch</a>
+                        <a href="#" class="my-nav-link">Watch</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="airpods.php" class="my-nav-link">AirPods</a>
@@ -79,9 +79,9 @@
                         <a href="#" class="my-nav-link">Music</a>
                     </li>
                     <li class="my-nav-item">
-                        <a href="accessories.html" class="my-nav-link">Accessories</a>
+                        <a href="accessories.php" class="my-nav-link">Accessories</a>
                     </li>
-                        <a href="#" class="my-nav-link">Support</a>
+                    <a href="#" class="my-nav-link">Support</a>
                     </li>
 
                     <li class="my-nav-item nav-item dropdown">
@@ -90,12 +90,16 @@
                     <li class="my-nav-item my-nav-item-hidden ">
                         <a href="#" class="my-nav-link my-nav-link-bag"></a>
                     </li>
-                    <li class="my-nav-item ">
-                        <!--logged information-->
-                        <?php if (isset($_SESSION['email'])) : ?>
-                            <p class="fs-4 fw-bold text-danger"> <a href="index.php?logout='1'" style="padding-top:5px;color:red;">logout</a> </p>
-                        <?php endif ?>
+                    <li class="y-nav-item">
+                        <a href="index.php?logout='1'" class="buttonLogout">
+                            ออกจากระบบ
+                            <!--logged information-->
+                            <?php if (isset($_SESSION['email'])) : ?>
+                                <p class="fs-4 fw-bold text-danger"></p>
+                            <?php endif ?>
+                        </a>
                     </li>
+
 
                 </ul>
                 <!-- /.nav-list nav-list-larger -->
@@ -105,29 +109,29 @@
     <!--noti msg-->
     <?php if (isset($_SESSION['success'])) : ?>
 
-            <script>
-                var session = '<?php echo $_SESSION['success']; ?>';
-                alert(session);
-            </script>
-    <?php unset($_SESSION['success']);?>
-<?php endif ?>
+        <script>
+            var session = '<?php echo $_SESSION['success']; ?>';
+            alert(session);
+        </script>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif ?>
 
-<?php if (isset($_SESSION['error'])) : ?>
-            <div class="error">
+    <?php if (isset($_SESSION['error'])) : ?>
+        <div class="error">
             <script>
                 var session = '<?php echo $_SESSION['error']; ?>';
                 alert(session);
             </script>
-            </div>
-            <?php unset($_SESSION['error']);?>
-<?php endif ?>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif ?>
 
 
     <section class="hero iphone-13-pro">
         <div class="my-container">
             <div class="my-title">
                 <h2 class="my-title-heading fw-bold">iPhone 13 Pro</h2>
-                <h3 class="my-title-sub-heading fs-2 text-ligth" >Pro cameras. Pro display. Pro performance.</h3>
+                <h3 class="my-title-sub-heading fs-2 text-ligth">Pro cameras. Pro display. Pro performance.</h3>
                 <p class="my-title-price">From ฿3,890/mo.</p>
             </div>
             <div class="cta">
