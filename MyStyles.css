@@ -352,6 +352,26 @@ backdrop-filter: blur(2rem);
     margin-right: 56px
 }
 
+.buttonLogout{
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 1.17648;
+    font-weight: 400;
+    letter-spacing: -.022em;
+    font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    min-width: 28px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 980px;
+    background: #ec0707;
+    color: #fff;
+    margin-top: 10px;
+}
 /*@media screen and(max-width: 767px){
     header{
         height: 4.8rem;

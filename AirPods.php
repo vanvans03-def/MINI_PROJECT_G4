@@ -11,7 +11,6 @@ if (isset($_GET['logout'])) {
   unset($_SESSION['email']);
   header('location: login.php');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -177,7 +176,7 @@ if (isset($_GET['logout'])) {
         </li>
 
         <li class="ac-gn-item ac-gn-item-menu ac-gn-accessories">
-          <a class="ac-gn-link ac-gn-link-accessories" href="Accessories.html" data-analytics-title="accessories">
+          <a class="ac-gn-link ac-gn-link-accessories" href="Accessories.php" data-analytics-title="accessories">
             <span class="ac-gn-link-text">อุปกรณ์เสริม</span>
           </a>
         </li>

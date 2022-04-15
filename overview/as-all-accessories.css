@@ -1,0 +1,11 @@
+.as-pinwheel15-section.as-pinwheel15-largetile .as-pinwheel-tileheroimage {
+    width: 100%;
+}
+
+.as-pinwheel15-section.as-pinwheel15-largetile .as-pinwheel-tilehero {
+    padding: 0;
+}
+
+.rc-gallery-dotnav ul li:only-child {
+    display: none;
+}
