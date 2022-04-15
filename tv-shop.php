@@ -186,7 +186,7 @@ if (isset($_GET['logout'])) {
                                 </p>
                                 <p class="text-left fw-bold display-3 mb-5">
                                     <span class="text-black">
-                                        ซื้อ iPhone 11</span>
+                                        ซื้อ Apple TV 4K</span>
                                 </p>
 
                                 <p class="text-left fs-2 fw-bold display-4 mb-2">
@@ -227,8 +227,8 @@ if (isset($_GET['logout'])) {
 
 
                                         <p>&nbsp;</p>
-                                        <input type="radio" class="btn-check" id="iphone11" autocomplete="off" name='porduct_name' value="iphone 11">
-                                        <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone11" style="height: 80px;">
+                                        <input type="radio" class="btn-check" id="AppleTV4K" autocomplete="off" name='porduct_name' value="Apple TV 4K">
+                                        <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="AppleTV4K" style="height: 80px;">
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col">
                                                     <p class="fs-5 display-1 fw-bold fs-2 mb-2 textcard">Apple TV 4K
@@ -288,7 +288,7 @@ if (isset($_GET['logout'])) {
 
                             <form method="post" action="bag.php?action=add">
                                 <div class="d-grid gap-2 col-6 justify">
-                                    <button class="btn btn-primary" type="submit"href="bag.php?action=add" name="shoping">
+                                    <button class="btn btn-primary" type="submitTV"href="bag.php?action=add" name="shoping">
                                         <p class="fs-5 display-1 fw-bold fs-2 mb-2">
                                             ใส่ลงในถุง
                                         </p>
