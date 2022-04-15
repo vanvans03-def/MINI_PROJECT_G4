@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2022 at 01:25 PM
+-- Generation Time: Apr 15, 2022 at 01:14 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -88,7 +88,14 @@ INSERT INTO `cart_item` (`cart_id`, `user_id`, `product_id`, `date`, `quantity`)
 (69, 8, 13, '2022-04-14 13:59:37', 1),
 (70, 8, 31, '2022-04-14 15:26:39', 2),
 (71, 8, 23, '2022-04-14 15:31:36', 2),
-(72, 8, 23, '2022-04-14 15:43:39', 4);
+(72, 8, 23, '2022-04-14 15:43:39', 4),
+(73, 8, 31, '2022-04-14 20:13:21', 2),
+(74, 8, 15, '2022-04-15 11:14:01', 2),
+(75, 8, 16, '2022-04-15 11:33:04', 1),
+(76, 8, 17, '2022-04-15 11:47:14', 3),
+(77, 3, 20, '2022-04-15 14:29:32', 2),
+(78, 8, 38, '2022-04-15 14:30:20', 2),
+(79, 8, 32, '2022-04-15 14:59:03', 2);
 
 -- --------------------------------------------------------
 
@@ -135,7 +142,15 @@ INSERT INTO `order_detail` (`id`, `user_id`, `payment_id`, `total`) VALUES
 (42, 8, 720300, 38900),
 (43, 8, 488596, 38900),
 (44, 8, 595266, 59800),
-(45, 8, 162530, 171600);
+(45, 8, 162530, 171600),
+(46, 8, 432133, 59800),
+(47, 8, 690287, 59800),
+(48, 8, 879420, 31800),
+(49, 8, 222042, 21900),
+(50, 8, 258424, 58500),
+(51, 3, 619463, 13400),
+(52, 8, 580126, 14800),
+(53, 8, 763883, 51800);
 
 -- --------------------------------------------------------
 
@@ -198,7 +213,15 @@ INSERT INTO `order_item` (`order_id`, `cart_id`, `quantity`) VALUES
 (42, 68, 1),
 (43, 69, 1),
 (44, 70, 2),
-(45, 72, 4);
+(45, 72, 4),
+(46, 73, 2),
+(47, 73, 2),
+(48, 74, 2),
+(49, 75, 1),
+(50, 76, 3),
+(51, 77, 2),
+(52, 78, 2),
+(53, 79, 2);
 
 -- --------------------------------------------------------
 
@@ -220,8 +243,13 @@ CREATE TABLE `payment_details` (
 
 INSERT INTO `payment_details` (`payment_id`, `order_id`, `status`, `provider`, `img`) VALUES
 (162530, 45, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '2099147351.jpg'),
+(222042, 49, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '928150256.jpg'),
+(258424, 50, 'ชำระเงินแล้ว(รอยืนยัน)', 'aomsin', '1626454292.jpg'),
 (488596, 43, 'ชำระเงินแล้ว(รอยืนยัน)', 'scb', '1110933801.png'),
-(595266, 44, 'ชำระเงินแล้ว(รอยืนยัน)', 'aomsin', '1056294461.png');
+(595266, 44, 'ชำระเงินแล้ว(รอยืนยัน)', 'aomsin', '1056294461.png'),
+(690287, 47, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '522051353.png'),
+(763883, 53, 'ชำระเงินแล้ว(รอยืนยัน)', 'bkk', '281076649.png'),
+(879420, 48, 'ชำระเงินแล้ว(รอยืนยัน)', 'kasikorn', '1682392320.png');
 
 -- --------------------------------------------------------
 
@@ -246,12 +274,12 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `name`, `rom`, `descrip`, `quantity`, `category_id`, `price`, `img`) VALUES
 (13, 'iPhone 13 Pro', 512, 'สีเขียวอัลไพน์', 10, 1, 38900.00, '500950957.png'),
-(14, 'iPhone 13', 128, 'สีเขียวอัลไพน์', 20, 1, 25900.00, '1497478947.jpg'),
+(14, 'iPhone 13', 128, 'สีเขียวอัลไพน์', 0, 1, 25900.00, '1497478947.jpg'),
 (15, 'iPhone SE', 64, 'สีมิดไนท์', 5, 1, 15900.00, '266263951.jpg'),
 (16, 'iPhone 12', 128, 'สีม่วง', 20, 1, 21900.00, '1969129377.jpg'),
-(17, 'iPhone 11', 1024, 'สีขาว', 11, 1, 19500.00, '486427488.jpg'),
+(17, 'iPhone 11', 64, 'สีขาว', 11, 1, 19500.00, '486427488.jpg'),
 (19, 'Airpods Pro', 0, 'สีขาว', 5, 2, 8992.00, '513440711.png'),
-(20, 'Apple TV', 0, 'สีดำ', 2, 3, 2599.00, '996015314.jpg'),
+(20, 'Apple TV 4K', 32, 'สีดำ', 1, 3, 6700.00, '996015314.jpg'),
 (21, 'iPhone 13 Pro', 512, 'สีเชียร์ร่าบลู', 2, 1, 38900.00, '765519742.png'),
 (22, 'iPhone 13 Pro', 512, 'สีมิดไนท์', 2, 1, 38900.00, '1738102152.png'),
 (23, 'iPhone 13 Pro Max', 512, 'สีเขียวอัลไพน์', 11, 1, 42900.00, '1566095847.png'),
@@ -260,7 +288,9 @@ INSERT INTO `product` (`product_id`, `name`, `rom`, `descrip`, `quantity`, `cate
 (30, 'ทดสอบ', 128, 'ทดสอบ', 2, 5, 15.75, '100567993.jpg'),
 (31, 'iPhone 13', 512, 'สีชมพู', 10, 1, 29900.00, '1619641248.png'),
 (32, 'iPhone 13 mini', 512, 'สีฟ้า', 2, 1, 25900.00, '755934086.png'),
-(33, 'iPhone 13 mini', 128, 'PRODUCT(RED)', 2, 1, 25900.00, '1087926596.png');
+(33, 'iPhone 13 mini', 128, 'PRODUCT(RED)', 2, 1, 25900.00, '1087926596.png'),
+(36, '123', 123, '123', 123, 2, 123.00, '929151524.jpg'),
+(38, 'Apple TV 4K', 64, 'สีดำ', 2, 3, 7400.00, '1601602900.jpg');
 
 -- --------------------------------------------------------
 
@@ -284,7 +314,8 @@ INSERT INTO `product_category` (`category_id`, `name`) VALUES
 (4, 'ทดสอบเพิ่มCate ID'),
 (5, '[value-2]'),
 (6, '13'),
-(7, 'qwe');
+(7, 'qwe'),
+(9, 'ytytf');
 
 -- --------------------------------------------------------
 
@@ -340,7 +371,8 @@ CREATE TABLE `users_address` (
 --
 
 INSERT INTO `users_address` (`user_id`, `address_line_1`, `address_line_2`, `city`, `Postcode`, `country`, `telephone`) VALUES
-(8, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
+(3, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
+(8, 'test', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596'),
 (18, '402', 'thaworistow', 'bkk', '151210', 'ไทย', '+66985021596');
 
 -- --------------------------------------------------------
@@ -362,7 +394,7 @@ CREATE TABLE `users_payment` (
 --
 
 INSERT INTO `users_payment` (`user_id`, `Payment_type`, `Provider`, `Account_no`, `expiry`) VALUES
-(8, 'Debit', 'SCB', '23', '09/52');
+(8, 'Debit', 'SCB', '1234', '09/22');
 
 --
 -- Indexes for dumped tables
@@ -435,31 +467,31 @@ ALTER TABLE `users_payment`
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -481,7 +513,8 @@ ALTER TABLE `cart_item`
 -- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`id`) REFERENCES `order_item` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `payment_details`
