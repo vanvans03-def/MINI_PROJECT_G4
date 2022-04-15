@@ -386,6 +386,7 @@
                                 </thead>
                                 <tbody>
                                   <?php 
+                                  
                                         $stmt = $conn->query("SELECT * FROM order_detail  ORDER BY id DESC");
                                         $stmt->execute();
                                         $orders = $stmt->fetchAll();

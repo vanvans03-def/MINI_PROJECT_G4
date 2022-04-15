@@ -29,12 +29,12 @@ $stmt = $conn->query("SELECT * FROM order_detail WHERE 'payment_id' = '$payment_
 $stmt->execute();
 $checkpay = $stmt->fetch();
 if($checkpay){
-    if($checkpay['paymeny_id'] == $payment_id){
+    while($checkpay['paymeny_id'] == $payment_id){
         $payment_id = rand(100000,999999);
     }
 }else{
     //order detail
-        $sql = $conn->prepare("INSERT INTO order_detail (`id`, `user_id`,`payment_id`,`total`)VALUES (:id,:user,:payment_id,:total)");
+        $sql = $conn->prepare("INSERT INTO order_detail (`order_id`, `user_id`,`payment_id`,`total`)VALUES (:id,:user,:payment_id,:total)");
         $sql->bindParam(":id",$orderid);
         $sql->bindParam(":user",$userid); 
         $sql->bindParam(":payment_id",$payment_id );
@@ -101,7 +101,7 @@ if (isset($_POST['con_order_db'])) {
             }
         }else{
             //order detail
-                $sql = $conn->prepare("INSERT INTO order_detail (`id`, `user_id`,`payment_id`,`total`)VALUES (:id,:user,:payment_id,:total)");
+                $sql = $conn->prepare("INSERT INTO order_detail (`order_id`, `user_id`,`payment_id`,`total`)VALUES (:id,:user,:payment_id,:total)");
                 $sql->bindParam(":id",$orderid);
                 $sql->bindParam(":user",$userid); 
                 $sql->bindParam(":payment_id",$payment_id );
