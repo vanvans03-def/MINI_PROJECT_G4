@@ -1,0 +1,19 @@
+html{
+    font-size: 10px;
+    font-family: 'MyWebFont' !important;
+    
+}
+body{
+    font-family: 'MyWebFont'!important;
+
+}
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Bold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Light.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Medium.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-SemiBold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Text.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Thin.ttf');
+
+}

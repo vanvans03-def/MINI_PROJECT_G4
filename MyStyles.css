@@ -5,26 +5,43 @@
     margin: 0 ;
     padding: 0;
 }
-
 html{
-    font-size:10px;
-    font-family: 'MyWebFont', BlinkMacSystemFont, sans-serif;
-}
+    font-size: 10px;
+    font-family: 'MyWebFont' !important;
 
+}
 
 @font-face {
-    font-family: 'MyWebFont';
-   
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Regular.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Bold.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Thin.ttf');
-    src: url('/Font/YosemiteSanFranciscoFont-master/System/San/Francisco/Display/Ultralight.ttf');
+    font-family: 'MyWebFont'!important;
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Bold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Light.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Medium.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-SemiBold.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Text.ttf');
+    src: url('http://127.0.0.1/Mini_Project_G4/Font/SukhumvitxSFPro/SukhumvitSet-Thin.ttf');
+
+
 }
+
+
 
 a{
     display: block;
     text-decoration: none;
 }
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a:active{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+
 
 .my-container{
     max-width: 98rem;
@@ -243,8 +260,8 @@ backdrop-filter: blur(2rem);
     
   }
 .help-store-pic{
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 
 }
@@ -252,7 +269,7 @@ backdrop-filter: blur(2rem);
     padding-top: 50px;
     text-align: left;
   background: -webkit-linear-gradient(#6e6e73,#000);
-  -webkit-background-clip: text;
+  /*-webkit-background-clip: text;*/
   -webkit-text-fill-color: transparent;
 }
 .box {
@@ -305,30 +322,36 @@ backdrop-filter: blur(2rem);
 .container2x2{
     margin: 20px auto;
     width:400px;
-    height:200px;
+    height:300px;
     background-color:#fff;
     display:grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+     /*grid-column-gap: 20px;
+    grid-row-gap: 20px;*/
     text-align: center;
 
 }
 .box2x2{
-     
       padding:20px;
-      border-radius:10px;
-      border:2px solid rgb(230, 230, 230);
+     
       display:flex;
       justify-content:center;
-
-      font-family:sans-serif;
     }
   
 .rom{
     background-color: rgba(255, 255, 255, 0.8);
 }
+.containerRegister{
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+
+}
+.section-airpods-pro .pro-left {
+    margin-right: 56px
+}
+
 /*@media screen and(max-width: 767px){
     header{
         height: 4.8rem;

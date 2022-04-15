@@ -1,0 +1,261 @@
+br.ag-xl {
+    display: none;
+}
+
+br.ag-lg {
+    display: none;
+}
+
+br.ag-md {
+    display: none;
+}
+
+br.ag-sm {
+    display: none;
+}
+
+br.ag-sm-portrait {
+    display: none;
+}
+
+br.ag-xs {
+    display: none;
+}
+
+br.ag-xs-portrait {
+    display: none;
+}
+
+span.nowrap {
+    display: inline;
+}
+
+@media only screen and (min-width: 1441px) {
+    br.ag-xl {
+        display: inline;
+    }
+}
+
+@media only screen and (min-width: 1069px) {
+    br.ag-lg {
+        display: inline;
+    }
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) {
+    br.ag-md {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    br.ag-sm {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 734px) and (orientation: portrait) {
+    br.ag-sm-portrait {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+    br.ag-xs {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 374px) and (orientation: portrait) {
+    br.ag-xs-portrait {
+        display: inline;
+    }
+}
+
+.ag-lh-10 {
+    line-height: 1;
+}
+
+.ag-lh-105 {
+    line-height: 1.05;
+}
+
+.ag-lh-11 {
+    line-height: 1.1;
+}
+
+.ag-lh-115 {
+    line-height: 1.15;
+}
+
+.ag-lh-12 {
+    line-height: 1.2;
+}
+
+.ag-lh-125 {
+    line-height: 1.25;
+}
+
+.ag-lh-13 {
+    line-height: 1.3;
+}
+
+.ag-lh-135 {
+    line-height: 1.35;
+}
+
+.ag-lh-14 {
+    line-height: 1.4;
+}
+
+.ag-lh-145 {
+    line-height: 1.45;
+}
+
+.ag-lh-15 {
+    line-height: 1.5;
+}
+
+@media only screen and (min-width: 1441px) {
+    .ag-lh-xl-10 {
+        line-height: 1;
+    }
+    .ag-lh-xl-105 {
+        line-height: 1.05;
+    }
+    .ag-lh-xl-11 {
+        line-height: 1.1;
+    }
+    .ag-lh-xl-115 {
+        line-height: 1.15;
+    }
+    .ag-lh-xl-12 {
+        line-height: 1.2;
+    }
+    .ag-lh-xl-125 {
+        line-height: 1.25;
+    }
+    .ag-lh-xl-13 {
+        line-height: 1.3;
+    }
+    .ag-lh-xl-135 {
+        line-height: 1.35;
+    }
+    .ag-lh-xl-14 {
+        line-height: 1.4;
+    }
+    .ag-lh-xl-145 {
+        line-height: 1.45;
+    }
+    .ag-lh-xl-15 {
+        line-height: 1.5;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .ag-lh-lg-10 {
+        line-height: 1;
+    }
+    .ag-lh-lg-105 {
+        line-height: 1.05;
+    }
+    .ag-lh-lg-11 {
+        line-height: 1.1;
+    }
+    .ag-lh-lg-115 {
+        line-height: 1.15;
+    }
+    .ag-lh-lg-12 {
+        line-height: 1.2;
+    }
+    .ag-lh-lg-125 {
+        line-height: 1.25;
+    }
+    .ag-lh-lg-13 {
+        line-height: 1.3;
+    }
+    .ag-lh-lg-135 {
+        line-height: 1.35;
+    }
+    .ag-lh-lg-14 {
+        line-height: 1.4;
+    }
+    .ag-lh-lg-145 {
+        line-height: 1.45;
+    }
+    .ag-lh-lg-15 {
+        line-height: 1.5;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    .ag-lh-md-10 {
+        line-height: 1;
+    }
+    .ag-lh-md-105 {
+        line-height: 1.05;
+    }
+    .ag-lh-md-11 {
+        line-height: 1.1;
+    }
+    .ag-lh-md-115 {
+        line-height: 1.15;
+    }
+    .ag-lh-md-12 {
+        line-height: 1.2;
+    }
+    .ag-lh-md-125 {
+        line-height: 1.25;
+    }
+    .ag-lh-md-13 {
+        line-height: 1.3;
+    }
+    .ag-lh-md-135 {
+        line-height: 1.35;
+    }
+    .ag-lh-md-14 {
+        line-height: 1.4;
+    }
+    .ag-lh-md-145 {
+        line-height: 1.45;
+    }
+    .ag-lh-md-15 {
+        line-height: 1.5;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .ag-lh-sm-10 {
+        line-height: 1;
+    }
+    .ag-lh-sm-105 {
+        line-height: 1.05;
+    }
+    .ag-lh-sm-11 {
+        line-height: 1.1;
+    }
+    .ag-lh-sm-115 {
+        line-height: 1.15;
+    }
+    .ag-lh-sm-12 {
+        line-height: 1.2;
+    }
+    .ag-lh-sm-125 {
+        line-height: 1.25;
+    }
+    .ag-lh-sm-13 {
+        line-height: 1.3;
+    }
+    .ag-lh-sm-135 {
+        line-height: 1.35;
+    }
+    .ag-lh-sm-14 {
+        line-height: 1.4;
+    }
+    .ag-lh-sm-145 {
+        line-height: 1.45;
+    }
+    .ag-lh-sm-15 {
+        line-height: 1.5;
+    }
+}
