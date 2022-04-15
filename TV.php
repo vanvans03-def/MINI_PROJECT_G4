@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+require_once "admin/config/db.php";
+if (!isset($_SESSION['email'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['email']);
+    header('location: login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,9 +195,10 @@
                                     <h4 class="text-center fw-bold display-1 mb-5" style="font-size: 30px;">
                                         
                                         ความบันเทิงในบ้านที่ชัดกว่าเห็นๆ<br>
-                                        <span class="text-center" style="font-size: 25px;">เริ่มต้นที่ ฿6,700<br>
+                                        <span class="text-center" style="font-size: 25px;">เริ่มต้นที่ ฿6,700&nbsp;<a class="btn btn-primary fs-4 rounded-pill" style="width:70px;" href="tv-shop.php" role="button">ซื้อ</a><br>
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/TV/higher_definition__hfivribdc3ue_large.jpg"
                                                 style="width: 100%" class="card-img-center" alt="...">
+                                                
                                             <div class="card-body">
                                     </h4>
                                 </div>

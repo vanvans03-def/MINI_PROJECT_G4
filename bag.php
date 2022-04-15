@@ -142,8 +142,8 @@ if (isset($_GET['logout'])) {
 
             <div class="row justify-content-md-left">
                 <h1>
-                    <?php
-                   
+                 <?php
+        
                     $stmt = $conn->query("SELECT * FROM product  WHERE product_id = '$pd_id' ");
                     $stmt->execute();
                     $data = $stmt->fetch();
@@ -152,7 +152,7 @@ if (isset($_GET['logout'])) {
                         echo "<div  class='text-center fw-bold alert alert-warning fs-1'><td>กรุณาเพิ่มสินค้าลงในตระกร้า</td></div>";
                     }
                     if ($data) {
-                       /* if(isset ($_POST_['shoping'])){
+                       /*if(isset ($_POST_['shoping'])){
                         if (isset($_SESSION['shop_cart'])) {
                             $item_array_id = array_column($_SESSION['shop_cart'], $pd_id);
                             if (!in_array($_SESSION['order.id'], $item_array_id)) {
@@ -182,7 +182,7 @@ if (isset($_GET['logout'])) {
                             $_SESSION["shop_cart"][0] = $item_array;
                           } 
                          }*/
-
+                    
                     ?>
                 </h1>
 

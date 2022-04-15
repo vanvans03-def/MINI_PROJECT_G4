@@ -73,7 +73,7 @@
                         <a href="airpods.php" class="my-nav-link">AirPods</a>
                     </li>
                     <li class="my-nav-item">
-                        <a href="TV.html" class="my-nav-link">TV</a>
+                        <a href="TV.php" class="my-nav-link">TV</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="#" class="my-nav-link">Music</a>

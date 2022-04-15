@@ -3,7 +3,7 @@ session_start();
 require_once "admin/config/db.php";
 if (isset($_SESSION['email'])) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
-    $_SESSION['errorpay'] = "มีบางอย่างผิดพลาดเช่นการเลือกธนาคารหรืออัพรูปซ้ำ";
+  
 }
 
 $userid = $_SESSION["id"];
@@ -72,8 +72,9 @@ if(isset($_POST['payment'])){
                     $_SESSION['success'] = "Data has been inserted successfully";
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 } else {
-                    $_SESSION['error'] = "Data has not been inserted successfully";
+                    $_SESSION['errorpay'] = "มีบางอย่างผิดพลาดเช่นการเลือกธนาคารหรืออัพรูปซ้ำ";
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    
                 }
 
             }

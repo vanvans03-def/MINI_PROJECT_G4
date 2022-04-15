@@ -189,7 +189,7 @@ if (isset($_GET['logout'])) {
                                     <div class="card-body">
                                         <div class="card-title text-center">
                                             <h5 class="fw-bold display-6 mb-3">iPhone SE
-                                                <a class="btn btn-primary fs-4 rounded-pill" style="width:50px;" href="iphone-SE.php" role="button">ซื้อ</a>
+                                                <a class="btn btn-primary fs-4 rounded-pill" style="width:50px;" href="iphone-se.php" role="button">ซื้อ</a>
                                             </h5>
                                         </div>
                                     </div>

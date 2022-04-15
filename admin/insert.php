@@ -7,6 +7,7 @@ if (isset($_SESSION['email'])) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 if (isset($_POST['submit'])) {
+   
     $productname = $_POST['productname'];
     $desc = $_POST['desc'];
     $rom = $_POST['rom'];

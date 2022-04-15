@@ -278,7 +278,7 @@
                                             
                                             <div class="mb-3">
                                                 <label for="desc" class="col-form-label">Desc</label>
-                                                <textarea type="text" style="height:100px;" required="" class="form-control" name="desc"></textarea>
+                                                <textarea type="text" style="height:100px;"  class="form-control" name="desc"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="rom" class="col-form-label">Rom</label>
