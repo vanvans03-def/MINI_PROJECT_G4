@@ -206,7 +206,7 @@
 
                                             
                                             </div>
-                                      
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -267,9 +267,9 @@
                                         
                                     </div>
 
-
+                                    <form action="insert.php" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
-                                        <form action="insert.php" method="post" enctype="multipart/form-data">
+                                        
                                             <div class="mb-3">
                                                 <label for="productname" class="col-form-label">Product Name:</label>
                                                 <input type="text" required="" class="form-control" name="productname">
@@ -278,11 +278,11 @@
                                             
                                             <div class="mb-3">
                                                 <label for="desc" class="col-form-label">Desc</label>
-                                                <textarea type="text" style="height:100px;"  class="form-control" name="desc"></textarea>
+                                                <textarea type="text" required="" style="height:100px;"  class="form-control" name="desc"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="rom" class="col-form-label">Rom</label>
-                                                <input type="number" required="" class="form-control currency currSign" name="rom">
+                                                <input type="number" required="" class="form-control " name="rom">
                                             </div>
 
 
@@ -315,8 +315,6 @@
 
                                                 foreach($catedatas as $catedata){
                                                  
-                                            
-                                                
                                                 
                                                 ?>
                                               
@@ -347,8 +345,9 @@
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" name="submit" class="btn btn-success">Submit</button>
                                             </div>
-                                        </form>
+                                      
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -372,7 +371,21 @@
                     unset($_SESSION['errorCate']); 
                   
                 ?> </div>
+                
                 <?php } ?>
+
+
+                <?php if (isset($_SESSION['erroredit'])) { ?>
+            <div class="alert alert-danger">
+                <?php 
+                    echo $_SESSION['erroredit'];
+                    unset($_SESSION['erroredit']); 
+                  
+                ?> </div>
+                
+                <?php } ?>
+
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <h1>CRUD Dashboard </h1>

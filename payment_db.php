@@ -70,7 +70,7 @@ if(isset($_POST['payment'])){
                 
                 if ($sql) {
                     $_SESSION['success'] = "Data has been inserted successfully";
-                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    header('location: mybag.php');
                 } else {
                     $_SESSION['errorpay'] = "มีบางอย่างผิดพลาดเช่นการเลือกธนาคารหรืออัพรูปซ้ำ";
                     header('Location: ' . $_SERVER['HTTP_REFERER']);

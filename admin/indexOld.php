@@ -98,9 +98,28 @@ if (isset($_GET['logout'])) {
                                 ?>
                                     <select class="custom-select col-form-label " id="category_id" name="category_id">
                                         <option selected>Choose...</option>
-                                        <option value="1">iPhone (01)</option>
-                                        <option value="2">Airpods (02)</option>
-                                        <option value="3">TV (03)</option>
+                                        <?php 
+                                                
+                                                
+                                              
+                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
+                                                $stmt->execute();
+                                                $catedatas = $stmt->fetchAll();
+                                                
+                                                if (!$catedatas) {
+                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                                }else{
+
+                                                foreach($catedatas as $catedata){
+                                                 
+                                                
+                                                ?>
+                                              
+                                                    <option value="<?php   echo $catedata['category_id']; ?>">
+                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
+                                                 
+                                              
+                                                <?php   }}?>
                                     </select>
                             </div>
                         <?php  } ?>
@@ -153,7 +172,7 @@ if (isset($_GET['logout'])) {
                     <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error']);
-                    header("refresh:1; url=index.php");
+                  
                     ?>
                 </div>
             <?php } ?>
