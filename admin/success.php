@@ -34,65 +34,15 @@ if (isset($_GET['comfirmOrder'])) {
 
     if ($sql) {
      
-       
-
-
-        //edit stock in product table
-
-        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,payment_details.`status`
-        FROM order_detail 
-        JOIN order_item
-        ON order_detail.`order_id` = order_item.`order_id` 
-        JOIN cart_item 
-        ON order_item.`cart_id` = cart_item.`cart_id`
-        JOIN product
-        ON cart_item.`product_id` = product.`product_id`
-        JOIN payment_details
-        ON order_detail.`payment_id` = payment_details.`payment_id` ");
-        $stmt->execute();
-        $orders = $stmt->fetch();
-     
-        if($orders){
-
-   
-        $quntityCon = $orders['quantity'];
-        $product_id = $orders['product_id'];
-        //get Stock
-        $pdstmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = '$product_id'");
-        $pdstmt->execute();
-        $data = $pdstmt->fetch();
-        if($data){
-           
-        $stock = $data['quantity'];
-        $quantity =  $stock - $quntityCon;
-        $sql = $conn->prepare("UPDATE `product` SET `quantity` = :quantity WHERE `product_id` = :product_id");
-        $sql->bindParam(":quantity", $quantity);
-        $sql->bindParam(":product_id", $product_id);
-      
-
-        if ($sql) {
-     
-            echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
-            $_SESSION['success'] = "Data has been deleted succesfully";
-           
-    
-
-        }
-
-    }
-
-}
-
-
+        echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
+        $_SESSION['success'] = "Data has been deleted succesfully";
+        header("refresh:1; url=confirmorder.php");
     }
 }
 if (!isset($_SESSION['email'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
 }
-
-
-
 
 if ($_SESSION['type'] != 1) {
     header("location: ../index.php");
@@ -357,23 +307,23 @@ if ($_SESSION['type'] != 1) {
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h1>Confirm Order </h1>
+                                <h1>Order Success </h1>
                             </div>
 
                         </div>
                         <hr>
                         <table class="table">
 
-                            <thead class="thead-dark">
+                        <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">order_id</th>
-                                    <th scope="col">User_id</th>
-                                    <th scope="col">Provider</th>
-                                    <th scope="col">PaymentID</th>
+                                    <th scope="col">Payment ID </th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Img</th>
-                                  
+
 
                                     <th scope="col">Actions</th>
 
@@ -381,18 +331,26 @@ if ($_SESSION['type'] != 1) {
                             </thead>
                             <tbody>
                                 <?php
-                                $statuscon = "ชำระเงินเรียบร้อย";
-                                $stmt = $conn->query("SELECT payment_details.`payment_id` , payment_details.`order_id` , payment_details.`status`,payment_details.`provider`,payment_details.`img`,order_detail.`user_id`,order_detail.`total`
-                                FROM payment_details 
-                                JOIN order_detail ON payment_details.`order_id` = order_detail.`order_id` AND status !=  '$statuscon' ORDER BY order_id DESC");
+                                $status = "ชำระเงินเรียบร้อย";
+                                $stmt = $conn->query("SELECT product.`rom`,product.`descrip`,order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name` ,payment_details.status
+                                FROM order_detail 
+                                JOIN order_item
+                                ON order_detail.`order_id` = order_item.`order_id` 
+                                JOIN cart_item 
+                                ON order_item.`cart_id` = cart_item.`cart_id`
+                                JOIN product
+                                ON cart_item.`product_id` = product.`product_id`
+                                JOIN payment_details
+                                ON order_detail.`payment_id` = payment_details.`payment_id` AND status = '$status' ");
                                 $stmt->execute();
-                                $datas = $stmt->fetchAll();
+                                $orders = $stmt->fetchAll();
+                             
 
 
-                                if (!$datas) {
+                                if (!$orders) {
                                     echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                                 } else {
-                                    foreach ($datas as $data) {
+                                    foreach ($orders as $order) {
 
 
 
@@ -401,24 +359,39 @@ if ($_SESSION['type'] != 1) {
 
 
                                         <tr>
-                                            <th scope="row"><?php echo $data['order_id']; ?></th>
-                                            <td><?php echo $data['user_id']; ?></td>
-                                            <td><?php echo $data['provider']; ?></td>
-                                            <td class="text-danger fw-bold "><?php echo $data['payment_id']; ?></td>
-                                            <td><?php echo "฿" . number_format( $data['total'], 2,'.',); ?></td>
-                                            <td><?php echo $data['status']; ?></td>
-                                            <td width="250px"><img class="rounded" width="100%" src="../paymentImg/<?php echo $data['img']; ?>" alt=""></td>
-                                            <td> 
+                                            <th scope="row"><?php echo $order['payment_id']; ?></th>
+                                            <td><?php echo $order['order_id']; ?></td>
+                                            <td><?php echo $order['user_id']; ?></td>
 
+
+                                            <td><?php echo $order['name']." ";
+                                             if($order['rom'] == 1024){
+                                                echo "1 TB"." ".$order['descrip'];
+                                             }else echo $order['rom']." "."GB"." ".$order['descrip']; ?></td>
+
+
+                                            <td><?php echo $order['quantity']; ?></td>
+                                            <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
+                                            <td><?php echo $order['status']; ?></td>
+                              
+                                            <td> 
                                                 <form action="showaddress.php" method="POST">
-                                                <a  href="?comfirmOrder=<?php echo $data['payment_id']; ?>" class="btn btn-success">ยืนยัน</a>
-                                                <a onclick="return confirm('Are you sure you want to change status?');" href="?UnConfrim=<?php echo $data['payment_id'];?>" class="btn btn-danger">ไม่ผ่าน</a>
+                                                <button type="submit" value="<?php echo $order['user_id']; ?>" name='userid'class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addressModal" data-bs-whatever="@mdo">ดูที่อยู่</button>
+                                        
+                                              
+                                                
                                                 </form>
+                                              
+                                              
+                                            
+
 
                                             </td>
 
                                         </tr>
                         <?php }  } ?>
+
+
 
 
 

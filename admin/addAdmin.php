@@ -34,65 +34,15 @@ if (isset($_GET['comfirmOrder'])) {
 
     if ($sql) {
      
-       
-
-
-        //edit stock in product table
-
-        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,payment_details.`status`
-        FROM order_detail 
-        JOIN order_item
-        ON order_detail.`order_id` = order_item.`order_id` 
-        JOIN cart_item 
-        ON order_item.`cart_id` = cart_item.`cart_id`
-        JOIN product
-        ON cart_item.`product_id` = product.`product_id`
-        JOIN payment_details
-        ON order_detail.`payment_id` = payment_details.`payment_id` ");
-        $stmt->execute();
-        $orders = $stmt->fetch();
-     
-        if($orders){
-
-   
-        $quntityCon = $orders['quantity'];
-        $product_id = $orders['product_id'];
-        //get Stock
-        $pdstmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = '$product_id'");
-        $pdstmt->execute();
-        $data = $pdstmt->fetch();
-        if($data){
-           
-        $stock = $data['quantity'];
-        $quantity =  $stock - $quntityCon;
-        $sql = $conn->prepare("UPDATE `product` SET `quantity` = :quantity WHERE `product_id` = :product_id");
-        $sql->bindParam(":quantity", $quantity);
-        $sql->bindParam(":product_id", $product_id);
-      
-
-        if ($sql) {
-     
-            echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
-            $_SESSION['success'] = "Data has been deleted succesfully";
-           
-    
-
-        }
-
-    }
-
-}
-
-
+        echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
+        $_SESSION['success'] = "Data has been deleted succesfully";
+        header("refresh:1; url=confirmorder.php");
     }
 }
 if (!isset($_SESSION['email'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');
 }
-
-
-
 
 if ($_SESSION['type'] != 1) {
     header("location: ../index.php");
@@ -216,7 +166,7 @@ if ($_SESSION['type'] != 1) {
 
 
                         <div class="modal-body">
-                            <form action="insert.php" method="post" enctype="multipart/form-data">
+                            <form action="editcate.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="category_id">Category_id</label>

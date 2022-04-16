@@ -3,10 +3,7 @@
     session_start();
 
     require_once "config/db.php";
-    if (isset($_SESSION['email'])) {
-        $_SESSION['erroredit'] = "มีบ้างอย่างผิดพลาดเช่นข้อมูลซ้ำ";
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
+    
     if (isset($_POST['editeCate'])) {
 
 

@@ -152,7 +152,7 @@
                                 
                                 
                                     <div class="modal-body">
-                                        <form action="edit.php" method="post" enctype="multipart/form-data">
+                                        <form action="editcate.php" method="post" enctype="multipart/form-data">
                                              <div class="input-group mb-3">
                                                
                                                 <div class="input-group-prepend">
@@ -213,11 +213,10 @@
                         </div>
 <!-- edith cate modal -->
 
-
-            <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
-                 Order Function
+<div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
+                Order Function
             </div>
-            
+
             <li class="nav-item active">
                 <a class="nav-link" href="checkorder.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -230,17 +229,26 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: #C0C0C0;">Confirm Order</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="success.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;"> Order Success</span></a>
+            </li>
 
             <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
-                 Payment Function
+                Admin Function
             </div>
             <li class="nav-item active">
-                <a class="nav-link" href="category.php">
+                <a class="nav-link" href="edituser.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span style="color: #C0C0C0;">Check Payment</span></a>
+                    <span style="color: #C0C0C0;">Apple ID</span></a>
             </li>
-           
-            
+            <li class="nav-item active">
+                <a class="nav-link" href="addAdmin.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Add admin</span></a>
+            </li>
+
 
 
             
