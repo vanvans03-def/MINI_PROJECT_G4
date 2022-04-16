@@ -226,7 +226,7 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="category.php">
+                <a class="nav-link" href="confirmorder.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: #C0C0C0;">Confirm Order</span></a>
             </li>

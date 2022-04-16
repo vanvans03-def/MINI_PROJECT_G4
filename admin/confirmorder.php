@@ -274,7 +274,7 @@ if ($_SESSION['type'] != 1) {
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h1>Check Order </h1>
+                                <h1>Confirm Order </h1>
                             </div>
 
                         </div>
@@ -283,14 +283,14 @@ if ($_SESSION['type'] != 1) {
 
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">User</th>
+                                    <th scope="col">order_id</th>
+                                    <th scope="col">User_id</th>
+                                    <th scope="col">Provider</th>
                                     <th scope="col">PaymentID</th>
-                                    <th scope="col">CartID</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
-
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Img</th>
+                                  
 
                                     <th scope="col">Actions</th>
 
@@ -299,15 +299,17 @@ if ($_SESSION['type'] != 1) {
                             <tbody>
                                 <?php
 
-                                $stmt = $conn->query("SELECT * FROM order_detail  ORDER BY id DESC");
+                                $stmt = $conn->query("SELECT payment_details.`payment_id` , payment_details.`order_id` , payment_details.`status`,payment_details.`provider`,payment_details.`img`,order_detail.`user_id`,order_detail.`total`
+                                FROM payment_details 
+                                JOIN order_detail ON payment_details.`order_id` = order_detail.`order_id` ORDER BY order_id DESC");
                                 $stmt->execute();
-                                $orders = $stmt->fetchAll();
+                                $datas = $stmt->fetchAll();
 
 
-                                if (!$orders) {
+                                if (!$datas) {
                                     echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                                 } else {
-                                    foreach ($orders as $order) {
+                                    foreach ($datas as $data) {
 
 
 
@@ -316,27 +318,19 @@ if ($_SESSION['type'] != 1) {
 
 
                                         <tr>
-                                            <th scope="row"><?php echo $order['id']; ?></th>
-                                            <td><?php echo $order['user_id']; ?></td>
-                                            <td><?php echo $order['payment_id']; ?></td>
-                                            <td><?php ?></td>
-
-                                            <td></td>
-
-                                            <td></td>
-                                            <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
-
+                                            <th scope="row"><?php echo $data['order_id']; ?></th>
+                                            <td><?php echo $data['user_id']; ?></td>
+                                            <td><?php echo $data['provider']; ?></td>
+                                            <td class="text-danger fw-bold "><?php echo $data['payment_id']; ?></td>
+                                            <td><?php echo "฿" . number_format( $data['total'], 2,'.',); ?></td>
+                                            <td><?php echo $data['status']; ?></td>
+                                            <td width="250px"><img class="rounded" width="100%" src="../paymentImg/<?php echo $data['img']; ?>" alt=""></td>
                                             <td> 
+
                                                 <form action="showaddress.php" method="POST">
-                                                <button type="submit" value="<?php echo $order['user_id']; ?>" name='userid'class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addressModal" data-bs-whatever="@mdo">ดูที่อยู่</button>
-                                        
-                                              
+                                                <button type="submit" value="<?php echo $data['payment_id']; ?>" name='userid'class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addressModal" data-bs-whatever="@mdo">ดูที่อยู่</button>                          
                                                 <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
                                                 </form>
-                                              
-                                              
-                                            
-
 
                                             </td>
 
