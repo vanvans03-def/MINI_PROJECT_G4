@@ -4,39 +4,18 @@
 
     require_once "config/db.php";
     
-  
+    
 
 
-    if (isset($_POST['update'])) {
-        $product_id = $_POST['product_id'];
-        $name = $_POST['name'];
-        $descrip = $_POST['descrip'];
-        $rom = $_POST['rom'];
+    if (isset($_POST['submit'])) {
+        $orderid = $_POST['order_id'];
+        $paymentid = $_POST['payment_id'];
+        $cartid = $_POST['cart_id'];
+        $quantity = $_POST['quantity'];
         
         $quantity = $_POST['quantity'];
         $category_id = $_POST['category_id'];
-        $price = $_POST['price'];
-        $img = $_FILES['img'];
-
-        $img2 = $_POST['img2'];
-        $upload = $_FILES['img']['name'];
-
-        if ($upload != '') {
-            $allow = array('jpg', 'jpeg', 'png');
-            $extension = explode('.', $img['name']);
-            $fileActExt = strtolower(end($extension));
-            $fileNew = rand() . "." . $fileActExt;  // rand function create the rand number 
-            $filePath = 'uploads/'.$fileNew;
-
-            if (in_array($fileActExt, $allow)) {
-                if ($img['size'] > 0 && $img['error'] == 0) {
-                   move_uploaded_file($img['tmp_name'], $filePath);
-                }
-            }
-
-        } else {
-            $fileNew = $img2;
-        }
+        
 
         $sql = $conn->prepare("UPDATE `product` SET `product_id` = :product_id, `name` = :name, `descrip` = :descrip,`rom` = :rom , `quantity` = :quantity,`category_id` = :category_id,`price` = :price, img = :img WHERE `product_id` = :product_id");
         $sql->bindParam(":product_id", $product_id);

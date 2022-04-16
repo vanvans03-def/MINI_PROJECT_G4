@@ -29,7 +29,6 @@ if (isset($_GET['comfirmOrder'])) {
     $sql = $conn->prepare("UPDATE `payment_details` SET `status` = :status WHERE `payment_id` = :payment_id");
     $sql->bindParam(":status", $status);
     $sql->bindParam(":payment_id", $payid);
-  
     $sql->execute();
 
     if ($sql) {
@@ -39,16 +38,16 @@ if (isset($_GET['comfirmOrder'])) {
 
         //edit stock in product table
 
-        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,payment_details.`status`
-        FROM order_detail 
+        $stmt = $conn->query("SELECT order_detail.`payment_id`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`product_id`,product.`quantity`
+        FROM order_detail
+        JOIN payment_details
+        ON order_detail.`payment_id` = $payid
         JOIN order_item
-        ON order_detail.`order_id` = order_item.`order_id` 
-        JOIN cart_item 
+        ON order_detail.`order_id` = order_item.`order_id`
+        JOIN cart_item
         ON order_item.`cart_id` = cart_item.`cart_id`
         JOIN product
-        ON cart_item.`product_id` = product.`product_id`
-        JOIN payment_details
-        ON order_detail.`payment_id` = payment_details.`payment_id` ");
+        ON cart_item.`product_id` = product.`product_id` ");
         $stmt->execute();
         $orders = $stmt->fetch();
      
@@ -57,18 +56,22 @@ if (isset($_GET['comfirmOrder'])) {
    
         $quntityCon = $orders['quantity'];
         $product_id = $orders['product_id'];
+        $cartid = $orders['cart_id'];
+
         //get Stock
-        $pdstmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = '$product_id'");
+        $pdstmt = $conn->query("SELECT * FROM `cart_item` WHERE `cart_id` = '$cartid' ");
         $pdstmt->execute();
         $data = $pdstmt->fetch();
         if($data){
            
-        $stock = $data['quantity'];
-        $quantity =  $stock - $quntityCon;
+        $stock = $orders['quantity'];
+        if($stock > 0 ){
+        $UpdateQuantity = $stock - $data['quantity'];;
+       if($UpdateQuantity > 0){
         $sql = $conn->prepare("UPDATE `product` SET `quantity` = :quantity WHERE `product_id` = :product_id");
-        $sql->bindParam(":quantity", $quantity);
+        $sql->bindParam(":quantity", $UpdateQuantity);
         $sql->bindParam(":product_id", $product_id);
-      
+        $sql->execute();
 
         if ($sql) {
      
@@ -78,7 +81,16 @@ if (isset($_GET['comfirmOrder'])) {
     
 
         }
+    }else{
+        echo "<script>alert('มีบางอย่างผิดพลาดเช่น สินค้าหมด');</script>";
+    }        
+       
 
+}
+    }else{
+        echo "<script>alert('มีบางอย่างผิดพลาดเช่น สินค้าหมด');</script>";
+        
+       
     }
 
 }
@@ -97,6 +109,8 @@ if (!isset($_SESSION['email'])) {
 if ($_SESSION['type'] != 1) {
     header("location: ../index.php");
 }
+
+
 
 
 ?>
