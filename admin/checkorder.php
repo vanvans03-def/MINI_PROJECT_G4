@@ -205,7 +205,6 @@ if ($_SESSION['type'] != 1) {
             </div>
             <!-- edith cate modal -->
 
-
             <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
                 Order Function
             </div>
@@ -222,15 +221,26 @@ if ($_SESSION['type'] != 1) {
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: #C0C0C0;">Confirm Order</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="success.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;"> Order Success</span></a>
+            </li>
 
             <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
-                Payment Function
+                Admin Function
             </div>
             <li class="nav-item active">
-                <a class="nav-link" href="category.php">
+                <a class="nav-link" href="edituser.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span style="color: #C0C0C0;">Check Payment</span></a>
+                    <span style="color: #C0C0C0;">Apple ID</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="addAdmin.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Add admin</span></a>
+            </li>
+
 
 
 
@@ -299,9 +309,16 @@ if ($_SESSION['type'] != 1) {
                             <tbody>
                                 <?php
 
-                                $stmt = $conn->query("SELECT * FROM order_detail  ORDER BY id DESC");
+                                $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom` FROM order_detail 
+                                JOIN order_item
+                                ON order_detail.`order_id` = order_item.`order_id` 
+                                JOIN cart_item 
+                                ON order_item.`cart_id` = cart_item.`cart_id`
+                                JOIN product
+                                ON cart_item.`product_id` = product.`product_id`ORDER BY id DESC;");
                                 $stmt->execute();
                                 $orders = $stmt->fetchAll();
+                             
 
 
                                 if (!$orders) {
@@ -319,11 +336,17 @@ if ($_SESSION['type'] != 1) {
                                             <th scope="row"><?php echo $order['id']; ?></th>
                                             <td><?php echo $order['user_id']; ?></td>
                                             <td><?php echo $order['payment_id']; ?></td>
-                                            <td><?php ?></td>
+                                            <td><?php echo $order['cart_id']; ?></td>
+                                        
+                                             <td><?php echo $order['name']." ";
+                                             if($order['rom'] == 1024){
+                                                echo "1 TB"." ".$order['descrip'];
+                                             }else echo $order['rom']." "."GB"." ".$order['descrip']; ?></td>
 
-                                            <td></td>
 
-                                            <td></td>
+
+
+                                             <td><?php echo $order['quantity']; ?></td>
                                             <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
 
                                             <td> 
