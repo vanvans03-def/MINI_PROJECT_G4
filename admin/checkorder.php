@@ -293,7 +293,7 @@ if ($_SESSION['type'] != 1) {
 
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">id</th>
+                                    <th scope="col">Order ID</th>
                                     <th scope="col">User</th>
                                     <th scope="col">PaymentID</th>
                                     <th scope="col">CartID</th>
@@ -333,7 +333,7 @@ if ($_SESSION['type'] != 1) {
 
 
                                         <tr>
-                                            <th scope="row"><?php echo $order['id']; ?></th>
+                                            <th scope="row"><?php echo $order['order_id']; ?></th>
                                             <td><?php echo $order['user_id']; ?></td>
                                             <td><?php echo $order['payment_id']; ?></td>
                                             <td><?php echo $order['cart_id']; ?></td>
@@ -350,10 +350,9 @@ if ($_SESSION['type'] != 1) {
                                             <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
 
                                             <td> 
-                                                <form action="showaddress.php" method="POST">
-                                                <button type="submit" value="<?php echo $order['user_id']; ?>" name='userid'class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addressModal" data-bs-whatever="@mdo">ดูที่อยู่</button>
+                                                <form action="editorder.php" method="POST">
                                         
-                                              
+                                                <a href="edit.php?id=<?php echo $order['order_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
                                                 <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
                                                 </form>
                                               
