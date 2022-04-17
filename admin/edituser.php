@@ -3,144 +3,404 @@
     session_start();
 
     require_once "config/db.php";
+   
+    if (isset($_GET['delete'])) {
+        $delete_id = $_GET['delete'];
+        $deletestmt = $conn->query("DELETE FROM users WHERE id = $delete_id");
+        $deletestmt->execute();
 
-    if (isset($_POST['update'])) {
-        $product_id = $_POST['id'];
-        $name = $_POST['email'];
-        $descrip = $_POST['password'];
-        $rom = $_POST['rom'];
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            $_SESSION['success'] = "Data has been deleted succesfully";
+            header("refresh:1; url=edituser.php");
+        }
         
-        $quantity = $_POST['quantity'];
-        $category_id = $_POST['category_id'];
-        $price = $_POST['price'];
-        $img = $_FILES['img'];
-
-        $img2 = $_POST['img2'];
-        $upload = $_FILES['img']['name'];
-
-        if ($upload != '') {
-            $allow = array('jpg', 'jpeg', 'png');
-            $extension = explode('.', $img['name']);
-            $fileActExt = strtolower(end($extension));
-            $fileNew = rand() . "." . $fileActExt;  // rand function create the rand number 
-            $filePath = 'uploads/'.$fileNew;
-
-            if (in_array($fileActExt, $allow)) {
-                if ($img['size'] > 0 && $img['error'] == 0) {
-                   move_uploaded_file($img['tmp_name'], $filePath);
-                }
-            }
-
-        } else {
-            $fileNew = $img2;
-        }
-
-        $sql = $conn->prepare("UPDATE `product` SET `product_id` = :product_id, `name` = :name, `descrip` = :descrip,`rom` = :rom , `quantity` = :quantity,`category_id` = :category_id,`price` = :price, img = :img WHERE `product_id` = :product_id");
-        $sql->bindParam(":product_id", $product_id);
-        $sql->bindParam(":name", $name);
-        $sql->bindParam(":descrip", $descrip);
-        $sql->bindParam(":rom", $rom);
-     
-        $sql->bindParam(":quantity", $quantity);
-        $sql->bindParam(":category_id", $category_id);
-        $sql->bindParam(":price", $price);
-        $sql->bindParam(":img", $fileNew);
-        $sql->execute();
-
-        if ($sql) {
-            $_SESSION['success'] = "Data has been updated successfully";
-            header("location: index.php");
-        } else {
-            $_SESSION['error'] = "Data has not been updated successfully";
-            header("location: index.php");
-        }
     }
 
+  
+    
+    
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: ../login.php');
+    }
+
+    if($_SESSION['type'] != 1 ){
+        header("location: ../index.php");
+     }
+
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: ../login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
+
+    <!-- Custom styles for this template-->
+    <link href="sb-admin-2.min.css" rel="stylesheet">
     <style>
-        .container {
-            max-width: 550px;
+        .currSign:before {
+            content: '฿';
         }
     </style>
+
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h1>Edit Data</h1>
-        <hr>
-        <form action="edit.php" method="post" enctype="multipart/form-data">
-            <?php
-                if (isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        $stmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = $id");
-                        $stmt->execute();
-                        $data = $stmt->fetch();
-                }
-            ?>
-                <div class="mb-3">
-                    <label for="product_id" class="col-form-label">ID:</label>
-                    <input type="text" readonly value="<?php echo $data['product_id']; ?>" required class="form-control" name="product_id" >
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-                    <label for="name" class="col-form-label">Product Name:</label>
-                    <input type="text" value="<?php echo $data['name']; ?>" required class="form-control" name="name" >
-                    <input type="hidden" value="<?php echo $data['img']; ?>" required class="form-control" name="img2" >
-                </div>
-                <div class="mb-3">
-                    <label for="descrip" class="col-form-label">Desc :</label>
-                    <input   type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip">
-                </div>
-                <div class="mb-3">
-                    <label for="rom" class="col-form-label">Rom:</label>
-                    <input type="number" value="<?php echo $data['rom']; ?>" required class="form-control" name="rom">
-                </div>
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin <sup></sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+         <!-- Heading -->
+         <div class="sidebar-heading fs-6 text-light "style="padding-bottom:20px;" >
+                Product Function
+            </div>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span class="" style="color: #C0C0C0;" >CRUD Product</span></a>
+            </li>
+
+     
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active"  data-bs-toggle="modal" data-bs-target="#addproductModal" data-bs-whatever="@mdo" >
+                <a class="nav-link"  >
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Add Product Category</span></a>
+            </li>
+<!-- add product modal -->
+            <div class="modal fade" id="addproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form action="insert.php" method="post" enctype="multipart/form-data">
+                                            <div class="mb-3">
+                                                <label for="cateID" class="col-form-label">Category ID:</label>
+                                                <input type="number" required="" class="form-control" name="cateID">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="CateName" class="col-form-label">Category Name:</label>
+                                                <input type="text" required="" class="form-control" name="CateName">
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="addcate" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<!-- add cate modal -->
+<!-- edith cate modal -->
+
+<li class="nav-item active"  data-bs-toggle="modal" data-bs-target="#editproductModal" data-bs-whatever="@mdo" >
+                <a class="nav-link"  >
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Edit Product Category</span></a>
+            </li>
+
+            <div class="modal fade" id="editproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
+                                    </div>
+                                
+                                
+                                    <div class="modal-body">
+                                        <form action="editcate.php" method="post" enctype="multipart/form-data">
+                                             <div class="input-group mb-3">
+                                               
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="category_id">Old Category_id</label>
+                                                </div>
+
+
+
+                                                <select class="custom-select col-form-label " id="category_id" name="category_id">
+                                                    <option selected="">Choose...</option>
+                                                <?php 
+                                                
+                                                
+                                              
+                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
+                                                $stmt->execute();
+                                                $catedatas = $stmt->fetchAll();
+                                                
+                                                if (!$catedatas) {
+                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                                }else{
+
+                                                foreach($catedatas as $catedata){
+                                                 
+                                            
+                                                
+                                                
+                                                ?>
+                                              
+                                                    <option value="<?php   echo $catedata['category_id']; ?>">
+                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
+                                                 
+                                              
+                                                <?php   }}?>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label for="CateID" class="col-form-label">New Category ID:</label>
+                                                <input type="number" required="" class="form-control" name="CateID">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="CateName" class="col-form-label">Category Name:</label>
+                                                <input type="text" required="" class="form-control" name="CateName">
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
+                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?deletecate=category_id" class="btn btn-danger">Delete</a>
+
+                                            
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- edith cate modal -->
+
+<div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
+                Order Function
+            </div>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="checkorder.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Check Order</span></a>
+            </li>
+
+
+            <li class="nav-item active">
+                <a class="nav-link" href="confirmorder.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Confirm Order</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="success.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;"> Order Success</span></a>
+            </li>
+
+            <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
+                Admin Function
+            </div>
+            <li class="nav-item active">
+                <a class="nav-link" href="edituser.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Apple ID</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="addAdmin.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="color: #C0C0C0;">Add admin</span></a>
+            </li>
+
+
+
+            
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="padding-top:50px;">
+
+              
                 
-                <div class="mb-3">
-                    <label for="quantity" class="col-form-label">quantity:</label>
-                    <input  type="number" value="<?php echo $data['quantity']; ?>" required class="form-control" name="quantity">
-                </div>
+                <div class="container-fluid">
 
                
+                        <?php if (isset($_SESSION['success'])) { ?>
+            <div class="alert alert-success">
+                <?php 
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']); 
+                    //header("refresh:1; url=index.php");
+                    
+                ?>
+            </div>
+        <?php } ?>
+       
+        
+                <?php if (isset($_SESSION['error'])) { ?>
+            <div class="alert alert-danger">
+                <?php 
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']); 
+                  
+                ?> </div>
+                
+                <?php } ?>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1>Apple ID Dashboard </h1>
+                                </div>
+                              
+                            </div>
+                            <hr>
+                            <table class="table">
+
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Name-Lastname</th>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php 
+                                        $type = 0;
+                                        $stmt = $conn->query("SELECT * FROM `users` WHERE `type` = '$type' ");
+                                        $stmt->execute();
+                                        $admins = $stmt->fetchAll();
+                                    
+                                    
 
 
-                <div class="mb-3">
-                    <label for="category_id" class="col-form-label">category_id:</label>
-                    <input readonly type="number" value="<?php echo $data['category_id']; ?>" required class="form-control" name="category_id">
+                                        if (!$admins) {
+                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                        } else {
+                                        foreach($admins as $admin)  {  
+                                    
+                                        
+                                    ?>
+
+
+
+
+
+                
+                    <tr>
+                        <th scope="row"><?php echo $admin['id']; ?></th>
+                        <td><?php echo $admin['email']; ?></td>
+                        <td><?php echo $admin['name']." ".$admin['Lname']; ?></td>
+                        <td><?php echo $admin['telephone']; ?></td>
+                        <td>
+                            <a href="editAdmin.php?id=<?php echo $admin['id']; ?>" class="btn btn-warning">Edit</a>
+                        
+                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $admin['id']; ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                    </tr>
+                    <?php } 
+                 } ?>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+              
+
+                        <!-- JavaScript Bundle with Popper -->
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+                        <script>
+                            let imgInput = document.getElementById('imgInput');
+                            let previewImg = document.getElementById('previewImg');
+
+                            imgInput.onchange = evt => {
+                                const [file] = imgInput.files;
+                                if (file) {
+                                    previewImg.src = URL.createObjectURL(file)
+                                }
+                            }
+                        </script>
+                        <script>
+                            let x = document.querySelectorAll(".currency");
+                            for (let i = 0, len = x.length; i < len; i++) {
+                                let num = Number(x[i].innerHTML)
+                                    .toLocaleString('en');
+                                x[i].innerHTML = num;
+                                x[i].classList.add("currSign");
+                            }
+                        </script>
+
+                    </div>
+
                 </div>
-                <div class="mb-3">
-                    <label for="price" class="col-form-label">price:</label>
-                    <input type="number" value="<?php echo $data['price']; ?>" required class="form-control" name="price">
-                </div>
-                <div class="mb-3">
-                    <label for="img" class="col-form-label">Image:</label>
-                    <input type="file" class="form-control" id="imgInput" name="img">
-                    <img width="100%" src="uploads/<?php echo $data['img']; ?>" id="previewImg" alt="">
-                </div>
-                <hr>
-                <a href="index.php" class="btn btn-secondary">Go Back</a>
-                <button type="submit" name="update" class="btn btn-primary">Update</button>
-            </form>
-    </div>
+            </div>
+            
 
-    <script>
-        let imgInput = document.getElementById('imgInput');
-        let previewImg = document.getElementById('previewImg');
 
-        imgInput.onchange = evt => {
-            const [file] = imgInput.files;
-                if (file) {
-                    previewImg.src = URL.createObjectURL(file)
-            }
-        }
+            <li class="my-nav-item ">
+                <!-- Bootstrap core JavaScript-->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    </script>
+                <!-- Core plugin JavaScript-->
+                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                <!-- Custom scripts for all pages-->
+                <script src="js/sb-admin-2.min.js"></script>
+
+                <!-- Page level plugins -->
+                <script src="vendor/chart.js/Chart.min.js"></script>
+
+                <!-- Page level custom scripts -->
+                <script src="js/demo/chart-area-demo.js"></script>
+                <script src="js/demo/chart-pie-demo.js"></script>
+            </li>
 </body>
+
 </html>

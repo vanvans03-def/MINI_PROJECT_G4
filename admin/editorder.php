@@ -7,30 +7,32 @@
     
 
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['update'])) {
         $orderid = $_POST['order_id'];
-        $paymentid = $_POST['payment_id'];
+        $updatequan = $_POST['quantity'];
         $cartid = $_POST['cart_id'];
-        $quantity = $_POST['quantity'];
-        
-        $quantity = $_POST['quantity'];
-        $category_id = $_POST['category_id'];
-        
-
-        $sql = $conn->prepare("UPDATE `product` SET `product_id` = :product_id, `name` = :name, `descrip` = :descrip,`rom` = :rom , `quantity` = :quantity,`category_id` = :category_id,`price` = :price, img = :img WHERE `product_id` = :product_id");
-        $sql->bindParam(":product_id", $product_id);
-        $sql->bindParam(":name", $name);
-        $sql->bindParam(":descrip", $descrip);
-        $sql->bindParam(":rom", $rom);
-        $sql->bindParam(":quantity", $quantity);
-        $sql->bindParam(":category_id", $category_id);
-        $sql->bindParam(":price", $price);
-        $sql->bindParam(":img", $fileNew);
+        $productprice = $_POST['price'];
+        $sql = $conn->prepare("UPDATE `order_item` SET `quantity` = :quantity WHERE `order_id` = :order_id");
+        $sql->bindParam(":quantity", $updatequan);
+        $sql->bindParam(":order_id", $orderid);
         $sql->execute();
 
         if ($sql) {
-            $_SESSION['success'] = "Data has been updated successfully";
-            header("location: index.php");
+            $sql = $conn->prepare("UPDATE `cart_item` SET `quantity` = :quantity WHERE `cart_id` = :cart_id");
+            $sql->bindParam(":quantity", $updatequan);
+            $sql->bindParam(":cart_id", $cartid);
+            $sql->execute();
+            if ($sql) {
+                $total = $productprice * $updatequan;
+                $sql = $conn->prepare("UPDATE `order_detail` SET `total` = :total WHERE `order_id` = :order_id");
+                $sql->bindParam(":total", $total);
+                $sql->bindParam(":order_id", $orderid);
+                $sql->execute();
+                $_SESSION['success'] = "Edit Product quantity successfully";
+                header('location: order.php');
+                header('Location: checkorder.php');
+            }
+
         } else {
             $_SESSION['error'] = "Data has not been updated successfully";
             header("location: index.php");
@@ -55,9 +57,10 @@
 </head>
 <body>
     <div class="container mt-5">
+   
         <h1>Edit Data</h1>
         <hr>
-        <form action="edit.php" method="post" enctype="multipart/form-data">
+        <form action="editorder.php" method="post" enctype="multipart/form-data">
             <?php
                 if (isset($_GET['id'])) {
                         $id = $_GET['id'];
@@ -66,30 +69,31 @@
                         JOIN order_item
                         ON order_detail.`order_id` =  order_item.`order_id`
                         JOIN cart_item
-                        ON order_item.`cart_id` = '$id'
+                        ON order_item.`cart_id` = cart_item.`cart_id`
                         JOIN product
-                        ON cart_item.`product_id` = product.`product_id`");
+                        ON cart_item.`product_id` = product.`product_id` WHERE cart_item.`cart_id` = '$id'");
                         $stmt->execute();
                         $data = $stmt->fetch();
                 }
             ?>
                 <div class="mb-3">
-                    <label for="product_id" class="col-form-label">ID:</label>
-                    <input type="text" readonly value="<?php echo $data['order_id']; ?>" required class="form-control" name="product_id" >
-
+                    <label for="order_id" class="col-form-label">ID:</label>
+                    <input type="text" readonly value="<?php echo $data['order_id']; ?>" required class="form-control" name="order_id" >
+                
+                  
                     <label for="name" class="col-form-label">Product Name:</label>
-                    <input type="text" value="<?php echo $data['name']; ?>" required class="form-control" name="name" >
-                    <input type="hidden" value="<?php echo $data['quantity']; ?>" required class="form-control" name="img2" >
+                    <input type="text" readonly value="<?php echo $data['name']; ?>" required class="form-control" name="name" >
+                   <input type="hidden"  value="<?php echo $data['cart_id']; ?>"   name="cart_id" >
                 </div>
                 <div class="mb-3">
                     <label for="descrip" class="col-form-label">Desc :</label>
-                    <input   type="text" value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip">
+                    <input   type="text"readonly  value="<?php echo $data['descrip']; ?>" required class="form-control" name="descrip">
                 </div>
                 <div class="mb-3">
                     <label for="rom" class="col-form-label">Rom:</label>
-                    <input type="number" value="<?php echo $data['rom']; ?>" required class="form-control" name="rom">
+                    <input type="number" readonly value="<?php echo $data['rom']; ?>" required class="form-control" name="rom">
                 </div>
-
+                <input   type="hidden"  value="<?php echo $data['price']; ?>" required class="form-control" name="price">
                 
                 <div class="mb-3">
                     <label for="quantity" class="col-form-label">quantity:</label>
@@ -97,54 +101,14 @@
                 </div>
 
                
-
-
-                <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <label class="input-group-text" for="category_id">Category_id</label>
-                                                </div>
-
-                                                    <select class="custom-select col-form-label " id="category_id" name="category_id" required>
-                                                  
-                                                <?php 
-                                                
-                                                
-                                              
-                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
-                                                $stmt->execute();
-                                                $catedatas = $stmt->fetchAll();
-                                                
-                                                if (!$catedatas) {
-                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                                                }else{
-
-                                                foreach($catedatas as $catedata){
-                                                 
-                                            
-                                                
-                                                
-                                                ?>
-                                              
-                                                    <option value="<?php   echo $catedata['category_id']; ?>">
-                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
-                                                 
-                                              
-                                                <?php   }}?>
-                                                </select>
-
-                </div>
                
                 <div class="mb-3">
-                    <label for="price" class="col-form-label">price:</label>
-                    <input type="text" value="<?php echo  $data['price'];?>" required class="form-control" name="price">
+                    <label for="total" class="col-form-label">price:</label>
+                    <input type="text" readonly value="<?php echo "฿" . number_format( $data['total'], 2,'.',); ?>" required class="form-control" name="total">
                 </div>
-                <div class="mb-3">
-                    <label for="img" class="col-form-label">Image:</label>
-                    <input type="file" class="form-control" id="imgInput" name="img">
-                    <img width="100%" src="uploads/<?php echo $data['img']; ?>" id="previewImg" alt="">
-                </div>
+                
                 <hr>
-                <a href="index.php" class="btn btn-secondary">Go Back</a>
+                <input type="button" class="btn btn-secondary" onclick="history.back()"  value="Go Back">
                 <button type="submit" name="update" class="btn btn-primary">Update</button>
             </form>
     </div>

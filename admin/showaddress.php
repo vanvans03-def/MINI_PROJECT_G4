@@ -89,7 +89,7 @@
                                            <input type="text" required="" class="form-control " readonly value="<?php echo $data['address_line_2'] . " " . $data['city'] . " " . $data['Postcode']; ?>">
                                            </div>
                                            <div class="modal-footer"">
-                                           <input type="button" class="btn btn-secondary" onclick="history.back()"  value="Close">
+                                           <input type="button" class="btn btn-secondary" onclick="javascript:location.href='admin/addAdmin.php'"  value="Close">
                                            </div>   
                                        
                                            

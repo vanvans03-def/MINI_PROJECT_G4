@@ -1,54 +1,40 @@
-<?php
+<?php 
 
-session_start();
+    session_start();
 
-require_once "config/db.php";
-if (isset($_GET['UnConfrim'])) {
-    $payid = $_GET['UnConfrim'];
-    $status = "การชำระเงินถูกปฏิเสธ";
-    $sql = $conn->prepare("UPDATE `payment_details` SET `status` = :status WHERE `payment_id` = :payment_id");
-    $sql->bindParam(":status", $status);
-    $sql->bindParam(":payment_id", $payid);
-  
-    $sql->execute();
+    require_once "config/db.php";
+   
+    if (isset($_GET['delete'])) {
+        $delete_id = $_GET['delete'];
+        $deletestmt = $conn->query("DELETE FROM users WHERE id = $delete_id");
+        $deletestmt->execute();
 
-    if ($sql) {
-     
-        echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
-        header("refresh:1; url=confirmorder.php");
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            $_SESSION['success'] = "Data has been deleted succesfully";
+            header("refresh:1; url=addAdmin.php");
+        }
+        
     }
 
-
-}
-
-
-if (isset($_GET['comfirmOrder'])) {
-    $payid = $_GET['comfirmOrder'];
-    $status = "ชำระเงินเรียบร้อย";
-    $sql = $conn->prepare("UPDATE `payment_details` SET `status` = :status WHERE `payment_id` = :payment_id");
-    $sql->bindParam(":status", $status);
-    $sql->bindParam(":payment_id", $payid);
   
-    $sql->execute();
-
-    if ($sql) {
-     
-        echo "<script>alert('ยืนยันการชำระเงินเรียบร้อย');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
-        header("refresh:1; url=confirmorder.php");
+    
+    
+    if (!isset($_SESSION['email'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: ../login.php');
     }
-}
-if (!isset($_SESSION['email'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: ../login.php');
-}
 
-if ($_SESSION['type'] != 1) {
-    header("location: ../index.php");
-}
+    if($_SESSION['type'] != 1 ){
+        header("location: ../index.php");
+     }
 
 
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: ../login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +72,7 @@ if ($_SESSION['type'] != 1) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -95,141 +81,128 @@ if ($_SESSION['type'] != 1) {
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-            <!-- Heading -->
-            <div class="sidebar-heading fs-6 text-light " style="padding-bottom:20px;">
+         <!-- Heading -->
+         <div class="sidebar-heading fs-6 text-light "style="padding-bottom:20px;" >
                 Product Function
             </div>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span class="" style="color: #C0C0C0;">CRUD Product</span></a>
+                    <span class="" style="color: #C0C0C0;" >CRUD Product</span></a>
             </li>
 
-
+     
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active" data-bs-toggle="modal" data-bs-target="#addproductModal" data-bs-whatever="@mdo">
-                <a class="nav-link">
+            <li class="nav-item active"  data-bs-toggle="modal" data-bs-target="#addproductModal" data-bs-whatever="@mdo" >
+                <a class="nav-link"  >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: #C0C0C0;">Add Product Category</span></a>
             </li>
-            <!-- add product modal -->
+<!-- add product modal -->
             <div class="modal fade" id="addproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
+                                    </div>
 
+
+                                    <div class="modal-body">
+                                        <form action="insert.php" method="post" enctype="multipart/form-data">
+                                            <div class="mb-3">
+                                                <label for="cateID" class="col-form-label">Category ID:</label>
+                                                <input type="number" required="" class="form-control" name="cateID">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="CateName" class="col-form-label">Category Name:</label>
+                                                <input type="text" required="" class="form-control" name="CateName">
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="addcate" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+<!-- add cate modal -->
+<!-- edith cate modal -->
 
-                        <div class="modal-body">
-                            <form action="insert.php" method="post" enctype="multipart/form-data">
-                                <div class="mb-3">
-                                    <label for="cateID" class="col-form-label">Category ID:</label>
-                                    <input type="number" required="" class="form-control" name="cateID">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="CateName" class="col-form-label">Category Name:</label>
-                                    <input type="text" required="" class="form-control" name="CateName">
-                                </div>
-
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="addcate" class="btn btn-success">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- add cate modal -->
-            <!-- edith cate modal -->
-
-            <li class="nav-item active" data-bs-toggle="modal" data-bs-target="#editproductModal" data-bs-whatever="@mdo">
-                <a class="nav-link">
+<li class="nav-item active"  data-bs-toggle="modal" data-bs-target="#editproductModal" data-bs-whatever="@mdo" >
+                <a class="nav-link"  >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: #C0C0C0;">Edit Product Category</span></a>
             </li>
 
             <div class="modal fade" id="editproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-
-                        </div>
-
-
-                        <div class="modal-body">
-                            <form action="editcate.php" method="post" enctype="multipart/form-data">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="category_id">Category_id</label>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
                                     </div>
+                                
+                                
+                                    <div class="modal-body">
+                                        <form action="editcate.php" method="post" enctype="multipart/form-data">
+                                             <div class="input-group mb-3">
+                                               
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="category_id">Old Category_id</label>
+                                                </div>
+                                                <select class="custom-select col-form-label " id="category_id" name="category_id">
+                                                    <option selected="">Choose...</option>
+                                                <?php                                              
+                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
+                                                $stmt->execute();
+                                                $catedatas = $stmt->fetchAll();                                             
+                                                if (!$catedatas) {
+                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                                }else{
+                                                foreach($catedatas as $catedata){
+                                                ?>
+                                              
+                                                    <option value="<?php   echo $catedata['category_id']; ?>">
+                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
+                                                 
+                                              
+                                                <?php   }}?>
+                                                </select>
+                                            </div>
 
 
+                                            <div class="mb-3">
+                                                <label for="CateID" class="col-form-label">New Category ID:</label>
+                                                <input type="number" class="form-control" name="CateID">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="CateName" class="col-form-label">Category Name:</label>
+                                                <input type="text" class="form-control" name="CateName">
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
+                                            <button onclick="return confirm('Are you sure you want to delete?');" type="submit" name="deleteCate" class="btn btn-danger">Delete</button>
+                                   
 
-
-                                    <select class="custom-select col-form-label " id="category_id" name="category_id">
-                                        <option selected="">Choose...</option>
-                                        <?php
-
-
-
-                                        $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
-                                        $stmt->execute();
-                                        $catedatas = $stmt->fetchAll();
-
-                                        if (!$catedatas) {
-                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                                        } else {
-
-                                            foreach ($catedatas as $catedata) {
-
-
-
-
-                                        ?>
-
-                                                <option value="<?php echo $catedata['category_id']; ?>">
-                                                    <?php echo $catedata['name'] ?> (<?php echo $catedata['category_id']; ?>)</option>
-
-
-                                        <?php   }
-                                        } ?>
-                                    </select>
+                                            
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-
-
-                                <div class="mb-3">
-                                    <label for="CateID" class="col-form-label">Category ID:</label>
-                                    <input type="number" required="" class="form-control" name="CateID">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CateName" class="col-form-label">Category Name:</label>
-                                    <input type="text" required="" class="form-control" name="CateName">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php  ?>" class="btn btn-danger">Delete</a>
-
-
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- edith cate modal -->
+<!-- edith cate modal -->
 
-
-            <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
+<div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">
                 Order Function
             </div>
 
@@ -267,8 +240,7 @@ if ($_SESSION['type'] != 1) {
 
 
 
-
-
+            
         </ul>
         <!-- End of Sidebar -->
 
@@ -278,97 +250,90 @@ if ($_SESSION['type'] != 1) {
             <!-- Main Content -->
             <div id="content" style="padding-top:50px;">
 
-
-
+              
+                
                 <div class="container-fluid">
 
-
-                    <div class="container-md-auto">
-
+               
+                  
                         <?php if (isset($_SESSION['success'])) { ?>
-                            <div class="alert alert-success">
-                                <?php
-                                echo $_SESSION['success'];
-                                unset($_SESSION['success']);
-                                //header("refresh:1; url=index.php");
+            <div class="alert alert-success">
+                <?php 
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']); 
+                    //header("refresh:1; url=index.php");
+                    
+                ?>
+            </div>
+        <?php } ?>
+       
+        
+                <?php if (isset($_SESSION['error'])) { ?>
+            <div class="alert alert-danger">
+                <?php 
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']); 
+                  
+                ?> </div>
+                
+                <?php } ?>
 
-                                ?>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1>Admin Account Dashboard </h1>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-whatever="@mdo">Add Product</button>
+                                </div>
                             </div>
-                        <?php } ?>
-                        <?php if (isset($_SESSION['error'])) { ?>
-                            <div class="alert alert-danger">
-                                <?php
-                                echo $_SESSION['error'];
-                                unset($_SESSION['error']);
+                            <hr>
+                            <table class="table">
 
-                                ?>
-                            </div>
-                        <?php } ?>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h1>Confirm Order </h1>
-                            </div>
-
-                        </div>
-                        <hr>
-                        <table class="table">
-
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">order_id</th>
-                                    <th scope="col">User_id</th>
-                                    <th scope="col">Provider</th>
-                                    <th scope="col">PaymentID</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Img</th>
-                                  
-
-                                    <th scope="col">Actions</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $statuscon = "ชำระเงินเรียบร้อย";
-                                $stmt = $conn->query("SELECT payment_details.`payment_id` , payment_details.`order_id` , payment_details.`status`,payment_details.`provider`,payment_details.`img`,order_detail.`user_id`,order_detail.`total`
-                                FROM payment_details 
-                                JOIN order_detail ON payment_details.`order_id` = order_detail.`order_id` AND status !=  '$statuscon' ORDER BY order_id DESC");
-                                $stmt->execute();
-                                $datas = $stmt->fetchAll();
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Name-Lastname</th>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php 
+                                        $type = 1;
+                                        $stmt = $conn->query("SELECT * FROM `users` WHERE `type` = '$type' ");
+                                        $stmt->execute();
+                                        $admins = $stmt->fetchAll();
+                                    
+                                    
 
 
-                                if (!$datas) {
-                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                                } else {
-                                    foreach ($datas as $data) {
+                                        if (!$admins) {
+                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                        } else {
+                                        foreach($admins as $admin)  {  
+                                    
+                                        
+                                    ?>
 
 
 
 
-                                ?>
 
-
-                                        <tr>
-                                            <th scope="row"><?php echo $data['order_id']; ?></th>
-                                            <td><?php echo $data['user_id']; ?></td>
-                                            <td><?php echo $data['provider']; ?></td>
-                                            <td class="text-danger fw-bold "><?php echo $data['payment_id']; ?></td>
-                                            <td><?php echo "฿" . number_format( $data['total'], 2,'.',); ?></td>
-                                            <td><?php echo $data['status']; ?></td>
-                                            <td width="250px"><img class="rounded" width="100%" src="../paymentImg/<?php echo $data['img']; ?>" alt=""></td>
-                                            <td> 
-
-                                                <form action="showaddress.php" method="POST">
-                                                <a  href="?comfirmOrder=<?php echo $data['payment_id']; ?>" class="btn btn-success">ยืนยัน</a>
-                                                <a onclick="return confirm('Are you sure you want to change status?');" href="?UnConfrim=<?php echo $data['payment_id'];?>" class="btn btn-danger">ไม่ผ่าน</a>
-                                                </form>
-
-                                            </td>
-
-                                        </tr>
-                        <?php }  } ?>
+                
+                    <tr>
+                        <th scope="row"><?php echo $admin['id']; ?></th>
+                        <td><?php echo $admin['email']; ?></td>
+                        <td><?php echo $admin['name']." ".$admin['Lname']; ?></td>
+                        <td><?php echo $admin['telephone']; ?></td>
+                        <td>
+                            <a href="editAdmin.php?id=<?php echo $admin['id']; ?>" class="btn btn-warning">Edit</a>
+                        
+                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $admin['id']; ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                    </tr>
+                    <?php } 
+                 } ?>
 
 
 
@@ -376,9 +341,9 @@ if ($_SESSION['type'] != 1) {
 
 
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+              
 
                         <!-- JavaScript Bundle with Popper -->
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -407,7 +372,7 @@ if ($_SESSION['type'] != 1) {
 
                 </div>
             </div>
-
+            
 
 
             <li class="my-nav-item ">

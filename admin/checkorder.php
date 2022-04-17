@@ -63,11 +63,11 @@ if ($_SESSION['type'] != 1) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Addmin <sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -133,76 +133,66 @@ if ($_SESSION['type'] != 1) {
                     <span style="color: #C0C0C0;">Edit Product Category</span></a>
             </li>
 
-            <div class="modal fade" id="editproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+           
 
-                        </div>
-
-
-                        <div class="modal-body">
-                            <form action="insert.php" method="post" enctype="multipart/form-data">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="category_id">Category_id</label>
+                        <div class="modal fade" id="editproductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
                                     </div>
+                                
+                                
+                                    <div class="modal-body">
+                                        <form action="editcate.php" method="post" enctype="multipart/form-data">
+                                             <div class="input-group mb-3">
+                                               
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="category_id">Old Category_id</label>
+                                                </div>
+                                                <select class="custom-select col-form-label " id="category_id" name="category_id">
+                                                    <option selected="">Choose...</option>
+                                                <?php                                              
+                                                $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
+                                                $stmt->execute();
+                                                $catedatas = $stmt->fetchAll();                                             
+                                                if (!$catedatas) {
+                                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                                }else{
+                                                foreach($catedatas as $catedata){
+                                                ?>
+                                              
+                                                    <option value="<?php   echo $catedata['category_id']; ?>">
+                                                    <?php echo $catedata['name']?> (<?php   echo $catedata['category_id']; ?>)</option>
+                                                 
+                                              
+                                                <?php   }}?>
+                                                </select>
+                                            </div>
 
 
+                                            <div class="mb-3">
+                                                <label for="CateID" class="col-form-label">New Category ID:</label>
+                                                <input type="number" class="form-control" name="CateID">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="CateName" class="col-form-label">Category Name:</label>
+                                                <input type="text" class="form-control" name="CateName">
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
+                                            <button onclick="return confirm('Are you sure you want to delete?');" type="submit" name="deleteCate" class="btn btn-danger">Delete</button>
+                                   
 
-
-                                    <select class="custom-select col-form-label " id="category_id" name="category_id">
-                                        <option selected="">Choose...</option>
-                                        <?php
-
-
-
-                                        $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
-                                        $stmt->execute();
-                                        $catedatas = $stmt->fetchAll();
-
-                                        if (!$catedatas) {
-                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                                        } else {
-
-                                            foreach ($catedatas as $catedata) {
-
-
-
-
-                                        ?>
-
-                                                <option value="<?php echo $catedata['category_id']; ?>">
-                                                    <?php echo $catedata['name'] ?> (<?php echo $catedata['category_id']; ?>)</option>
-
-
-                                        <?php   }
-                                        } ?>
-                                    </select>
+                                            
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-
-
-                                <div class="mb-3">
-                                    <label for="CateID" class="col-form-label">Category ID:</label>
-                                    <input type="number" required="" class="form-control" name="CateID">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CateName" class="col-form-label">Category Name:</label>
-                                    <input type="text" required="" class="form-control" name="CateName">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php  ?>" class="btn btn-danger">Delete</a>
-
-
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
             <!-- edith cate modal -->
 
             <div class="sidebar-heading fs-6 text-light " style="padding-top:20px;">

@@ -72,11 +72,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?logout='1'">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Log Out <sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -158,28 +158,16 @@
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text" for="category_id">Old Category_id</label>
                                                 </div>
-
-
-
                                                 <select class="custom-select col-form-label " id="category_id" name="category_id">
                                                     <option selected="">Choose...</option>
-                                                <?php 
-                                                
-                                                
-                                              
+                                                <?php                                              
                                                 $stmt = $conn->query("SELECT * FROM `product_category` WHERE `category_id`");
                                                 $stmt->execute();
-                                                $catedatas = $stmt->fetchAll();
-                                                
+                                                $catedatas = $stmt->fetchAll();                                             
                                                 if (!$catedatas) {
                                                     echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                                                 }else{
-
                                                 foreach($catedatas as $catedata){
-                                                 
-                                            
-                                                
-                                                
                                                 ?>
                                               
                                                     <option value="<?php   echo $catedata['category_id']; ?>">
@@ -193,16 +181,17 @@
 
                                             <div class="mb-3">
                                                 <label for="CateID" class="col-form-label">New Category ID:</label>
-                                                <input type="number" required="" class="form-control" name="CateID">
+                                                <input type="number" class="form-control" name="CateID">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="CateName" class="col-form-label">Category Name:</label>
-                                                <input type="text" required="" class="form-control" name="CateName">
+                                                <input type="text" class="form-control" name="CateName">
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" name="editeCate" class="btn btn-warning">Edit</button>
-                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?deletecate=category_id" class="btn btn-danger">Delete</a>
+                                            <button onclick="return confirm('Are you sure you want to delete?');" type="submit" name="deleteCate" class="btn btn-danger">Delete</button>
+                                   
 
                                             
                                             </div>
