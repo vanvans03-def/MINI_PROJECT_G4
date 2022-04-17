@@ -61,18 +61,25 @@
             <?php
                 if (isset($_GET['id'])) {
                         $id = $_GET['id'];
-                        $stmt = $conn->query("SELECT * FROM `product` WHERE `product_id` = $id");
+                        $stmt = $conn->query("SELECT order_detail.`order_id`,order_detail.`total`,order_item.`quantity`,order_item.`order_id`,order_item.`cart_id`,cart_item.`cart_id`,cart_item.`product_id`,product.`product_id`,product.`name`,product.`descrip`,product.`rom`,product.`price`
+                        FROM order_detail
+                        JOIN order_item
+                        ON order_detail.`order_id` =  order_item.`order_id`
+                        JOIN cart_item
+                        ON order_item.`cart_id` = '$id'
+                        JOIN product
+                        ON cart_item.`product_id` = product.`product_id`");
                         $stmt->execute();
                         $data = $stmt->fetch();
                 }
             ?>
                 <div class="mb-3">
                     <label for="product_id" class="col-form-label">ID:</label>
-                    <input type="text" readonly value="<?php echo $data['product_id']; ?>" required class="form-control" name="product_id" >
+                    <input type="text" readonly value="<?php echo $data['order_id']; ?>" required class="form-control" name="product_id" >
 
                     <label for="name" class="col-form-label">Product Name:</label>
                     <input type="text" value="<?php echo $data['name']; ?>" required class="form-control" name="name" >
-                    <input type="hidden" value="<?php echo $data['img']; ?>" required class="form-control" name="img2" >
+                    <input type="hidden" value="<?php echo $data['quantity']; ?>" required class="form-control" name="img2" >
                 </div>
                 <div class="mb-3">
                     <label for="descrip" class="col-form-label">Desc :</label>

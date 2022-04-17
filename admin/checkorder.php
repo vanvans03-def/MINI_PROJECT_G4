@@ -10,7 +10,7 @@ if (isset($_GET['delete'])) {
     $deletestmt->execute();
 
     if ($deletestmt) {
-     
+
         echo "<script>alert('Data has been deleted successfully');</script>";
         $_SESSION['success'] = "Data has been deleted succesfully";
         header("refresh:1; url=checkorder.php");
@@ -286,9 +286,16 @@ if ($_SESSION['type'] != 1) {
                             <div class="col-md-6">
                                 <h1>Check Order </h1>
                             </div>
+                            <div class="col-md-6 d-flex justify-content-end" style="height: 50px;">
+                                <a href="checkorder.php" class="btn btn-success  ">ดูทั้งหมด</a>&nbsp;
+                                <a href="?orderFilter=<?php echo "neworder" ?>" class="btn btn-primary  ">ออเดอร์ที่เข้ามาใหม่</a>&nbsp;
+                                <a href="?orderFilter=<?php echo "oldorder" ?>" class="btn btn-secondary">ออเดอร์ที่เคยสั่ง</a>
+
+                            </div>
 
                         </div>
                         <hr>
+
                         <table class="table">
 
                             <thead class="thead-dark">
@@ -300,25 +307,200 @@ if ($_SESSION['type'] != 1) {
                                     <th scope="col">Product</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
-
+                                    <th scope="col">Status</th>
 
                                     <th scope="col">Actions</th>
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
 
-                                $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom` FROM order_detail 
+
+                            <?php
+                            if (isset($_GET['orderFilter'])) {
+                                $order = $_GET['orderFilter'];
+                                if ($order == "neworder") {
+
+
+
+                            ?>
+                                    <tbody>
+                                        <?php
+                                        $status = "ชำระเงินเรียบร้อย";
+                                        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom`,payment_details.`status` FROM order_detail 
                                 JOIN order_item
                                 ON order_detail.`order_id` = order_item.`order_id` 
                                 JOIN cart_item 
                                 ON order_item.`cart_id` = cart_item.`cart_id`
+                                JOIN payment_details
+                                ON order_detail.`payment_id` = payment_details.`payment_id`
+                                JOIN product
+                                ON cart_item.`product_id` = product.`product_id` AND `status` !=   '$status'  ORDER BY id DESC ;");
+
+                                        $stmt->execute();
+                                        $orders = $stmt->fetchAll();
+
+
+
+                                        if (!$orders) {
+                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                        } else {
+                                            foreach ($orders as $order) {
+
+
+
+
+                                        ?>
+
+
+                                                <tr>
+                                                    <th scope="row"><?php echo $order['order_id']; ?></th>
+                                                    <td><?php echo $order['user_id']; ?></td>
+                                                    <td><?php echo $order['payment_id']; ?></td>
+                                                    <td><?php echo $order['cart_id']; ?></td>
+
+                                                    <td><?php echo $order['name'] . " ";
+                                                        if ($order['rom'] == 1024) {
+                                                            echo "1 TB" . " " . $order['descrip'];
+                                                        } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
+
+
+
+
+                                                    <td><?php echo $order['quantity']; ?></td>
+                                                    <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
+                                                    <td><?php echo $order['status']; ?></td>
+                                                    <td>
+                                               
+
+                                                            <a href="editorder.php?id=<?php echo $order['cart_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
+                                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
+                                               
+
+
+
+
+
+                                                    </td>
+
+                                                </tr>
+
+
+
+
+
+
+                                    </tbody>
+                        </table>
+
+
+
+
+
+                    <?php } ?>
+
+                
+
+                    <?php  }
+                             }
+                             if ($order == "oldorder") {    
+                                ?>
+                
+                <tbody>
+                    <?php
+                                        $status = "ชำระเงินเรียบร้อย";
+                                        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom`,payment_details.`status` FROM order_detail 
+                                   JOIN order_item
+                                   ON order_detail.`order_id` = order_item.`order_id` 
+                                   JOIN cart_item 
+                                   ON order_item.`cart_id` = cart_item.`cart_id`
+                                   JOIN payment_details
+                                   ON order_detail.`payment_id` = payment_details.`payment_id`
+                                   JOIN product
+                                   ON cart_item.`product_id` = product.`product_id` AND `status` =  '$status'  ORDER BY id DESC ;");
+
+                                        $stmt->execute();
+                                        $orders = $stmt->fetchAll();
+
+
+
+                                        if (!$orders) {
+                                            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                                        } else {
+                                            foreach ($orders as $order) {
+
+
+
+
+                    ?>
+
+
+                            <tr>
+                                <th scope="row"><?php echo $order['order_id']; ?></th>
+                                <td><?php echo $order['user_id']; ?></td>
+                                <td><?php echo $order['payment_id']; ?></td>
+                                <td><?php echo $order['cart_id']; ?></td>
+
+                                <td><?php echo $order['name'] . " ";
+                                                if ($order['rom'] == 1024) {
+                                                    echo "1 TB" . " " . $order['descrip'];
+                                                } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
+
+
+
+
+                                <td><?php echo $order['quantity']; ?></td>
+                                <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
+                                <td><?php echo $order['status']; ?></td>
+                                <td>
+
+
+
+
+
+
+                                </td>
+
+                            </tr>
+
+
+
+                    <?php }
+                                        } ?>
+
+
+                </tbody>
+                </table>
+
+
+
+
+            <?php
+                }
+            ?>
+
+
+
+        <?php
+
+                            } else {
+        ?>
+
+            <tbody>
+                <?php
+                                 $status = "ชำระเงินเรียบร้อย";
+                                $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom`,payment_details.`status` FROM order_detail 
+                                JOIN order_item
+                                ON order_detail.`order_id` = order_item.`order_id` 
+                                JOIN cart_item 
+                                ON order_item.`cart_id` = cart_item.`cart_id`
+                                JOIN payment_details
+                                ON order_detail.`payment_id` = payment_details.`payment_id`
                                 JOIN product
                                 ON cart_item.`product_id` = product.`product_id`ORDER BY id DESC;");
+
                                 $stmt->execute();
                                 $orders = $stmt->fetchAll();
-                             
+
 
 
                                 if (!$orders) {
@@ -329,74 +511,78 @@ if ($_SESSION['type'] != 1) {
 
 
 
-                                ?>
+                ?>
 
 
-                                        <tr>
-                                            <th scope="row"><?php echo $order['order_id']; ?></th>
-                                            <td><?php echo $order['user_id']; ?></td>
-                                            <td><?php echo $order['payment_id']; ?></td>
-                                            <td><?php echo $order['cart_id']; ?></td>
-                                        
-                                             <td><?php echo $order['name']." ";
-                                             if($order['rom'] == 1024){
-                                                echo "1 TB"." ".$order['descrip'];
-                                             }else echo $order['rom']." "."GB"." ".$order['descrip']; ?></td>
+                        <tr>
+                            <th scope="row"><?php echo $order['order_id']; ?></th>
+                            <td><?php echo $order['user_id']; ?></td>
+                            <td><?php echo $order['payment_id']; ?></td>
+                            <td><?php echo $order['cart_id']; ?></td>
 
-
-
-
-                                             <td><?php echo $order['quantity']; ?></td>
-                                            <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
-
-                                            <td> 
-                                                <form action="editorder.php" method="POST">
-                                        
-                                                <a href="edit.php?id=<?php echo $order['order_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
-                                                <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
-                                                </form>
-                                              
-                                              
-                                            
-
-
-                                            </td>
-
-                                        </tr>
-                        <?php }  } ?>
+                            <td><?php echo $order['name'] . " ";
+                                        if ($order['rom'] == 1024) {
+                                            echo "1 TB" . " " . $order['descrip'];
+                                        } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
 
 
 
 
+                            <td><?php echo $order['quantity']; ?></td>
+                            <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
+                            <td><?php echo $order['status']; ?></td>
+                            <td>
+                                <?php if($order['status'] != $status ){?>
+                                <form action="editorder.php" method="POST">
+
+                                <a href="editorder.php?id=<?php echo $order['cart_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
+                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
+                                </form>
 
 
 
-                            </tbody>
-                        </table>
+                                <?php } ?>
+
+                            </td>
+
+                        </tr>
+                <?php }
+                                } ?>
 
 
-                        <!-- JavaScript Bundle with Popper -->
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-                        <script>
-                            let imgInput = document.getElementById('imgInput');
-                            let previewImg = document.getElementById('previewImg');
-
-                            imgInput.onchange = evt => {
-                                const [file] = imgInput.files;
-                                if (file) {
-                                    previewImg.src = URL.createObjectURL(file)
-                                }
+            </tbody>
+            </table>
+        <?php
                             }
-                        </script>
-                        <script>
-                            let x = document.querySelectorAll(".currency");
-                            for (let i = 0, len = x.length; i < len; i++) {
-                                let num = Number(x[i].innerHTML)
-                                    .toLocaleString('en');
-                                x[i].innerHTML = num;
-                                x[i].classList.add("currSign");
-                            }
-                        </script>
+        ?>
+
+
+
+
+
+
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script>
+            let imgInput = document.getElementById('imgInput');
+            let previewImg = document.getElementById('previewImg');
+
+            imgInput.onchange = evt => {
+                const [file] = imgInput.files;
+                if (file) {
+                    previewImg.src = URL.createObjectURL(file)
+                }
+            }
+        </script>
+        <script>
+            let x = document.querySelectorAll(".currency");
+            for (let i = 0, len = x.length; i < len; i++) {
+                let num = Number(x[i].innerHTML)
+                    .toLocaleString('en');
+                x[i].innerHTML = num;
+                x[i].classList.add("currSign");
+            }
+        </script>
 
                     </div>
 
@@ -405,24 +591,24 @@ if ($_SESSION['type'] != 1) {
 
 
 
-            <li class="my-nav-item ">
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
-            </li>
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
+
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-area-demo.js"></script>
+            <script src="js/demo/chart-pie-demo.js"></script>
+
 </body>
 
 </html>
