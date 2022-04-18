@@ -58,16 +58,16 @@ if (isset($_GET['logout'])) {
                         <a href="store.php" class="my-nav-link">Store</a>
                     </li>
                     <li class="my-nav-item">
-                        <a href="login.php" class="my-nav-link">Mac</a>
+                        <a href="#" class="my-nav-link">Mac</a>
                     </li>
                     <li class="my-nav-item">
-                        <a  class="my-nav-link">iPad</a>
+                        <a href="#" class="my-nav-link">Mac</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="iphone.php" class="my-nav-link">iPhone</a>
                     </li>
                     <li class="my-nav-item">
-                        <a  class="my-nav-link">Watch</a>
+                        <a href="#" class="my-nav-link">Mac</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="airpods.php" class="my-nav-link">AirPods</a>
@@ -76,14 +76,13 @@ if (isset($_GET['logout'])) {
                         <a href="TV.php" class="my-nav-link">TV</a>
                     </li>
                     <li class="my-nav-item">
-                        <a  class="my-nav-link">Music</a>
+                        <a href="#" class="my-nav-link">Music</a>
                     </li>
                     <li class="my-nav-item">
                         <a href="accessories.php" class="my-nav-link">Accessories</a>
                     </li>
                     <a href="mybag.php" class="my-nav-link">Mybag</a>
                     </li>
-
                     <li class="my-nav-item nav-item dropdown">
                         <a href="#" class="my-nav-link-search"></a>
                     </li>
@@ -91,7 +90,7 @@ if (isset($_GET['logout'])) {
                         <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                     </li>
                     <li class="y-nav-item" style="padding-bottom:10px;">
-                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
+                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
                             ออกจากระบบ
                             <!--logged information-->
                             <?php if (isset($_SESSION['email'])) : ?>
@@ -99,8 +98,6 @@ if (isset($_GET['logout'])) {
                             <?php endif ?>
                         </a>
                     </li>
-
-
                 </ul>
                 <!-- /.nav-list nav-list-larger -->
             </nav>
