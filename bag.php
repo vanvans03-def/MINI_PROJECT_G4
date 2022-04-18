@@ -29,10 +29,6 @@ if (isset($_GET['delete'])) {
 }
 
 
-
-
-
-
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['email']);
@@ -65,79 +61,77 @@ if (isset($_GET['logout'])) {
     </style>
 </head>
 <header>
-        <div class="my-container">
-            <nav class="my-nav">
-                <ul class="my-nav-list my-nav-list-mobile">
-                    <li class="my-nav-item">
-                        <div class="mobile-menu">
-                            <span class="line line-top"></span>
-                            <span class="line line-bottom"></span>
-                        </div>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                </ul>
-                <!-- /.nav-list nav-list-mobile -->
-                <ul class="my-nav-list my-nav-list-larger">
-                    <li class="my-nav-item my-nav-item-hidden">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="store.php" class="my-nav-link">Store</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="login.php" class="my-nav-link">Mac</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">iPad</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="iphone.php" class="my-nav-link">iPhone</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Watch</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="airpods.php" class="my-nav-link">AirPods</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="TV.php" class="my-nav-link">TV</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Music</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="accessories.php" class="my-nav-link">Accessories</a>
-                    </li>
-                    <a href="mybag.php" class="my-nav-link">Mybag</a>
-                    </li>
+    <div class="my-container">
+        <nav class="my-nav">
+            <ul class="my-nav-list my-nav-list-mobile">
+                <li class="my-nav-item">
+                    <div class="mobile-menu">
+                        <span class="line line-top"></span>
+                        <span class="line line-bottom"></span>
+                    </div>
+                </li>
+                <li class="my-nav-item">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-mobile -->
+            <ul class="my-nav-list my-nav-list-larger">
+                <li class="my-nav-item my-nav-item-hidden">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="store.php" class="my-nav-link">Store</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="iphone.php" class="my-nav-link">iPhone</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="airpods.php" class="my-nav-link">AirPods</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="TV.php" class="my-nav-link">TV</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Music</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="accessories.php" class="my-nav-link">Accessories</a>
+                </li>
+                <a href="mybag.php" class="my-nav-link">Mybag</a>
+                </li>
+                <li class="my-nav-item nav-item dropdown">
+                    <a href="#" class="my-nav-link-search"></a>
+                </li>
+                <li class="my-nav-item my-nav-item-hidden ">
+                    <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+                <li class="y-nav-item" style="padding-bottom:10px;">
+                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                        ออกจากระบบ
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"></p>
+                        <?php endif ?>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-larger -->
+        </nav>
+    </div>
+</header>
 
-                    <li class="my-nav-item nav-item dropdown">
-                        <a href="#" class="my-nav-link-search"></a>
-                    </li>
-                    <li class="my-nav-item my-nav-item-hidden ">
-                        <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                    <li class="y-nav-item" style="padding-bottom:10px;">
-                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
-                            ออกจากระบบ
-                            <!--logged information-->
-                            <?php if (isset($_SESSION['email'])) : ?>
-                                <p class="fs-4 fw-bold text-danger"></p>
-                            <?php endif ?>
-                        </a>
-                    </li>
-
-
-                </ul>
-                <!-- /.nav-list nav-list-larger -->
-            </nav>
-        </div>
-    </header>
 <body>
     <?php
 
@@ -151,8 +145,8 @@ if (isset($_GET['logout'])) {
 
             <div class="row justify-content-md-left">
                 <h1>
-                 <?php
-        
+                    <?php
+
                     $stmt = $conn->query("SELECT * FROM product  WHERE product_id = '$pd_id' ");
                     $stmt->execute();
                     $data = $stmt->fetch();
@@ -161,7 +155,7 @@ if (isset($_GET['logout'])) {
                         echo "<div  class='text-center fw-bold alert alert-warning fs-1'><td>กรุณาเพิ่มสินค้าลงในตระกร้า</td></div>";
                     }
                     if ($data) {
-                       /*if(isset ($_POST_['shoping'])){
+                        /*if(isset ($_POST_['shoping'])){
                         if (isset($_SESSION['shop_cart'])) {
                             $item_array_id = array_column($_SESSION['shop_cart'], $pd_id);
                             if (!in_array($_SESSION['order.id'], $item_array_id)) {
@@ -191,16 +185,16 @@ if (isset($_GET['logout'])) {
                             $_SESSION["shop_cart"][0] = $item_array;
                           } 
                          }*/
-                    
+
                     ?>
                 </h1>
 
                 <?php
 
                         $item_array = array(
-                           'item_id' => $pd_id,
-                           'item_name' => $data['name'],
-                           'item_price' => $data['price'],
+                            'item_id' => $pd_id,
+                            'item_name' => $data['name'],
+                            'item_price' => $data['price'],
                             'item_quantity' => $quantity
 
                         );
@@ -211,39 +205,39 @@ if (isset($_GET['logout'])) {
                             $item_array = array(
                                 'item_id' => $pd_id,
                                 'item_name' => $data['name'],
-                                 'item_price' => $quantity*$data['price'],
+                                'item_price' => $quantity * $data['price'],
                                 'item_quantity' =>  $quantity
 
 
                             );
-                           
                         }
 
-                        setcookie('userOrder', json_encode($item_array), time()+3600);
+                        setcookie('userOrder', json_encode($item_array), time() + 3600);
                         $userOrder = json_decode($_COOKIE['userOrder'], true);
-                       
-                        
-                        
-                       
+
+
+
+
                 ?>
-<pre><?php // print_r( ($_COOKIE['userOrder'] ));  ?></pre> 
+                <pre><?php // print_r( ($_COOKIE['userOrder'] ));  
+                        ?></pre>
 
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <p class="text-center fw-bold display-3 mb-5 ">
                                 นี่คือรายการสินค้าที่อยู่ในถุงของคุณ&nbsp;<span class=""> <?php
-                                                                                            echo "฿" . number_format($quantity*$data['price'], 2); ?></span> </p>
+                                                                                            echo "฿" . number_format($quantity * $data['price'], 2); ?></span> </p>
                             <p class="text-center fs-2 fw-bold  text-muted display-3 mb-5">รับบริการจัดส่งฟรีและส่งคืนฟรีทุกคำสั่งซื้อ</p>
 
 
                             <div class="d-grid gap-2 col-6 mx-auto" style="width: 30rem; height: 1rem;">
-                            <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
-                                                <div class="col text-end " style="padding-top: 1rem;" >
-                                                    <button type="submit" class="btn btn-primary mb-3 fs-2 btn-rounded " name="submitbag" style="width: 30rem; height: 5rem;">ชำระเงิน</button>
-                                                </div>
-                                
-                                            </form>
+                                <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
+                                    <div class="col text-end " style="padding-top: 1rem;">
+                                        <button type="submit" class="btn btn-primary mb-3 fs-2 btn-rounded " name="submitbag" style="width: 30rem; height: 5rem;">ชำระเงิน</button>
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
 
@@ -292,14 +286,14 @@ if (isset($_GET['logout'])) {
                                     <div class="col col-md-auto">
 
                                         <p class="text-left display-1 fw-bold fs-1 mb-2 textcard "> <?php echo $data['name']; ?>
-                                           <?php if($data['rom'] > 0 && $data['rom'] != 1024 ){ 
-                                                echo "ความจุ"." ".$data['rom']." "."GB"; 
-                                                }elseif($data['rom'] == 1024){
-                                                    echo "ความจุ"." "."1"." "."TB";
-                                                }
-                                                
-                                                
-                                                ?> <?php echo $data['descrip'] ?>
+                                            <?php if ($data['rom'] > 0 && $data['rom'] != 1024) {
+                                                echo "ความจุ" . " " . $data['rom'] . " " . "GB";
+                                            } elseif ($data['rom'] == 1024) {
+                                                echo "ความจุ" . " " . "1" . " " . "TB";
+                                            }
+
+
+                                            ?> <?php echo $data['descrip'] ?>
                                         </p>
 
                                     </div>
@@ -344,7 +338,7 @@ if (isset($_GET['logout'])) {
 
                                                 //$quantity = $_POST['quantity'];
 
-                                                echo "฿" . number_format($quantity*$data['price'], 2); ?></p>
+                                                echo "฿" . number_format($quantity * $data['price'], 2); ?></p>
                                             
                                             <div class=" col text-end">
                                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $data['product_id']; ?>" class="cta fs-3 cta-link" style="padding-bottom: 50px;">Delete</a>
@@ -448,103 +442,103 @@ if (isset($_GET['logout'])) {
             <p class="underline"></p>
 
 
-                <div class="row d-flex flex-row-reverse">
-                    <div class="col-sm-auto">
-                        <div class="card  border-0" style="width: 20rem;">
+            <div class="row d-flex flex-row-reverse">
+                <div class="col-sm-auto">
+                    <div class="card  border-0" style="width: 20rem;">
 
 
-                        </div>
                     </div>
+                </div>
 
 
-                    <div class="col-sm-9">
-                        <div class="card  border-0">
-                            <div class="card-body">
+                <div class="col-sm-9">
+                    <div class="card  border-0">
+                        <div class="card-body">
 
 
 
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col ">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col ">
 
-                                                <p class="text-left  display-2 text-muted fs-2 mb-2 "> ยอดรวม
-                                                </p>
-                                            </div>
-
-                                            <div class="col ">
-                                   
-                                                <p class="fs-2 display-1 text-muted text-end mb-2  "><?php echo "฿" . number_format($quantity*$data['price'], 2); ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col ">
-
-                                                <p class="text-left fs-2 display-1 text-muted  mb-2 "> ยอดจัดส่ง
-                                                </p>
-                                            </div>
-
-                                            <div class="col ">
-                                                <p class="fs-2 display-1 text-muted text-end mb-2  "> ฟรี</p>
-                                            </div>
+                                            <p class="text-left  display-2 text-muted fs-2 mb-2 "> ยอดรวม
+                                            </p>
                                         </div>
 
-                                        <p class="underline" style="padding-bottom: 3rem;"></p>
+                                        <div class="col ">
 
-                                        <div class="row">
-                                            <div class="col ">
+                                            <p class="fs-2 display-1 text-muted text-end mb-2  "><?php echo "฿" . number_format($quantity * $data['price'], 2); ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col ">
 
-                                                <p class="text-left fs-1 display-1 fw-bold  mb-2 "> ยอดชำระเงินของคุณ
-                                                </p>
-                                            </div>
-
-                                            <div class="col ">
-                                                <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2  "> <?php echo "฿" . number_format($quantity*$data['price'], 2); ?></p>
-                                            </div>
+                                            <p class="text-left fs-2 display-1 text-muted  mb-2 "> ยอดจัดส่ง
+                                            </p>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col ">
-
-
-                                            </div>
-
-                                            <div class="col ">
-                                                <p class="fs-5 display-1 text-muted text-end mb-2  "> รวม VAT จำนวน
-                                                    <span calss="">
-                                                        <?php
-
-                                                        $vat =  $quantity*$data['price'] * 7 / 100;
-                                                        echo "฿" . number_format($vat, 2);
-                                                        ?>
-                                                    </span>
-                                                </p>
-                                            </div>
-
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col ">
-
-
-                                            </div>
-                                            <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
-                                                <div class="col text-end " style="padding-top: 1rem;" >
-                                                    <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">บันทึกสินค้าลงตระกร้า</button>
-                                                </div>
-                                            <?php }  /*}*/
-                                            ?>
-                                            </form>
+                                        <div class="col ">
+                                            <p class="fs-2 display-1 text-muted text-end mb-2  "> ฟรี</p>
                                         </div>
                                     </div>
 
+                                    <p class="underline" style="padding-bottom: 3rem;"></p>
+
+                                    <div class="row">
+                                        <div class="col ">
+
+                                            <p class="text-left fs-1 display-1 fw-bold  mb-2 "> ยอดชำระเงินของคุณ
+                                            </p>
+                                        </div>
+
+                                        <div class="col ">
+                                            <p class="fs-1 display-1 text-mutedfs-2 1 fw-bold text-end mb-2  "> <?php echo "฿" . number_format($quantity * $data['price'], 2); ?></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col ">
+
+
+                                        </div>
+
+                                        <div class="col ">
+                                            <p class="fs-5 display-1 text-muted text-end mb-2  "> รวม VAT จำนวน
+                                                <span calss="">
+                                                    <?php
+
+                                                    $vat =  $quantity * $data['price'] * 7 / 100;
+                                                    echo "฿" . number_format($vat, 2);
+                                                    ?>
+                                                </span>
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col ">
+
+
+                                        </div>
+                                        <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
+                                            <div class="col text-end " style="padding-top: 1rem;">
+                                                <button type="submit" class="btn btn-primary mb-2 fs-4 btn-rounded " name="submitbag" style="width: 40rem; height: 7rem;">บันทึกสินค้าลงตระกร้า</button>
+                                            </div>
+                                        <?php }  /*}*/
+                                        ?>
+                                        </form>
+                                    </div>
                                 </div>
+
                             </div>
-
-
                         </div>
+
+
                     </div>
                 </div>
+            </div>
 
 
 

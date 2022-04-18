@@ -14,12 +14,6 @@ if (!isset($_SESSION['email'])) {
     header('location: login.php');
 }
 
-
-
-
-
-
-
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['email']);
@@ -61,79 +55,76 @@ if (isset($_GET['logout'])) {
 
 </head>
 <header>
-        <div class="my-container">
-            <nav class="my-nav">
-                <ul class="my-nav-list my-nav-list-mobile">
-                    <li class="my-nav-item">
-                        <div class="mobile-menu">
-                            <span class="line line-top"></span>
-                            <span class="line line-bottom"></span>
-                        </div>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                </ul>
-                <!-- /.nav-list nav-list-mobile -->
-                <ul class="my-nav-list my-nav-list-larger">
-                    <li class="my-nav-item my-nav-item-hidden">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="store.php" class="my-nav-link">Store</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="login.php" class="my-nav-link">Mac</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">iPad</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="iphone.php" class="my-nav-link">iPhone</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Watch</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="airpods.php" class="my-nav-link">AirPods</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="TV.php" class="my-nav-link">TV</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Music</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="accessories.php" class="my-nav-link">Accessories</a>
-                    </li>
-                    <a href="mybag.php" class="my-nav-link">Mybag</a>
-                    </li>
-
-                    <li class="my-nav-item nav-item dropdown">
-                        <a href="#" class="my-nav-link-search"></a>
-                    </li>
-                    <li class="my-nav-item my-nav-item-hidden ">
-                        <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                    <li class="y-nav-item" style="padding-bottom:10px;">
-                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
-                            ออกจากระบบ
-                            <!--logged information-->
-                            <?php if (isset($_SESSION['email'])) : ?>
-                                <p class="fs-4 fw-bold text-danger"></p>
-                            <?php endif ?>
-                        </a>
-                    </li>
-
-
-                </ul>
-                <!-- /.nav-list nav-list-larger -->
-            </nav>
-        </div>
-    </header>
+    <div class="my-container">
+        <nav class="my-nav">
+            <ul class="my-nav-list my-nav-list-mobile">
+                <li class="my-nav-item">
+                    <div class="mobile-menu">
+                        <span class="line line-top"></span>
+                        <span class="line line-bottom"></span>
+                    </div>
+                </li>
+                <li class="my-nav-item">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-mobile -->
+            <ul class="my-nav-list my-nav-list-larger">
+                <li class="my-nav-item my-nav-item-hidden">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="store.php" class="my-nav-link">Store</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="iphone.php" class="my-nav-link">iPhone</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="airpods.php" class="my-nav-link">AirPods</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="TV.php" class="my-nav-link">TV</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Music</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="accessories.php" class="my-nav-link">Accessories</a>
+                </li>
+                <a href="mybag.php" class="my-nav-link">Mybag</a>
+                </li>
+                <li class="my-nav-item nav-item dropdown">
+                    <a href="#" class="my-nav-link-search"></a>
+                </li>
+                <li class="my-nav-item my-nav-item-hidden ">
+                    <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+                <li class="y-nav-item" style="padding-bottom:10px;">
+                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                        ออกจากระบบ
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"></p>
+                        <?php endif ?>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-larger -->
+        </nav>
+    </div>
+</header>
 
 <body>
 
@@ -142,8 +133,8 @@ if (isset($_GET['logout'])) {
 
             <div class="row justify-content-md-left">
                 <!-- <pre><?php print_r($_COOKIE['userOrder']);
-                        $userOrder = json_decode($_COOKIE['userOrder'], true);
-                        ?></pre> -->
+                            $userOrder = json_decode($_COOKIE['userOrder'], true);
+                            ?></pre> -->
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -158,24 +149,24 @@ if (isset($_GET['logout'])) {
                     </div></br>
 
                     <?php if (isset($_SESSION['success'])) { ?>
-            <div class="alert alert-success fs-2">
-                <?php 
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']); 
-                 
-               
-                ?>
-            </div>
-        <?php } ?>
-            <?php if (isset($_SESSION['errorpay'])) { ?>
-            <div class="alert alert-danger fw-bold fs-3">
-                <?php 
-                    echo $_SESSION['errorpay'];
-                    unset($_SESSION['errorpay']); 
-                 
-                ?>
-            </div>
-        <?php } ?>
+                        <div class="alert alert-success fs-2">
+                            <?php
+                            echo $_SESSION['success'];
+                            unset($_SESSION['success']);
+
+
+                            ?>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['errorpay'])) { ?>
+                        <div class="alert alert-danger fw-bold fs-3">
+                            <?php
+                            echo $_SESSION['errorpay'];
+                            unset($_SESSION['errorpay']);
+
+                            ?>
+                        </div>
+                    <?php } ?>
 
                     <?php
                     $cartid = $_SESSION['cartid'];
@@ -228,9 +219,9 @@ if (isset($_GET['logout'])) {
                             if (!$Userpay) {
                             ?>
                                 <div class="col col-md-auto" style="padding-top: 20px;">
-                                    <p class=" text-muted  text-center   fw-bold display-6 mb-6"> นี้คือการซื้อครั้งแรกใช่ไหม 
-                                    <button type="button" onclick="document.location='addpayment.php'" value="1" class="text-primary text-center   fw-bold fs-2 btn btn-outline " style="width:150px;">เพิ่มบัญชีตรงนี้สิ</button>
-                                  </p>
+                                    <p class=" text-muted  text-center   fw-bold display-6 mb-6"> นี้คือการซื้อครั้งแรกใช่ไหม
+                                        <button type="button" onclick="document.location='addpayment.php'" value="1" class="text-primary text-center   fw-bold fs-2 btn btn-outline " style="width:150px;">เพิ่มบัญชีตรงนี้สิ</button>
+                                    </p>
                                 </div>
 
 
@@ -251,73 +242,73 @@ if (isset($_GET['logout'])) {
 
 
                                 <p class="text-center  fw-bold display-4 mb-4"> รหัสชำระเงินคือ : <span class="  text-danger "><?php echo $data['payment_id']; ?></span></p>
-                               
 
 
-                                    <div class="col col-md-auto  " style="padding-left:25px;">
-                                        <p class="fs-3 fw-bold text-muted">ชื่อ-นามสกุล</p>
+
+                                <div class="col col-md-auto  " style="padding-left:25px;">
+                                    <p class="fs-3 fw-bold text-muted">ชื่อ-นามสกุล</p>
+                                    <div class="row  ">
+
+                                        <div class="form-group col">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $dataUser['name'] ?>" id="name" name="name">
+                                        </div>
+
+
+
+                                        <div class="form-group col">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $dataUser['Lname'] ?>" id="Lname" name="Lname">
+                                        </div>
+                                    </div>
+
+                                    </br>
+                                    <?php
+                                    $stmt = $conn->query("SELECT * FROM `users_address` WHERE `user_id` = $userid  ");
+                                    $stmt->execute();
+                                    $User = $stmt->fetch();
+
+                                    if ($User) {
+
+                                    ?>
+                                        <div class="col col-md-auto ">
+                                            <p class="fs-3 fw-bold text-muted ">ประเทศ/ภูมิภาค</p>
+                                        </div>
+
+                                        <div class="form-group col">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $User['country'] ?>">
+                                        </div>
+
+
+
+                                        </br>
+                                        <p class="fs-3 fw-bold text-muted">ที่อยู่ </p>
+                                        <div class="form-group">
+                                            <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $User['address_line_1'] ?>" name="address1" id="address1">
+                                        </div></br>
+                                        <p class="fs-3 fw-bold text-muted">ที่อยู่ เพิ่มเติม </p>
+                                        <div class="form-group">
+                                            <input readonly type="text" class="form-control form-control-lg fs-3" name="address2" id="address2" value="<?php echo $User['address_line_2'] ?> ">
+                                        </div></br>
+
+                                        <p class="fs-3 fw-bold text-muted">เมือง/รหัสไปรษณีย์</p>
                                         <div class="row  ">
 
                                             <div class="form-group col">
-                                                <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $dataUser['name'] ?>" id="name" name="name">
+                                                <input readonly type="text" class="form-control form-control-lg fs-3" id="city" name="city" value="<?php echo $User['city'] ?>">
                                             </div>
 
 
 
                                             <div class="form-group col">
-                                                <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $dataUser['Lname'] ?>" id="Lname" name="Lname">
+                                                <input readonly type="text" class="form-control form-control-lg fs-3" id="postcode" name="postcode" value="<?php echo $User['Postcode'] ?>">
                                             </div>
                                         </div>
 
-                                        </br>
-                                        <?php
-                                        $stmt = $conn->query("SELECT * FROM `users_address` WHERE `user_id` = $userid  ");
-                                        $stmt->execute();
-                                        $User = $stmt->fetch();
+                                        <br>
+                                        <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
+                                        <div class="form-group">
+                                            <input readonly type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" value="<?php echo $User['telephone'] ?>">
 
-                                        if ($User) {
-
-                                        ?>
-                                            <div class="col col-md-auto ">
-                                                <p class="fs-3 fw-bold text-muted ">ประเทศ/ภูมิภาค</p>
-                                            </div>
-
-                                            <div class="form-group col">
-                                                <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $User['country'] ?>">
-                                            </div>
-
-
-
-                                            </br>
-                                            <p class="fs-3 fw-bold text-muted">ที่อยู่ </p>
-                                            <div class="form-group">
-                                                <input type="text" readonly class="form-control form-control-lg fs-3" value="<?php echo $User['address_line_1'] ?>" name="address1" id="address1">
-                                            </div></br>
-                                            <p class="fs-3 fw-bold text-muted">ที่อยู่ เพิ่มเติม </p>
-                                            <div class="form-group">
-                                                <input readonly type="text" class="form-control form-control-lg fs-3" name="address2" id="address2" value="<?php echo $User['address_line_2'] ?> ">
-                                            </div></br>
-
-                                            <p class="fs-3 fw-bold text-muted">เมือง/รหัสไปรษณีย์</p>
-                                            <div class="row  ">
-
-                                                <div class="form-group col">
-                                                    <input readonly type="text" class="form-control form-control-lg fs-3" id="city" name="city" value="<?php echo $User['city'] ?>">
-                                                </div>
-
-
-
-                                                <div class="form-group col">
-                                                    <input readonly type="text" class="form-control form-control-lg fs-3" id="postcode" name="postcode" value="<?php echo $User['Postcode'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <br>
-                                            <p class="fs-3 fw-bold text-muted">เบอร์โทรที่ติดต่อได้</p>
-                                            <div class="form-group">
-                                                <input readonly type="tel" class="form-control form-control-lg fs-3" name="telephone" id="telephone" value="<?php echo $User['telephone'] ?>">
-                                              
-                                                <form action="payment_db.php" method="post" enctype="multipart/form-data">
+                                            <form action="payment_db.php" method="post" enctype="multipart/form-data">
 
                                                 <div class="row d-flex justify-content-center" style="padding-top: 30px;">
 
@@ -358,24 +349,24 @@ if (isset($_GET['logout'])) {
                                                                 <img src="http://127.0.0.1/Mini_Project_G4/images/Banklogo/prompay.png" alt="" style="width: 7rem;">
                                                             </label>
                                                     </div>
-                                                    
+
                                                 </div>
 
                                                 <div class="mb-3 fs-3 fw-bold text-muted style=" padding-top: 10px;">
-                                                   <label for="img" class="col-form-label ">อัพโหลดสลิปธนาคาร :</label>
-                                                        <input type="file" required="" class="form-control" id="imgInput" name="img">
-                                                        <img loading="lazy" width="100%" id="previewImg" alt="">
-                                                        
-                                                    </div>
+                                                    <label for="img" class="col-form-label ">อัพโหลดสลิปธนาคาร :</label>
+                                                    <input type="file" required="" class="form-control" id="imgInput" name="img">
+                                                    <img loading="lazy" width="100%" id="previewImg" alt="">
+
+                                                </div>
                                                 <br style="padding-top: 20px;">
                                                 <button type="submit" name="payment" class="btn btn-primary btn-lg btn-block "><span class="fs-3">ยืนยันการชำระเงิน</span></button>
 
-                                            </div>
+                                        </div>
 
 
 
 
-                                    </div>
+                                </div>
 
                                 </form>
                         </div>
@@ -385,8 +376,8 @@ if (isset($_GET['logout'])) {
 
 
 <?php }
-                                    }
-                                } ?>
+                                }
+                            } ?>
 
 
 
@@ -428,17 +419,17 @@ if (isset($_GET['logout'])) {
 
 
 
- <script>
-                            let imgInput = document.getElementById('imgInput');
-                            let previewImg = document.getElementById('previewImg');
+    <script>
+        let imgInput = document.getElementById('imgInput');
+        let previewImg = document.getElementById('previewImg');
 
-                            imgInput.onchange = evt => {
-                                const [file] = imgInput.files;
-                                if (file) {
-                                    previewImg.src = URL.createObjectURL(file)
-                                }
-                            }
-                        </script>
+        imgInput.onchange = evt => {
+            const [file] = imgInput.files;
+            if (file) {
+                previewImg.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 
 
 

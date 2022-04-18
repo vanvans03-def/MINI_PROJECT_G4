@@ -61,6 +61,10 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="http://localhost/Mini_Project_G4/overview/v8.css" />
   <script href="http://localhost/Mini_Project_G4/overview/head.built.js" type="text/javascript" charset="utf-8"></script>
   <link rel="icon" href="http://localhost/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
+  <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/bootstrap-5.0.2-dist/js/bootstrap.js">
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1/Mini_Project_G4/font.css">
+  <link rel="stylesheet" href="http://127.0.0.1/Mini_Project_G4/MyStyles.css">
 </head>
 
 <body class="page-overview ac-gn-current-music" data-anim-scroll-group="body">
@@ -126,87 +130,47 @@ if (isset($_GET['logout'])) {
 
       <!-- Start navbar apple -->
 
-      <ul class="ac-gn-list">
-        <li class="ac-gn-item ac-gn-apple">
-          <a class="ac-gn-link ac-gn-link-apple" href="index.php" data-analytics-title="apple home" id="ac-gn-firstfocus">
-            <span class="ac-gn-link-text">Apple</span>
-          </a>
+      <ul class="my-nav-list my-nav-list-larger">
+        <li class="my-nav-item my-nav-item-hidden">
+          <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-store">
-          <a class="ac-gn-link ac-gn-link-store" href="store.php" data-analytics-title="store">
-            <span class="ac-gn-link-text">Store</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="store.php" class="my-nav-link">Store</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-mac">
-          <a class="ac-gn-link ac-gn-link-mac" href="#" data-analytics-title="mac">
-            <span class="ac-gn-link-text">Mac</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="#" class="my-nav-link">Mac</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-ipad">
-          <a class="ac-gn-link ac-gn-link-ipad" href="#" data-analytics-title="ipad">
-            <span class="ac-gn-link-text">iPad</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="#" class="my-nav-link">Mac</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-iphone">
-          <a class="ac-gn-link ac-gn-link-iphone" href="#" data-analytics-title="iphone">
-            <span class="ac-gn-link-text">iPhone</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="iphone.php" class="my-nav-link">iPhone</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-watch">
-          <a class="ac-gn-link ac-gn-link-watch" href="#" data-analytics-title="watch">
-            <span class="ac-gn-link-text">Watch</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="#" class="my-nav-link">Mac</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-airpods">
-          <a class="ac-gn-link ac-gn-link-airpods" href="AirPods.php" data-analytics-title="airpods">
-            <span class="ac-gn-link-text">AirPods</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="airpods.php" class="my-nav-link">AirPods</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-tvhome">
-          <a class="ac-gn-link ac-gn-link-tvhome" href="#" data-analytics-title="tv and home">
-            <span class="ac-gn-link-text">TV และบ้าน</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="TV.php" class="my-nav-link">TV</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-accessories">
-          <a class="ac-gn-link ac-gn-link-accessories" href="Accessories.php" data-analytics-title="accessories">
-            <span class="ac-gn-link-text">อุปกรณ์เสริม</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="#" class="my-nav-link">Music</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
-          <a class="ac-gn-link ac-gn-link-support" href="#" data-analytics-title="support">
-            <span class="ac-gn-link-text">บริการช่วยเหลือ</span>
-          </a>
+        <li class="my-nav-item">
+          <a href="accessories.php" class="my-nav-link">Accessories</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-item-menu ac-gn-search" role="search">
-          <a id="ac-gn-link-search" class="ac-gn-link ac-gn-link-search" href="https://www.apple.com/th/search" data-analytics-title="search" data-analytics-intrapage-link="" aria-label="ค้นหาใน apple.com" role="button" aria-haspopup="true"></a>
+        <a href="mybag.php" class="my-nav-link">Mybag</a>
         </li>
-
-        <li class="ac-gn-item ac-gn-bag" id="ac-gn-bag">
-          <div class="ac-gn-bag-wrapper">
-            <a class="ac-gn-link ac-gn-link-bag" href="#" data-analytics-title="bag" data-analytics-click="bag" aria-label="ถุง" data-string-badge="ถุงช้อปปิ้งและจำนวนสินค้าในถุง : {%BAGITEMCOUNT%}" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="ac-gn-bagview-content">
-              <span class="ac-gn-link-text">ถุง</span>
-            </a>
-            <span class="ac-gn-bag-badge" aria-hidden="true" data-analytics-title="bag" data-analytics-click="bag">
-              <span class="ac-gn-bag-badge-separator"></span>
-              <span class="ac-gn-bag-badge-number"></span>
-              <span class="ac-gn-bag-badge-unit">+</span>
-            </span>
-          </div>
-          <span class="ac-gn-bagview-caret ac-gn-bagview-caret-large"></span>
+        <li class="my-nav-item nav-item dropdown">
+          <a href="#" class="my-nav-link-search"></a>
         </li>
-
-        <li class="ac-gn-bagview-nav-item-signOut">
-          <a href="index.php?logout='1'" class="ac-gn-bagview-button2 ac-gn-bagview-nav-link-signOut ">
+        <li class="my-nav-item my-nav-item-hidden ">
+          <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
+        </li>
+        <li class="y-nav-item" style="padding-bottom:10px;">
+          <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
             ออกจากระบบ
             <!--logged information-->
             <?php if (isset($_SESSION['email'])) : ?>

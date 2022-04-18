@@ -14,20 +14,11 @@ if (!isset($_SESSION['email'])) {
     header('location: login.php');
 }
 
-
-
-
-
-
-
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['email']);
     header('location: login.php');
 }
-
-
-
 
 
 ?>
@@ -56,79 +47,76 @@ if (isset($_GET['logout'])) {
     </style>
 </head>
 <header>
-        <div class="my-container">
-            <nav class="my-nav">
-                <ul class="my-nav-list my-nav-list-mobile">
-                    <li class="my-nav-item">
-                        <div class="mobile-menu">
-                            <span class="line line-top"></span>
-                            <span class="line line-bottom"></span>
-                        </div>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                </ul>
-                <!-- /.nav-list nav-list-mobile -->
-                <ul class="my-nav-list my-nav-list-larger">
-                    <li class="my-nav-item my-nav-item-hidden">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="store.php" class="my-nav-link">Store</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="login.php" class="my-nav-link">Mac</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">iPad</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="iphone.php" class="my-nav-link">iPhone</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Watch</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="airpods.php" class="my-nav-link">AirPods</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="TV.php" class="my-nav-link">TV</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Music</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="accessories.php" class="my-nav-link">Accessories</a>
-                    </li>
-                    <a href="mybag.php" class="my-nav-link">Mybag</a>
-                    </li>
-
-                    <li class="my-nav-item nav-item dropdown">
-                        <a href="#" class="my-nav-link-search"></a>
-                    </li>
-                    <li class="my-nav-item my-nav-item-hidden ">
-                        <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                    <li class="y-nav-item" style="padding-bottom:10px;">
-                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
-                            ออกจากระบบ
-                            <!--logged information-->
-                            <?php if (isset($_SESSION['email'])) : ?>
-                                <p class="fs-4 fw-bold text-danger"></p>
-                            <?php endif ?>
-                        </a>
-                    </li>
-
-
-                </ul>
-                <!-- /.nav-list nav-list-larger -->
-            </nav>
-        </div>
-    </header>
+    <div class="my-container">
+        <nav class="my-nav">
+            <ul class="my-nav-list my-nav-list-mobile">
+                <li class="my-nav-item">
+                    <div class="mobile-menu">
+                        <span class="line line-top"></span>
+                        <span class="line line-bottom"></span>
+                    </div>
+                </li>
+                <li class="my-nav-item">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-mobile -->
+            <ul class="my-nav-list my-nav-list-larger">
+                <li class="my-nav-item my-nav-item-hidden">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="store.php" class="my-nav-link">Store</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="iphone.php" class="my-nav-link">iPhone</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="airpods.php" class="my-nav-link">AirPods</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="TV.php" class="my-nav-link">TV</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Music</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="accessories.php" class="my-nav-link">Accessories</a>
+                </li>
+                <a href="mybag.php" class="my-nav-link">Mybag</a>
+                </li>
+                <li class="my-nav-item nav-item dropdown">
+                    <a href="#" class="my-nav-link-search"></a>
+                </li>
+                <li class="my-nav-item my-nav-item-hidden ">
+                    <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+                <li class="y-nav-item" style="padding-bottom:10px;">
+                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                        ออกจากระบบ
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"></p>
+                        <?php endif ?>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-larger -->
+        </nav>
+    </div>
+</header>
 
 <body>
 
@@ -169,18 +157,18 @@ if (isset($_GET['logout'])) {
 
                             <div class="col col-md-auto  " style="padding-left:25px;">
 
-                                <div class="form-group " >
+                                <div class="form-group ">
 
                                     <div class="form-check">
 
-                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1"value="Debit" checked>
-                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault1" >
+                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1" value="Debit" checked>
+                                        <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault1">
                                             บัตรเดบิต
                                         </label>
 
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio"  name="type" id="flexRadioDefault2" value="Credit">
+                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault2" value="Credit">
                                         <label class="form-check-label fs-5 fw-bold  " for="flexRadioDefault2">
                                             บัตรเครดิต
                                         </label>
@@ -189,7 +177,7 @@ if (isset($_GET['logout'])) {
 
                                 </div></br>
 
-                                
+
                                 <p class="fs-3 fw-bold text-muted">ธนาคาร </p>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg fs-3" name="provider" id="provider" value="">
@@ -200,19 +188,19 @@ if (isset($_GET['logout'])) {
                                 </div></br>
 
                                 <p class="fs-3 fw-bold text-muted">วันหมดอายุบัตร</p>
-                           
 
 
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg fs-3" name="expiry" id="expiry" value="" placeholder="09/22">
-                                    </div><br>
-                    
-                                    <div class="form-group">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg fs-3" name="expiry" id="expiry" value="" placeholder="09/22">
+                                </div><br>
+
+                                <div class="form-group">
 
                                     <button type="submit" name="addUserPay" class="btn btn-primary btn-lg btn-block "><span class="fs-3">บันทึกข้อมูล</span></button>
 
-                        
-                            </div>
+
+                                </div>
                         </form>
 
 
