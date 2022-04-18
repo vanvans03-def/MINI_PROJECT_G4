@@ -349,11 +349,11 @@ if ($_SESSION['type'] != 1) {
                                                     <td><?php echo $order['cart_id']; ?></td>
 
                                                     <td><?php echo $order['name']." ";
-     if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
-        echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
-        }elseif($order['rom'] == 1024){
-            echo "ความจุ"." "."1"." "."TB"." ".$order['descrip'];;
-        } ?></td>                                        
+                                                if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
+                                                    echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
+                                                    }elseif($order['rom'] == 1024){
+                                                        echo "ความจุ"." "."1"." "."TB"." ".$order['descrip'];;
+                                                    } ?></td>                                        
 
 
                                                     <td><?php echo $order['quantity']; ?></td>
@@ -366,10 +366,6 @@ if ($_SESSION['type'] != 1) {
                                                             <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
                                                
 
-
-
-
-
                                                     </td>
 
                                                 </tr>
@@ -380,7 +376,7 @@ if ($_SESSION['type'] != 1) {
 
 
                                     </tbody>
-                        </table>
+                    
 
 
 
@@ -430,25 +426,18 @@ if ($_SESSION['type'] != 1) {
                                 <td><?php echo $order['payment_id']; ?></td>
                                 <td><?php echo $order['cart_id']; ?></td>
 
-                                <td><?php echo $order['name'] . " ";
-                                                if ($order['rom'] == 1024) {
-                                                    echo "1 TB" . " " . $order['descrip'];
-                                                } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
-
-
+                                <td><?php echo $order['name']." ";
+                                                if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
+                                                    echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
+                                                    }elseif($order['rom'] == 1024){
+                                                        echo "ความจุ"." "."1"." "."TB"." ".$order['descrip'];;
+                                                    } ?></td>    
 
 
                                 <td><?php echo $order['quantity']; ?></td>
                                 <td><?php echo "฿" . number_format($order['total'], 2); ?> </td>
                                 <td><?php echo $order['status']; ?></td>
-                                <td>
-
-
-
-
-
-
-                                </td>
+                           
 
                             </tr>
 
@@ -510,11 +499,12 @@ if ($_SESSION['type'] != 1) {
                             <td><?php echo $order['payment_id']; ?></td>
                             <td><?php echo $order['cart_id']; ?></td>
 
-                            <td><?php echo $order['name'] . " ";
-                                        if ($order['rom'] == 1024) {
-                                            echo "1 TB" . " " . $order['descrip'];
-                                        } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
-
+                            <td><?php echo $order['name']." ";
+                                                if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
+                                                    echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
+                                                    }elseif($order['rom'] == 1024){
+                                                        echo "ความจุ"." "."1"." "."TB"." ".$order['descrip'];;
+                                                    } ?></td>    
 
 
 

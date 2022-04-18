@@ -5,7 +5,7 @@ require_once "admin/config/db.php";
 
 $_SESSION['order.id'];
 $userid = $_SESSION['id'];
-$pd_id = $_SESSION['order.id'];
+
 
 $quantity = 1;
 

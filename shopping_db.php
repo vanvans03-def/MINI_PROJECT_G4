@@ -60,6 +60,7 @@ if ($sql) {
 
 
  if (isset($_POST['shoping'])) {
+     
     $name = $_POST["product_name"];
     $descirp = $_POST["color"];
     $rom = $_POST["rom"];

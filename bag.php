@@ -4,9 +4,13 @@ session_start();
 require_once "admin/config/db.php";
 
 
-$_SESSION['order.id'];
+$pd_id = '';
+if(isset($_SESSION['order.id'])){
+    $pd_id = $_SESSION['order.id'];
+}
 
-$pd_id = $_SESSION['order.id'];
+
+
 
 $quantity = 1;
 
@@ -211,7 +215,7 @@ if (isset($_GET['logout'])) {
 
                             );
                         }
-
+                        $userOrder = "";
                         setcookie('userOrder', json_encode($item_array), time() + 3600);
                         $userOrder = json_decode($_COOKIE['userOrder'], true);
 
