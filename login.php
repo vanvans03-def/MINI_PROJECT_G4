@@ -81,7 +81,7 @@ include('server.php');
                     <a href="#" class="my-nav-link-search"></a>
                 </li>
                 <li class="my-nav-item my-nav-item-hidden ">
-                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                    <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                 </li>
                 <li class="my-nav-item ">
                     <!--logged information-->

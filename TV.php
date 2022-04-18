@@ -97,7 +97,7 @@ if (isset($_GET['logout'])) {
                         <a href="#" class="my-nav-link-search"></a>
                     </li>
                     <li class="my-nav-item my-nav-item-hidden ">
-                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                        <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                     </li>
                     <li class="y-nav-item" style="padding-bottom:10px;">
                         <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
