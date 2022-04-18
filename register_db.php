@@ -43,8 +43,8 @@
             mysqli_query($conn, $sql);
 
           
-            $_SESSION['email'] = $email;
-            $_SESSION['success'] = "Log In";
+        
+            $_SESSION['success'] = "สมัครสมาชิกเรียบร้อย";
             
             header('location: index.php'); 
             
