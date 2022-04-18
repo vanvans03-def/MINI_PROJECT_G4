@@ -431,7 +431,7 @@ if (isset($_GET['logout'])) {
             </p>
             <ul class="links-inline">
               <li>
-                <a href="airpods3.php"buy - airpods 3rd generation" aria-label="ซื้อ AirPods (รุ่นที่ 3)" class="icon-wrapper button button-elevated hero-button"><span class="icon-copy">ซื้อ</span></a>
+                <a href="airpods3.php" buy - airpods 3rd generation" aria-label="ซื้อ AirPods (รุ่นที่ 3)" class="icon-wrapper button button-elevated hero-button"><span class="icon-copy">ซื้อ</span></a>
               </li>
               <li>
                 <a href="#" data-analytics-title="learn more - airpods 3rd generation" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods (รุ่นที่ 3)" class="icon-wrapper typography-cta hero-cta"><span class="icon-copy">ดูเพิ่มเติม</span></a>

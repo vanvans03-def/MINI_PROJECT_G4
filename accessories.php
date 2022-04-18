@@ -5123,7 +5123,7 @@ if (isset($_GET['logout'])) {
     <div id="portal"></div>
 
     <div id="ac-gn-viewport-emitter" data-viewport-emitter-dispatch="" data-viewport-emitter-state='{"viewport":"large","orientation":"landscape","retina":false}'></div>
-    <img src="http://localhost/Mini_Project_G4/overview/dc" height="1" width="1" alt="" style="display: none" /><img src="http://localhost/Mini_Project_G4/images/access/dc" height="1" width="1" alt="" style="display: none" />
+    <img src="http://localhost/Mini_Project_G4/overview/dc" height="1" width="1" alt="" style="display: none" /><img src="http://localhost/Mini_Project_G4/overview/dc" height="1" width="1" alt="" style="display: none" />
 </body>
 
 </html>

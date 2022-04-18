@@ -364,6 +364,7 @@ backdrop-filter: blur(2rem);
   font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
   min-width: 12px;
+  height: 30px;
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 10px;
