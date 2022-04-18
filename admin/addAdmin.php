@@ -278,12 +278,66 @@
                 
                 <?php } ?>
 
+
+
+
+
+
+
+                <div class="modal fade" id="addAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form action="regisAdmin.php" method="post" >
+                                        <div class="mb-3">
+                                                <label for="Frist_name" class="col-form-label">Name</label>
+                                                <input type="text" required="" class="form-control" name="Frist_name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="col-form-label">Last Name</label>
+                                                <input type="text" required="" class="form-control" name="Last_name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="col-form-label">Email</label>
+                                                <input type="email" required="" class="form-control" name="email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="col-form-label">Password</label>
+                                                <input type="password" required="" class="form-control" name="password">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="conpassword" class="col-form-label">Confrim Password:</label>
+                                                <input type="password" required="" class="form-control" name="conpassword">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="telephone" class="col-form-label">Telephone:</label>
+                                                <input type="text" required="" class="form-control" name="telephone">
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <h1>Admin Account Dashboard </h1>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-whatever="@mdo">Add Product</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdmin" data-bs-whatever="@mdo">Add Admin</button>
                                 </div>
                             </div>
                             <hr>
@@ -334,10 +388,6 @@
                     </tr>
                     <?php } 
                  } ?>
-
-
-
-
 
 
 

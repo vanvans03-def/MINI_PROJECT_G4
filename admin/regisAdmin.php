@@ -10,7 +10,7 @@
         $name = mysqli_real_escape_string($conn,$_POST['Frist_name']);
         $Lname = mysqli_real_escape_string($conn,$_POST['Last_name']);
         $telephone = mysqli_real_escape_string($conn,$_POST['telephone']);
-        
+        echo  $email;
         if(empty($email)){
             array_push($errors,"email is required");
         }
