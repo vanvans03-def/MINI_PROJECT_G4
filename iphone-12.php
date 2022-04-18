@@ -223,7 +223,7 @@ if (isset($_GET['logout'])) {
 
 
 
-                                        <input type="radio" class="btn-check" id="iphone12mini"  autocomplete="off" name='porduct_name' value="iphone 12 mini" >
+                                        <input type="radio" class="btn-check" id="iphone12mini"  autocomplete="off" name='product_name' value="iphone 12 mini" >
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone12mini" style="height: 80px;" >
                                             <div class="row" style="padding-top: 10px;" >
 
@@ -246,7 +246,7 @@ if (isset($_GET['logout'])) {
 
 
                                         <p>&nbsp;</p>
-                                        <input type="radio" class="btn-check" id="iphone12" autocomplete="off" name='porduct_name' value="iphone 12">
+                                        <input type="radio" class="btn-check" id="iphone12" autocomplete="off" name='product_name' value="iphone 12">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone12" style="height: 80px;">
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col">
@@ -287,14 +287,14 @@ if (isset($_GET['logout'])) {
                                 
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorpurple"  autocomplete="off" name="color" value="10">
+                                    <input type="radio" class="btn-check" id="colorpurple"  autocomplete="off" name="color" value="สีม่วง">
                                         <label class="btn btn-outline" for="colorpurple" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/finish-purple-202104.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone12/iphone-12-purple-select-2021.png';">
                                         </label>
                                 </div>
                                     
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorblue"  autocomplete="off" name="color" value="6">
+                                    <input type="radio" class="btn-check" id="colorblue"  autocomplete="off" name="color" value="สีฟ้า">
                                         <label class="btn btn-outline" for="colorblue" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-finish-blue-202108.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone12/iphone-12-blue-select-2020.png';">
                                         </label>
@@ -302,7 +302,7 @@ if (isset($_GET['logout'])) {
                                     
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="2">
+                                    <input type="radio" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="สีมิดไนท์">
                                         <label class="btn btn-outline" for="colorblack" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-graphite-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone12/iphone-12-black-select-2020.png';">
                                         </label>
@@ -311,13 +311,13 @@ if (isset($_GET['logout'])) {
                                 
                                         
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="4">
+                                    <input type="radio" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="สีขาว">
                                         <label class="btn btn-outline" for="colorwhite" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-finish-starlight-202108.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone12/iphone-12-white-select-2020.png';">
                                         </label>
                                 </div>
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorred"  autocomplete="off" name="color" value="8">
+                                    <input type="radio" class="btn-check" id="colorred"  autocomplete="off" name="color" value="PRODUCT(RED)">
                                         <label class="btn btn-outline" for="colorred" >    
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-finish-product-red-202108.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone12/iphone-12-red-select-2020.png';">
                                         </label>

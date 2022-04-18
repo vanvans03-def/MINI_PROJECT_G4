@@ -131,9 +131,9 @@ if (isset($_GET['logout'])) {
         <div class="my-container ">
 
             <div class="row justify-content-md-left">
-                <pre><?php print_r($_COOKIE['userOrder']);
+                <!-- <pre><?php print_r($_COOKIE['userOrder']);
                         $userOrder = json_decode($_COOKIE['userOrder'], true);
-                        ?></pre>
+                        ?></pre> -->
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -169,7 +169,7 @@ if (isset($_GET['logout'])) {
 
                     <?php
                     $cartid = $_SESSION['cartid'];
-                    echo $_SESSION['orderid'];
+                    //echo $_SESSION['orderid'];
                     $orderid = $_SESSION['orderid'];
                     $stmt = $conn->query("SELECT * FROM `order_detail` WHERE `user_id` = $userid AND `order_id` = $orderid ");
                     $stmt->execute();

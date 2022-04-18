@@ -151,28 +151,97 @@ if (isset($_GET['logout'])) {
                     echo $_SESSION['success'];
                     unset($_SESSION['success']); 
                  
-               
-                ?>
-            </div>
-        <?php } ?>
-            <?php if (isset($_SESSION['errorpay'])) { ?>
-            <div class="alert alert-danger fw-bold fs-3">
-                <?php 
-                    echo $_SESSION['errorpay'];
-                    unset($_SESSION['errorpay']); 
-                 
-                ?>
-            </div>
-        <?php } ?>
-
+                
+                    ?>
+                </div>
+            <?php } ?>
+                <?php if (isset($_SESSION['errorpay'])) { ?>
+                <div class="alert alert-danger fw-bold fs-3">
+                    <?php 
+                        echo $_SESSION['errorpay'];
+                        unset($_SESSION['errorpay']); 
                     
+                    ?>
+                </div>
+            <?php } ?>
+
+                        
 
 
 
         </div>
+        <table class="table fs-3">
 
+<thead class="thead-dark">
+    <tr>
+        <th scope="col">Order ID</th>
+        <th scope="col">Payment ID</th>
+        <th scope="col">Productname</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+    </tr>
+</thead>
+<tbody>
+  <?php 
+        $id = $_SESSION['id'];
+        $stmt = $conn->query("SELECT product.`rom`,product.`descrip`,order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name` ,payment_details.status
+        FROM order_detail 
+        JOIN order_item
+        ON order_detail.`order_id` = order_item.`order_id` 
+        JOIN cart_item 
+        ON order_item.`cart_id` = cart_item.`cart_id`
+        JOIN product
+        ON cart_item.`product_id` = product.`product_id`
+        JOIN payment_details
+        ON order_detail.`payment_id` = payment_details.`payment_id` WHERE order_detail.`user_id` = '$id' ORDER BY order_detail.`order_id` DESC ");
+        $stmt->execute();
+        $datas = $stmt->fetchAll();
+
+    
+
+
+        if (!$datas) {
+            echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+        } else {
+        foreach($datas as $data)  {  
+    
+        
+    ?>
+
+
+
+
+
+
+<tr>
+<th scope="row"><?php echo $data['order_id']; ?></th>
+<td class="text-danger fw-bold"><?php echo $data['payment_id']; ?></td>
+<td><?php echo $data['name']." ";
+     if($data['rom'] > 0 && $data['rom'] != 1024 ){ 
+        echo "ความจุ"." ".$data['rom']." "."GB"." ".$data['descrip'];; 
+        }elseif($data['rom'] == 1024){
+            echo "ความจุ"." "."1"." "."TB"." ".$data['descrip'];;
+        } ?></td>                                        
+<td><?php echo $data['quantity']; ?></td>
+<td><?php echo "฿" . number_format( $data['total'], 2,'.',);  ?></td>
+<td><?php echo $data['status']; ?></td>
+
+</tr>
+<?php } 
+} ?>
+
+
+
+
+
+
+
+</tbody>
+</table>
 
     </div>
+    
     </div>
  
 

@@ -316,26 +316,26 @@ if (isset($_GET['logout'])) {
     <div class="chapternav-wrapper">
       <ul class="chapternav-items">
         <li class="chapternav-item chapternav-item-airpods-2gen">
-          <a class="chapternav-link" href="#" data-analytics-title="airpods">
+          <a class="chapternav-link" href="airpods2.php" data-analytics-title="airpods">
             <figure class="chapternav-icon"></figure>
             <span class="chapternav-label">AirPods <br />รุ่นที่ 2</span>
           </a>
         </li>
         <li class="chapternav-item chapternav-item-airpods-3gen">
-          <a class="chapternav-link" href="#" data-analytics-title="airpods 3rd generation">
+          <a class="chapternav-link" href="airpods3.php" data-analytics-title="airpods 3rd generation">
             <figure class="chapternav-icon"></figure>
             <span class="chapternav-label">AirPods<br />รุ่นที่ 3</span>
             <span class="chapternav-new">ใหม่</span>
           </a>
         </li>
         <li class="chapternav-item chapternav-item-airpods-pro">
-          <a class="chapternav-link" href="#" data-analytics-title="airpods pro">
+          <a class="chapternav-link" href="airpods-pro.php" data-analytics-title="airpods pro">
             <figure class="chapternav-icon"></figure>
             <span class="chapternav-label">AirPods Pro</span>
           </a>
         </li>
         <li class="chapternav-item chapternav-item-airpods-max">
-          <a class="chapternav-link" href="#" data-analytics-title="airpods max">
+          <a class="chapternav-link" href="airpods-promax.php" data-analytics-title="airpods max">
             <figure class="chapternav-icon"></figure>
             <span class="chapternav-label">AirPods Max</span>
           </a>
@@ -431,7 +431,7 @@ if (isset($_GET['logout'])) {
             </p>
             <ul class="links-inline">
               <li>
-                <a href="https://www.apple.com/th/shop/goto/product/MME73" data-analytics-title="buy - airpods 3rd generation" aria-label="ซื้อ AirPods (รุ่นที่ 3)" class="icon-wrapper button button-elevated hero-button"><span class="icon-copy">ซื้อ</span></a>
+                <a href="airpods3.php"buy - airpods 3rd generation" aria-label="ซื้อ AirPods (รุ่นที่ 3)" class="icon-wrapper button button-elevated hero-button"><span class="icon-copy">ซื้อ</span></a>
               </li>
               <li>
                 <a href="#" data-analytics-title="learn more - airpods 3rd generation" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods (รุ่นที่ 3)" class="icon-wrapper typography-cta hero-cta"><span class="icon-copy">ดูเพิ่มเติม</span></a>
@@ -487,7 +487,7 @@ if (isset($_GET['logout'])) {
             </p>
             <ul class="links-inline">
               <li>
-                <a href="https://www.apple.com/th/shop/goto/product/MLWK3" data-analytics-title="buy - airpods pro" aria-label="ซื้อ AirPods Pro" class="icon-wrapper button button-elevated buy"><span class="icon-copy">ซื้อ</span></a>
+                <a href="airpods-pro.php" data-analytics-title="buy - airpods pro" aria-label="ซื้อ AirPods Pro" class="icon-wrapper button button-elevated buy"><span class="icon-copy">ซื้อ</span></a>
               </li>
               <li>
                 <a href="#" data-analytics-title="learn more - airpods pro" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods Pro" class="icon-wrapper typography-cta learn-more"><span class="icon-copy">ดูเพิ่มเติม</span></a>
@@ -539,7 +539,7 @@ if (isset($_GET['logout'])) {
           </div>
           <ul class="links-inline">
             <li>
-              <a href="#" data-analytics-title="buy - airpods max" aria-label="ซื้อ AirPods Max" class="icon-wrapper button button-elevated"><span class="icon-copy">ซื้อ</span></a>
+              <a href="airpods-promax.php" data-analytics-title="buy - airpods max" aria-label="ซื้อ AirPods Max" class="icon-wrapper button button-elevated"><span class="icon-copy">ซื้อ</span></a>
             </li>
             <li>
               <a href="#" data-analytics-title="learn more - airpods max" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods Max" class="icon-wrapper typography-cta"><span class="icon-copy">ดูเพิ่มเติม</span></a>
@@ -595,7 +595,7 @@ if (isset($_GET['logout'])) {
             </p>
             <ul class="links-inline">
               <li>
-                <a href="#" data-analytics-title="buy - airpods 2nd generation" aria-label="ซื้อ AirPods รุ่นที่ 2" class="icon-wrapper button button-elevated"><span class="icon-copy">ซื้อ</span></a>
+                <a href="airpods2.php" data-analytics-title="buy - airpods 2nd generation" aria-label="ซื้อ AirPods รุ่นที่ 2" class="icon-wrapper button button-elevated"><span class="icon-copy">ซื้อ</span></a>
               </li>
               <li>
                 <a href="#" data-analytics-title="learn more - airpods 2nd gen" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods รุ่นที่ 2" class="icon-wrapper typography-cta"><span class="icon-copy">ดูเพิ่มเติม</span></a>

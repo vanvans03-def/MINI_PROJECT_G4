@@ -139,21 +139,21 @@ if (isset($_GET['logout'])) {
                     </div></br>
 
 
-                        <pre>
+                       <!-- <pre>
                             <?php 
                             print_r($_COOKIE['userOrder']); 
                           
                             ?>
-                        </pre>
+                        </pre>-->
 
 
                     <?php
                     $userOrder = json_decode($_COOKIE['userOrder'], true);
 
-                    foreach ($userOrder as $userOrder) {
+                   /* foreach ($userOrder as $userOrder) {
                         print $userOrder . "\n";
                     }
-                    
+                    */
 
                     /*$stmt = $conn->query("SELECT * FROM `order_detail` WHERE `product_id` = $id");
 $stmt->execute();

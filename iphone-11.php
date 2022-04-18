@@ -227,7 +227,7 @@ if (isset($_GET['logout'])) {
 
 
                                         <p>&nbsp;</p>
-                                        <input type="radio" class="btn-check" id="iphone11" autocomplete="off" name='porduct_name' value="iphone 11">
+                                        <input type="radio" class="btn-check" id="iphone11" autocomplete="off" name='product_name' value="iphone 11">
                                         <label class="btn btn-outline-secondary col-12 border border-2 rounded-3" for="iphone11" style="height: 80px;">
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col">
@@ -260,7 +260,7 @@ if (isset($_GET['logout'])) {
                             <div class="container2x2 ">
 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorgreen"  autocomplete="off" name="color" value="9">
+                                    <input type="radio" class="btn-check" id="colorgreen"  autocomplete="off" name="color" value="สีเขียว">
                                         <label class="btn btn-outline" for="colorgreen" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/finish-green-202010.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-green-select-2019.png';">
                                         </label>
@@ -268,13 +268,13 @@ if (isset($_GET['logout'])) {
                                 
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorpurple"  autocomplete="off" name="color" value="10">
+                                    <input type="radio" class="btn-check" id="colorpurple"  autocomplete="off" name="color" value="สีม่วง">
                                         <label class="btn btn-outline" for="colorpurple" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/finish-purple-202104.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-purple-select-2019.png';">
                                 </div>
                                     
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="coloryellow"  autocomplete="off" name="color" value="11">
+                                    <input type="radio" class="btn-check" id="coloryellow"  autocomplete="off" name="color" value="สีเหลือง">
                                         <label class="btn btn-outline" for="coloryellow" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/finish-yellow-201909.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-yellow-select-2019.png';">
                                         </label>
@@ -282,7 +282,7 @@ if (isset($_GET['logout'])) {
                                     
                                 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="2">
+                                    <input type="radio" class="btn-check" id="colorblack"  autocomplete="off" name="color" value="สีมิดไนท์">
                                         <label class="btn btn-outline" for="colorblack" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/iphone-finish-graphite-2021.jfif" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-black-select-2019.png';">
                                         </label>
@@ -291,19 +291,18 @@ if (isset($_GET['logout'])) {
                                 
                                         
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="4">
+                                    <input type="radio" class="btn-check" id="colorwhite"  autocomplete="off" name="color" value="สีขาว">
                                         <label class="btn btn-outline" for="colorwhite" >
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-finish-starlight-202108.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-white-select-2019.png';">
                                         </label>
                                 </div>
                                 <div class="d-grid gap-2 d-md-block">
-                                    <input type="radio" class="btn-check" id="colorred"  autocomplete="off" name="color" value="8">
+                                    <input type="radio" class="btn-check" id="colorred"  autocomplete="off" name="color" value="PRODUCT(RED)">
                                         <label class="btn btn-outline" for="colorred" >    
                                             <img src="http://127.0.0.1/Mini_Project_G4/images/shop/color/iphone-13-finish-product-red-202108.jpg" alt="" style="width: 7rem;" onclick="document.getElementById('iphone13-shop').src='http://127.0.0.1/Mini_Project_G4/images/shop/iphone11/iphone11-red-select-2019.png';">
                                         </label>
                                 </div>
-                                        
-                                
+                               
                                             
                                 </div>
                             </div>

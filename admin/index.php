@@ -279,7 +279,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="rom" class="col-form-label">Rom</label>
-                                                <input type="number" required="" class="form-control " name="rom">
+                                                <input type="number" class="form-control " name="rom">
                                             </div>
 
 

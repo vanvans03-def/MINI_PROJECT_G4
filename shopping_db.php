@@ -57,38 +57,14 @@ if ($sql) {
 ?>
 
 <?php   
-$colorquery = null;
+
+
  if (isset($_POST['shoping'])) {
     $name = $_POST["product_name"];
     $descirp = $_POST["color"];
     $rom = $_POST["rom"];
 
-echo  $descirp;
-    $astmt = $conn->query("SELECT * FROM product WHERE `name` = '$name' AND `quantity` > 0 AND `rom` = $rom " );
-    $astmt->execute();
-    if($astmt){
-    $result = array();
-    while ($row = $astmt->fetch(PDO::FETCH_ASSOC)) {
-        $result[] = $row['descrip'];
-    }
-    echo '<pre>', print_r($result), '</pre>';
-    for($i = 0 ; $i <= count($result)-1; $i++){
-        if($result[$i] == $descirp){
-            echo $result[$i]."sa";
-            $colorquery = $result[$i];
-        }
-
-}
-
-} else {
-    $_SESSION['errorshop'] = "ขออภัยสินค้าหมด";
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-
-}
-
-if($colorquery != null){
-
-    $stmt = $conn->query("SELECT * FROM product WHERE `name` = '$name' AND `quantity` > 0 AND `rom` = $rom AND `descrip` = $colorquery");
+    $stmt = $conn->query("SELECT * FROM product WHERE `name` = '$name' AND `quantity` > 0 AND `rom` = $rom AND `descrip` = '$descirp'");
     $stmt->execute();
     $data = $stmt->fetch();
     if (!$data) {
@@ -124,7 +100,7 @@ if($colorquery != null){
     
 }
 
-}
+
 
 
 

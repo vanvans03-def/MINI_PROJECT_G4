@@ -217,7 +217,7 @@ if (isset($_GET['logout'])) {
                         
                        
                 ?>
-<pre><?php  print_r( ($_COOKIE['userOrder'] )); ?></pre>
+<!--<pre><?php  //print_r( ($_COOKIE['userOrder'] )); ?></pre> -->
 
                 <div class="container">
                     <div class="row">
@@ -229,11 +229,12 @@ if (isset($_GET['logout'])) {
 
 
                             <div class="d-grid gap-2 col-6 mx-auto" style="width: 30rem; height: 1rem;">
-                                <button class="btn btn-primary btn-lg" type="button">
-                                    <p class="fs-4  fw-bold  ">
-                                        ชำระเงิน
-                                    </p>
-                                </button>
+                            <form action="cart_db.php" class="" method="post" enctype="multipart/form-data">
+                                                <div class="col text-end " style="padding-top: 1rem;" >
+                                                    <button type="submit" class="btn btn-primary mb-3 fs-2 btn-rounded " name="submitbag" style="width: 30rem; height: 5rem;">ชำระเงิน</button>
+                                                </div>
+                                
+                                            </form>
                             </div>
                         </div>
 
@@ -282,7 +283,14 @@ if (isset($_GET['logout'])) {
                                     <div class="col col-md-auto">
 
                                         <p class="text-left display-1 fw-bold fs-1 mb-2 textcard "> <?php echo $data['name']; ?>
-                                            ความจุ <?php echo $data['rom'] ?>GB <?php echo $data['descrip'] ?>
+                                           <?php if($data['rom'] > 0 && $data['rom'] != 1024 ){ 
+                                                echo "ความจุ"." ".$data['rom']." "."GB"; 
+                                                }elseif($data['rom'] == 1024){
+                                                    echo "ความจุ"." "."1"." "."TB";
+                                                }
+                                                
+                                                
+                                                ?> <?php echo $data['descrip'] ?>
                                         </p>
 
                                     </div>
