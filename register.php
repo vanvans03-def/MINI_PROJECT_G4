@@ -139,21 +139,24 @@ include('server.php');
                                         </h1>
                                     </div>
                                 <?php endif ?>
+                                
+                                <div class="col col-md-auto  " style="padding-left:25px;">
+                                    <div class="row" >
+             
+                                            <div class="col col-md-auto ">
+                                                <div class="form-group  mb-2">
+                                                    <input type="text" class="form-control form-control-lg fs-3" id="Frist_name" name="Frist_name" placeholder="ชื่อ">
+                                                </div>
+                                            </div>
 
-                                <div class="row  " style="padding-left:15px;">
-                                    <div class="col col-md-auto ">
-                                        <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Frist_name" name="Frist_name" placeholder="ชื่อ">
-                                        </div>
+                                            <div class="col col-md-auto">
+                                                <div class="form-group  mb-2">
+                                                    <input type="text" class="form-control form-control-lg fs-3" id="Last_name" name="Last_name"placeholder="นามสกุล">
+                                                </div>
+                                            </div>
+
                                     </div>
-
-                                    <div class="col col-md-auto">
-                                        <div class="form-group mx-sm-5 mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Last_name" name="Last_name"placeholder="นามสกุล">
-                                        </div>
                                     </div>
-
-                                </div>
 
 
                                 <div class="col col-md-auto ">

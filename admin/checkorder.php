@@ -348,12 +348,12 @@ if ($_SESSION['type'] != 1) {
                                                     <td><?php echo $order['payment_id']; ?></td>
                                                     <td><?php echo $order['cart_id']; ?></td>
 
-                                                    <td><?php echo $order['name'] . " ";
-                                                        if ($order['rom'] == 1024) {
-                                                            echo "1 TB" . " " . $order['descrip'];
-                                                        } else echo $order['rom'] . " " . "GB" . " " . $order['descrip']; ?></td>
-
-
+                                                    <td><?php echo $order['name']." ";
+     if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
+        echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
+        }elseif($order['rom'] == 1024){
+            echo "ความจุ"." "."1"." "."TB"." ".$order['descrip'];;
+        } ?></td>                                        
 
 
                                                     <td><?php echo $order['quantity']; ?></td>
