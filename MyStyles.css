@@ -333,8 +333,7 @@ backdrop-filter: blur(2rem);
 
 }
 .box2x2{
-      padding:20px;
-     
+      padding:20px; 
       display:flex;
       justify-content:center;
     }

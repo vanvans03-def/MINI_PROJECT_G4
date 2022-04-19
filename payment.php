@@ -79,12 +79,7 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item">
                     <a href="store.php" class="my-nav-link">Store</a>
                 </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
+               
                 <li class="my-nav-item">
                     <a href="iphone.php" class="my-nav-link">iPhone</a>
                 </li>
@@ -111,8 +106,8 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item my-nav-item-hidden ">
                     <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                 </li>
-                <li class="y-nav-item" style="padding-bottom:10px;">
-                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                <li class="y-nav-item " >
+                    <a href="index.php?logout='1'" class="buttonLogout text-danger fw-bold fs-3" style="height:25px;">
                         ออกจากระบบ
                         <!--logged information-->
                         <?php if (isset($_SESSION['email'])) : ?>

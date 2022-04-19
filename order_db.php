@@ -55,6 +55,11 @@ if($checkpay){
      }
 
 }
+
+
+
+
+
 if (isset($_POST['con_order_db'])) {
 
 

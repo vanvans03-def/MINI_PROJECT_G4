@@ -62,12 +62,7 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item">
                     <a href="store.php" class="my-nav-link">Store</a>
                 </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
+               
                 <li class="my-nav-item">
                     <a href="iphone.php" class="my-nav-link">iPhone</a>
                 </li>
@@ -94,8 +89,8 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item my-nav-item-hidden ">
                     <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                 </li>
-                <li class="y-nav-item" style="padding-bottom:10px;">
-                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                <li class="y-nav-item " >
+                    <a href="index.php?logout='1'" class="buttonLogout text-danger fw-bold fs-3" style="height:25px;">
                         ออกจากระบบ
                         <!--logged information-->
                         <?php if (isset($_SESSION['email'])) : ?>
@@ -108,7 +103,6 @@ if (isset($_GET['logout'])) {
         </nav>
     </div>
 </header>
-
 <body>
 
 
@@ -182,7 +176,7 @@ if (isset($_GET['logout'])) {
                 </div>
             </div>
             <div class="card border-0" style="width: 15rem;">
-                <a href="airpods.html">
+                <a href="airpods.php">
                     <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-airpods-nav-202110.png" class="card-img-top" alt="...">
                 </a>
                 <div class="card-body">
@@ -196,7 +190,7 @@ if (isset($_GET['logout'])) {
                 </div>
             </div>
             <div class="card border-0" style="width: 15rem;">
-                <a href="TV.html">
+                <a href="TV.php">
                     <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-13-appletv-nav-202108.png" class="card-img-top" alt="..."></a>
                 <div class="card-body">
 
@@ -259,7 +253,7 @@ if (isset($_GET['logout'])) {
                         </div>
                         <div class="item">
                             <div class="card border-0 shadow">
-                                <a href="airpods.html">
+                                <a href="airpods-pro.php">
                                     <img src="http://127.0.0.1/Mini_Project_G4/images/card/store-card-40-airpodsmagsafe-202110.png" alt="" class="card-img-top">
                                 </a>
 

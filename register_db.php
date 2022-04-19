@@ -3,10 +3,10 @@
     include('server.php');
     $errors = array();
     if(isset($_POST['regis_user'])){
+
         $email = mysqli_real_escape_string($conn,$_POST['email']);
         $password = mysqli_real_escape_string($conn,$_POST['password']);
         $passwordCheck = mysqli_real_escape_string($conn,$_POST['password2']);
-
         $name = mysqli_real_escape_string($conn,$_POST['Frist_name']);
         $Lname = mysqli_real_escape_string($conn,$_POST['Last_name']);
         $telephone = mysqli_real_escape_string($conn,$_POST['telephone']);

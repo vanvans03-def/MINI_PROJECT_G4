@@ -503,7 +503,7 @@ if (isset($_GET['logout'])) {
           </div>
           <ul class="links-inline">
             <li>
-              <a href="airpods-promax.php" data-analytics-title="buy - airpods max" aria-label="ซื้อ AirPods Max" class="icon-wrapper button button-elevated"><span class="icon-copy">ซื้อ</span></a>
+              <a href="#" data-analytics-title="buy - airpods max" aria-label="ซื้อ AirPods Max" class="icon-wrapper button btn-seccondary"><span class="icon-copy">เร็วๆนี้</span></a>
             </li>
             <li>
               <a href="#" data-analytics-title="learn more - airpods max" aria-label="ดูเพิ่มเติมเกี่ยวกับ AirPods Max" class="icon-wrapper typography-cta"><span class="icon-copy">ดูเพิ่มเติม</span></a>

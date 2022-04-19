@@ -37,79 +37,71 @@ if (isset($_GET['logout'])) {
 
 </head>
 <header>
-        <div class="my-container">
-            <nav class="my-nav">
-                <ul class="my-nav-list my-nav-list-mobile">
-                    <li class="my-nav-item">
-                        <div class="mobile-menu">
-                            <span class="line line-top"></span>
-                            <span class="line line-bottom"></span>
-                        </div>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="#" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                </ul>
-                <!-- /.nav-list nav-list-mobile -->
-                <ul class="my-nav-list my-nav-list-larger">
-                    <li class="my-nav-item my-nav-item-hidden">
-                        <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="store.php" class="my-nav-link">Store</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="login.php" class="my-nav-link">Mac</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">iPad</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="iphone.php" class="my-nav-link">iPhone</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Watch</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="airpods.php" class="my-nav-link">AirPods</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="TV.php" class="my-nav-link">TV</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a  class="my-nav-link">Music</a>
-                    </li>
-                    <li class="my-nav-item">
-                        <a href="accessories.php" class="my-nav-link">Accessories</a>
-                    </li>
-                    <a href="mybag.php" class="my-nav-link">Mybag</a>
-                    </li>
-
-                    <li class="my-nav-item nav-item dropdown">
-                        <a href="#" class="my-nav-link-search"></a>
-                    </li>
-                    <li class="my-nav-item my-nav-item-hidden ">
-                        <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
-                    </li>
-                    <li class="y-nav-item" style="padding-bottom:10px;">
-                        <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;" >
-                            ออกจากระบบ
-                            <!--logged information-->
-                            <?php if (isset($_SESSION['email'])) : ?>
-                                <p class="fs-4 fw-bold text-danger"></p>
-                            <?php endif ?>
-                        </a>
-                    </li>
-
-
-                </ul>
-                <!-- /.nav-list nav-list-larger -->
-            </nav>
-        </div>
-    </header>
+    <div class="my-container">
+        <nav class="my-nav">
+            <ul class="my-nav-list my-nav-list-mobile">
+                <li class="my-nav-item">
+                    <div class="mobile-menu">
+                        <span class="line line-top"></span>
+                        <span class="line line-bottom"></span>
+                    </div>
+                </li>
+                <li class="my-nav-item">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-mobile -->
+            <ul class="my-nav-list my-nav-list-larger">
+                <li class="my-nav-item my-nav-item-hidden">
+                    <a href="index.php" class="my-nav-link my-nav-link-apple"></a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="store.php" class="my-nav-link">Store</a>
+                </li>
+               
+                <li class="my-nav-item">
+                    <a href="iphone.php" class="my-nav-link">iPhone</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Mac</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="airpods.php" class="my-nav-link">AirPods</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="TV.php" class="my-nav-link">TV</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="#" class="my-nav-link">Music</a>
+                </li>
+                <li class="my-nav-item">
+                    <a href="accessories.php" class="my-nav-link">Accessories</a>
+                </li>
+                <a href="mybag.php" class="my-nav-link">Mybag</a>
+                </li>
+                <li class="my-nav-item nav-item dropdown">
+                    <a href="#" class="my-nav-link-search"></a>
+                </li>
+                <li class="my-nav-item my-nav-item-hidden ">
+                    <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
+                </li>
+                <li class="y-nav-item " >
+                    <a href="index.php?logout='1'" class="buttonLogout text-danger fw-bold fs-3" style="height:25px;">
+                        ออกจากระบบ
+                        <!--logged information-->
+                        <?php if (isset($_SESSION['email'])) : ?>
+                            <p class="fs-4 fw-bold text-danger"></p>
+                        <?php endif ?>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.nav-list nav-list-larger -->
+        </nav>
+    </div>
+</header>
 
 <body>
 
@@ -176,27 +168,6 @@ if (isset($_GET['logout'])) {
 
                               
 
-                                <?php
-                                $cateID = '1';
-                                $active = '';
-                        
-                                $iphonese = 'Airpods 3';
-                                $active = $iphonese;
-                                $stmt = $conn->query("SELECT * FROM product WHERE name = '$active'");
-                                $stmt->execute();
-                                $products = $stmt->fetch();
-                                $img = ("SELECT * FROM product img");
-
-
-
-
-                                if (!$products) {
-                                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                                } else {
-
-
-
-                                ?>
                                     <form action="shopping_db.php" class="" method="post" enctype="multipart/form-data">
 
                                     <input type="hidden"  id="airpods3"  autocomplete="off" name='product_name' value="Airpods 3" >
@@ -274,6 +245,26 @@ if (isset($_GET['logout'])) {
                           
                             <!--end of select rom-->
 
+                            <?php
+                                $cateID = '1';
+                                $active = '';
+                        
+                                $iphonese = 'Airpods 3';
+                                $active = $iphonese;
+                                $stmt = $conn->query("SELECT * FROM product WHERE name = '$active'");
+                                $stmt->execute();
+                                $products = $stmt->fetch();
+                                $img = ("SELECT * FROM product img");
+
+
+
+                                if (!$products) {
+                                    echo '<p class="fs-1 fw-bold text-center">ขออภัยสินค้าหมด</p>';
+                                } else {
+
+
+
+                                ?>
                             <div class="d-flex justify-content-center">
 
                             <form method="post" action="bag.php?action=add">

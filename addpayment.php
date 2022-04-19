@@ -38,7 +38,7 @@ if (isset($_GET['logout'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
-    <title>ที่อยู่เพื่อจัดส่ง-Apple (TH)</title>
+    <title>เพิ่มบัญชีเพื่อชำระสินค้า-Apple (TH)</title>
     <link rel="icon" href="http://127.0.0.1/Mini_Project_G4/images/icons/apple.png" type="image/icon type">
     <style>
         .currSign:before {
@@ -71,12 +71,7 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item">
                     <a href="store.php" class="my-nav-link">Store</a>
                 </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
-                <li class="my-nav-item">
-                    <a href="#" class="my-nav-link">Mac</a>
-                </li>
+               
                 <li class="my-nav-item">
                     <a href="iphone.php" class="my-nav-link">iPhone</a>
                 </li>
@@ -103,8 +98,8 @@ if (isset($_GET['logout'])) {
                 <li class="my-nav-item my-nav-item-hidden ">
                     <a href="bag.php" class="my-nav-link my-nav-link-bag"></a>
                 </li>
-                <li class="y-nav-item" style="padding-bottom:10px;">
-                    <a href="index.php?logout='1'" class="buttonLogout" style="height:25px;">
+                <li class="y-nav-item " >
+                    <a href="index.php?logout='1'" class="buttonLogout text-danger fw-bold fs-3" style="height:25px;">
                         ออกจากระบบ
                         <!--logged information-->
                         <?php if (isset($_SESSION['email'])) : ?>
@@ -117,7 +112,6 @@ if (isset($_GET['logout'])) {
         </nav>
     </div>
 </header>
-
 <body>
 
     <div class="container-fluid my-5"> <br> <br>

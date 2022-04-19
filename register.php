@@ -50,7 +50,7 @@ include('server.php');
                         <p class="text-center  fw-bold display-6 mb-6"> สร้าง Apple ID ของคุณเอง</p>
                         <p class="text-center  text-muted fs-4">Apple ID
                             คือบัญชีเดียวเท่านั้นที่คุณต้องการสำหรับการใช้บริการทุกอย่างจาก Apple</p>
-                        <a class="fs-4 text-center text-muted" href="findid.html">มี Apple ID แล้วใช่ไหม? <span class="cta-link fs-4">ค้นหาได้ที่นี้</span></a>
+                        <a class="fs-4 text-center text-muted" href="#">มี Apple ID แล้วใช่ไหม? <span class="cta-link fs-4">ค้นหาได้ที่นี้</span></a>
                     </div><br>
                     <div class="containerRegister">
 
@@ -66,25 +66,24 @@ include('server.php');
                                 </div>
                             <?php endif ?>
 
-                            <div class="col col-md-auto  " style="padding-left:25px;">
-                                <div class="row">
+                            <div class="col col-md-auto "style="padding-left:25px;">
+                                    <div class="row">
 
-                                    <div class="col col-md-auto ">
-                                        <div class="form-group  mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Frist_name" name="Frist_name" placeholder="ชื่อ">
-                                        </div>
+                                    
+                                            <div class="form-group  col">
+                                                <input type="text" class="form-control form-control-lg fs-3" id="Frist_name" name="Frist_name" placeholder="ชื่อ">
+                                            </div>
+                                    
+
+                                            <div class="form-group  col">
+                                                <input type="text" class="form-control form-control-lg fs-3" id="Last_name" name="Last_name" placeholder="นามสกุล">
+                                            </div>
+                                    
+
                                     </div>
-
-                                    <div class="col col-md-auto">
-                                        <div class="form-group  mb-2">
-                                            <input type="text" class="form-control form-control-lg fs-3" id="Last_name" name="Last_name" placeholder="นามสกุล">
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
 
-
+                          
                             <div class="col col-md-auto ">
                                 <p class="fs-3 fw-bold text-muted " style="padding-left:25px;">ประเทศ/ภูมิภาค</p>
                             </div>

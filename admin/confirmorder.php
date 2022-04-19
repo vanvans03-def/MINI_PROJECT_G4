@@ -33,9 +33,6 @@ if (isset($_GET['comfirmOrder'])) {
 
     if ($sql) {
      
-       
-
-
         //edit stock in product table
 
         $stmt = $conn->query("SELECT order_detail.`payment_id`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`product_id`,product.`quantity`
