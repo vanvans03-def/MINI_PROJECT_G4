@@ -4,6 +4,9 @@ session_start();
 
 require_once "config/db.php";
 
+
+
+
 if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
     $deletestmt = $conn->query("DELETE FROM order_item WHERE order_id = $delete_id");
@@ -316,28 +319,24 @@ if ($_SESSION['type'] != 1) {
                                     <tbody>
                                         <?php
                                         $status = "ชำระเงินเรียบร้อย";
-                                        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom`,payment_details.`status` FROM order_detail 
-                                JOIN order_item
-                                ON order_detail.`order_id` = order_item.`order_id` 
-                                JOIN cart_item 
-                                ON order_item.`cart_id` = cart_item.`cart_id`
-                                JOIN payment_details
-                                ON order_detail.`payment_id` = payment_details.`payment_id`
-                                JOIN product
-                                ON cart_item.`product_id` = product.`product_id` AND `status` !=   '$status'  ORDER BY id DESC ;");
+                                        $stmt = $conn->query("SELECT order_detail.`id`,order_detail.`order_id`,order_detail.`user_id`,order_detail.`payment_id`,order_detail.`total`,order_item.`order_id`,order_item.`cart_id`,order_item.`quantity`,cart_item.`cart_id`,cart_item.`user_id`,cart_item.`product_id`,cart_item.`quantity`,product.`name`,product.`descrip`,product.`rom`,payment_details.`status`
+                                        FROM order_detail 
+                                        JOIN order_item
+                                        ON order_detail.`order_id` = order_item.`order_id` 
+                                        JOIN cart_item 
+                                        ON order_item.`cart_id` = cart_item.`cart_id`
+                                        JOIN payment_details
+                                        ON order_detail.`payment_id` = payment_details.`payment_id`
+                                        JOIN product
+                                        ON cart_item.`product_id` = product.`product_id` AND `status` !=   '$status'  ORDER BY id DESC ;");
 
                                         $stmt->execute();
                                         $orders = $stmt->fetchAll();
-
-
 
                                         if (!$orders) {
                                             echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
                                         } else {
                                             foreach ($orders as $order) {
-
-
-
 
                                         ?>
 
@@ -349,6 +348,7 @@ if ($_SESSION['type'] != 1) {
                                                     <td><?php echo $order['cart_id']; ?></td>
 
                                                     <td><?php echo $order['name']." ";
+                                                    
                                                 if($order['rom'] > 0 && $order['rom'] != 1024 ){ 
                                                     echo "ความจุ"." ".$order['rom']." "."GB"." ".$order['descrip'];; 
                                                     }elseif($order['rom'] == 1024){
@@ -362,8 +362,9 @@ if ($_SESSION['type'] != 1) {
                                                     <td>
                                                
 
-                                                            <a href="editorder.php?id=<?php echo $order['cart_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
-                                                            <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
+                                                        <a href="editorder.php?id=<?php echo $order['cart_id']; ?>" class="btn btn-warning">แก้ไขออเดอร์</a>
+                                                        <a onclick="return confirm('Are you sure you want to delete?');"
+                                                        href="?delete=<?php echo $order['order_id']; ?>" class="btn btn-danger">ยกเลิกออเดอร์</a>
                                                
 
                                                     </td>
